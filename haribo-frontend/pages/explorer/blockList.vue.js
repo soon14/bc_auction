@@ -40,6 +40,14 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
             /**
              * TODO 최근 10개의 블록 정보를 업데이트 합니다.
              */
+            let blocks = [];
+            fetchLatestBlock().then(lastBlockNumber=>{
+                this.lastReadBlock = lastBlockNumber;
+                fetchBlocks(lastBlockNumber-9, lastBlockNumber, block=>{
+                    blocks.unshift(block)
+                    if( block.number == lastBlockNumber) this.blocks = blocks;
+                })
+            })
         }
     },
     mounted: function(){
