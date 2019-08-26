@@ -1,0 +1,22 @@
+Git global setup
+git config --global user.name "Á¤Ç¥¿ë"
+git config --global user.email "sur2@naver.com"
+
+Create a new repository
+git clone https://lab.ssafy.com/haeje90/blockchain-sub2.git
+cd blockchain-sub2
+touch README.md
+git add README.md
+git commit -m "add README"
+
+Existing folder
+cd existing_folder
+git init
+git remote add origin https://lab.ssafy.com/haeje90/blockchain-sub2.git
+git add .
+git commit -m "Initial commit"
+
+Existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin https://lab.ssafy.com/haeje90/blockchain-sub2.git
