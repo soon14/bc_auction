@@ -44,8 +44,12 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
             fetchLatestBlock().then(lastBlockNumber=>{
                 this.lastReadBlock = lastBlockNumber;
                 fetchBlocks(lastBlockNumber-9, lastBlockNumber, block=>{
+                    block.txCount = block.transactions.length;
+                    block.timestamp = timeSince(block.timestamp);
                     blocks.unshift(block)
-                    if( block.number == lastBlockNumber) this.blocks = blocks;
+                    if( block.number == lastBlockNumber) {this.blocks = blocks;
+                        console.log(block);
+                    }
                 })
             })
         }
