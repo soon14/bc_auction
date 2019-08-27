@@ -64,7 +64,7 @@ public class WalletService implements IWalletService
 		if(wallet == null)
 			throw new NotFoundException(id + " 해당 회원의 주소 지갑을 찾을 수 없습니다.");
 
-		return 조회_ETH잔액동기화(wallet.get주소());
+		return 조회_ETH잔액동기화(wallet.getWallet_addr());
 	}
 
 	@Override
@@ -103,7 +103,7 @@ public class WalletService implements IWalletService
 	@Override
 	public Wallet 충전(String 지갑주소) {
 		Wallet wallet = this.조회_ETH잔액동기화(지갑주소);
-		if (wallet == null || !wallet.충전가능()) {
+		if (wallet == null || !wallet.isCharge()) {
 			throw new ApplicationException("[1] 충전할 수 없습니다!");
 		}
 

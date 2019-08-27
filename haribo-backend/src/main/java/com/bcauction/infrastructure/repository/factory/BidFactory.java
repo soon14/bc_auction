@@ -10,14 +10,14 @@ public class BidFactory
 	public static Bid 생성(ResultSet rs) throws SQLException
 	{
 		if (rs == null) return null;
-		Bid 입찰 = new Bid();
-		입찰.setId(rs.getLong("id"));
-		입찰.set경매id(rs.getLong("경매id"));
-		입찰.set경매참여자id(rs.getLong("경매참여자id"));
-		입찰.set입찰일시(rs.getTimestamp("입찰일시").toLocalDateTime());
-		입찰.set입찰금액(rs.getBigDecimal("입찰금액"));
-		입찰.set낙찰여부(rs.getString("낙찰여부"));
+		Bid bid = new Bid();
+		bid.setBid_id(rs.getLong("bid_id"));
+		bid.setBid_mem(rs.getLong("bid_mem"));
+		bid.setBid_auction(rs.getLong("bid_auction"));
+		bid.setBid_date(rs.getTimestamp("bid_date").toLocalDateTime());
+		bid.setBid_price(rs.getBigDecimal("bid_price"));
+		bid.setBid_issuccess(rs.getString("bid_issuccess"));
 
-		return 입찰;
+		return bid;
 	}
 }

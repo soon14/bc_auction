@@ -57,18 +57,18 @@ public class AuctionController
 
 	@RequestMapping(value = "/auctions/{id}", method = RequestMethod.GET)
 	public AuctionInfo 조회(@PathVariable long id) {
-		Auction 경매 = this.auctionService.조회(id);
-		if (경매 == null){
+		Auction auction = this.auctionService.조회(id);
+		if (auction == null){
 			logger.error("NOT FOUND AUCTION: ", id);
 			throw new NotFoundException(id + " 해당 경매를 찾을 수 없습니다.");
 		}
 
-		AuctionInfo 경매정보 = this.auctionContractService.경매정보조회(경매.get컨트랙트주소());
+		AuctionInfo 경매정보 = this.auctionContractService.경매정보조회(auction.getAuction_contract());
 		if(경매정보 == null){
 			throw new NotFoundException(id + " 해당 경매 컨트랙트를 찾을 수 없습니다.");
 		}
-		경매정보.set경매시작시간(경매.get시작일시());
-		경매정보.set경매종료시간(경매.get종료일시());
+		경매정보.set경매시작시간(auction.getAuction_start());
+		경매정보.set경매종료시간(auction.getAuction_end());
 
 		return 경매정보;
 	}

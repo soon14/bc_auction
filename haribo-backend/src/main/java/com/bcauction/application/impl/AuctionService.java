@@ -55,16 +55,17 @@ public class AuctionService implements IAuctionService
 	}
 
 	@Override
-	public Auction 생성(final Auction 경매) {
-		if(경매.get시작일시() == null) return null;
-		if(경매.get종료일시() == null) return null;
-		if(경매.get경매생성자id() == 0) return null;
-		if(경매.get경매작품id() == 0) return null;
-		if(경매.get컨트랙트주소() == null) return null;
-		if(경매.get최저가() == null) return null;
+	public Auction 생성(final Auction auction) {
+		if(auction.getAuction_start() == null) return null;
+		if(auction.getAuction_end() == null) return null;
+		if(auction.getAuction_makerid() == 0) return null;
+		if(auction.getAuction_goodsid() == 0) return null;
+		if(auction.getAuction_contract() == null) return null;
+		if(auction.getAuction_min()  == null) return null;
+		
 
-		경매.set생성일시(LocalDateTime.now());
-		long id = this.auctionRepository.생성(경매);
+		auction.setAuction_makedate(LocalDateTime.now());
+		long id = this.auctionRepository.생성(auction);
 
 		return this.auctionRepository.조회(id);
 	}

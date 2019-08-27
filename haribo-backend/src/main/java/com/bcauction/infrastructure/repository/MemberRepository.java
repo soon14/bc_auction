@@ -28,8 +28,8 @@ public class MemberRepository implements IMemberRepository {
     }
 
     @Override
-    public List<Member> 목록조회() {
-        StringBuilder sbSql =  new StringBuilder("SELECT * FROM 경매회원 ");
+    public List<Member> selectMemberList() {
+        StringBuilder sbSql =  new StringBuilder("SELECT * FROM member ");
         try {
             return this.jdbcTemplate.query(sbSql.toString(),
                     new Object[]{}, (rs, rowNum) -> MemberFactory.생성(rs));
@@ -39,8 +39,8 @@ public class MemberRepository implements IMemberRepository {
     }
 
     @Override
-    public Member 조회(long id) {
-        StringBuilder sbSql =  new StringBuilder("SELECT * FROM 경매회원 WHERE id=?");
+    public Member selectMemberById(long id) {
+        StringBuilder sbSql =  new StringBuilder("SELECT * FROM member WHERE mem_id=?");
         try {
             return this.jdbcTemplate.queryForObject(sbSql.toString(),
                     new Object[] { id }, (rs, rowNum) -> MemberFactory.생성(rs) );
@@ -52,12 +52,12 @@ public class MemberRepository implements IMemberRepository {
     }
 
     @Override
-    public Member 조회(final String 이메일)
+    public Member selectMemberByMail(final String mail)
     {
-        StringBuilder sbSql = new StringBuilder("SELECT * FROM 경매회원 WHERE 이메일=?");
+        StringBuilder sbSql = new StringBuilder("SELECT * FROM member WHERE mem_mailc=?");
         try{
             return this.jdbcTemplate.queryForObject(sbSql.toString(),
-                                                    new Object[] { 이메일 }, (rs, rowNum) -> MemberFactory.생성(rs) );
+                                                    new Object[] { mail }, (rs, rowNum) -> MemberFactory.생성(rs) );
         } catch (EmptyResultDataAccessException e) {
             return null;
         } catch (Exception e) {
@@ -67,17 +67,17 @@ public class MemberRepository implements IMemberRepository {
 
 
     @Override
-    public long 추가(Member 회원) {
+    public long insertMember(Member member) {
         try {
             Map<String, Object> paramMap = new HashMap<>();
-            paramMap.put("이름", 회원.get이름());
-            paramMap.put("이메일", 회원.get이메일());
-            paramMap.put("등록일시", LocalDateTime.now());
-            paramMap.put("비밀번호", 회원.get비밀번호());
+            paramMap.put("mem_name", member.getMem_name());
+            paramMap.put("mem_mail", member.getMem_mail());
+            paramMap.put("mem_registdate", LocalDateTime.now());
+            paramMap.put("mem_pass", member.getMem_pass());
 
             this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-                    .withTableName("경매회원")
-                    .usingGeneratedKeyColumns("id");
+                    .withTableName("member")
+                    .usingGeneratedKeyColumns("mem_id");
 
             Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);
             return newId.longValue();
@@ -88,22 +88,22 @@ public class MemberRepository implements IMemberRepository {
     }
 
     @Override
-    public int 수정(Member 회원) {
-        StringBuilder sbSql =  new StringBuilder("UPDATE 경매회원 ");
-        sbSql.append("SET 이름=?, 이메일=?, 비밀번호=? ");
-        sbSql.append("WHERE id=?");
+    public int updateMember(Member member) {
+        StringBuilder sbSql =  new StringBuilder("UPDATE member ");
+        sbSql.append("SET mem_name =?, mem_mail=?, mem_pass=? ");
+        sbSql.append("WHERE mem_id=?");
         try {
             return this.jdbcTemplate.update(sbSql.toString(),
-                    new Object[] { 회원.get이름(), 회원.get이메일(), 회원.get비밀번호(), 회원.getId() });
+                    new Object[] { member.getMem_name(), member.getMem_mail(), member.getMem_pass(), member.getMem_id() });
         } catch (Exception e) {
             throw new RepositoryException(e, e.getMessage());
         }
     }
 
     @Override
-    public int 삭제(long id) {
-        StringBuilder sbSql =  new StringBuilder("DELETE FROM 경매회원 ");
-        sbSql.append("WHERE id=?");
+    public int deleteMember(long id) {
+        StringBuilder sbSql =  new StringBuilder("DELETE FROM member ");
+        sbSql.append("WHERE mem_idid=?");
         try {
             return this.jdbcTemplate.update(sbSql.toString(),
                     new Object[] { id });

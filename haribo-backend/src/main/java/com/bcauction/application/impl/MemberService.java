@@ -22,46 +22,46 @@ public class MemberService implements IMemberService {
 
     @Override
     public List<Member> 목록조회() {
-        return this.memberRepository.목록조회();
+        return this.memberRepository.selectMemberList();
     }
 
     @Override
     public Member 조회(long id) {
-        return this.memberRepository.조회(id);
+        return this.memberRepository.selectMemberById(id);
     }
 
     @Override
-    public Member 조회(String 이메일) { return this.memberRepository.조회(이메일); }
+    public Member 조회(String 이메일) { return this.memberRepository.selectMemberByMail(이메일); }
 
     @Override
     public Member 추가(Member 회원) {
-        long id = this.memberRepository.추가(회원);
-        return this.memberRepository.조회(id);
+        long id = this.memberRepository.insertMember(회원);
+        return this.memberRepository.selectMemberById(id);
     }
 
     @Override
-    public Member 수정(Member 회원) {
+    public Member 수정(Member member) {
 
-        Member found = this.memberRepository.조회(회원.get이메일());
+        Member found = this.memberRepository.selectMemberByMail(member.getMem_mail());
         if(found == null)
             throw new ApplicationException("회원 정보를 찾을 수 없습니다.");
 
-        if(회원.getId() == 0)
-            회원.setId(found.getId());
-        if(회원.get이름() == null)
-            회원.set이름(found.get이름());
-        if(회원.get비밀번호() == null)
-            회원.set비밀번호(found.get비밀번호());
+        if(member.getMem_id() == 0)
+            member.setMem_id(found.getMem_id());
+        if(member.getMem_name() == null)
+            member.setMem_name(found.getMem_name());
+        if(member.getMem_pass() == null)
+            member.setMem_pass(found.getMem_pass());
 
-        int affected = this.memberRepository.수정(회원);
+        int affected = this.memberRepository.updateMember(member);
         if(affected == 0)
             throw new ApplicationException("작품정보수정 처리가 반영되지 않았습니다.");
 
-        return this.memberRepository.조회(회원.getId());
+        return this.memberRepository.selectMemberById(member.getMem_id());
     }
 
     @Override
     public void 삭제(long id) {
-        this.memberRepository.삭제(id);
+        this.memberRepository.deleteMember(id);
     }
 }

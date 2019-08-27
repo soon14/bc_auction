@@ -79,11 +79,11 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 	public long 추가(final DigitalWork 작품) {
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("이름", 작품.get이름());
-			paramMap.put("설명", 작품.get설명());
-			paramMap.put("공개여부", 작품.get공개여부());
-			paramMap.put("상태", 작품.get상태());
-			paramMap.put("회원id", 작품.get회원id());
+			paramMap.put("이름", 작품.getArt_name());
+			paramMap.put("설명", 작품.getArt_detail());
+			paramMap.put("공개여부", 작품.getArt_isopen());
+			paramMap.put("상태", 작품.getArt_status());
+			paramMap.put("회원id", 작품.getArt_mem());
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
 					.withTableName("작품")
@@ -105,12 +105,12 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 								new Object[] {
-										작품.get이름(),
-										작품.get설명(),
-										작품.get공개여부(),
-										작품.get상태(),
-										작품.get회원id(),
-										작품.getId()
+										작품.getArt_name() ,
+										작품.getArt_detail(),
+										작품.getArt_isopen() ,
+										작품.getArt_status(),
+										작품.getArt_mem(),
+										작품.getArt_id()
 			                                });
 		} catch (Exception e) {
 			throw new RepositoryException(e, e.getMessage());

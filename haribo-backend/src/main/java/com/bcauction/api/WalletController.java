@@ -29,14 +29,14 @@ public class WalletController {
 
 	@RequestMapping(value = "/wallets", method = RequestMethod.POST)
 	public Wallet 등록(@Valid @RequestBody Wallet wallet) {
-		logger.debug(wallet.get주소());
-		logger.debug(String.valueOf(wallet.get소유자id()));
+		logger.debug(wallet.getWallet_addr());
+		logger.debug(String.valueOf(wallet.getWallet_mem()));
 
 		this.walletService.등록(wallet);
-		Wallet 새지갑 = walletService.조회_ETH잔액동기화(wallet.get주소());
+		Wallet 새지갑 = walletService.조회_ETH잔액동기화(wallet.getWallet_addr());
 
 		if(새지갑 == null)
-			throw new NotFoundException(wallet.get주소() + " 해당 주소 지갑을 찾을 수 없습니다.");
+			throw new NotFoundException(wallet.getWallet_addr() + " 해당 주소 지갑을 찾을 수 없습니다.");
 
 		return 새지갑;
 	}
@@ -62,7 +62,7 @@ public class WalletController {
 		if(지갑 == null)
 			throw new EmptyListException("[소유자id] " + mid + " 해당 지갑을 찾을 수 없습니다.");
 
-		return walletService.조회_ETH잔액동기화(지갑.get주소());
+		return walletService.조회_ETH잔액동기화(지갑.getWallet_addr());
 	}
 
 	@RequestMapping(value ="/wallets/{address}", method = RequestMethod.PUT)
