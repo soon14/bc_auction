@@ -5,23 +5,22 @@ import com.bcauction.domain.Auction;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AuctionFactory
-{
-	public static Auction 생성(ResultSet rs) throws SQLException
-	{
-		if(rs == null) return null;
-		Auction 경매 = new Auction();
+public class AuctionFactory {
+	public static Auction 생성(ResultSet rs) throws SQLException {
+		if (rs == null)
+			return null;
+		Auction auction = new Auction();
 
-		경매.setId(rs.getInt("id"));
-		경매.set경매생성자id(rs.getLong("경매생성자id"));
-		경매.set경매작품id(rs.getLong("경매작품id"));
-		경매.set생성일시(rs.getTimestamp("생성일시").toLocalDateTime());
-		경매.set시작일시(rs.getTimestamp("시작일시").toLocalDateTime());
-		경매.set종료일시(rs.getTimestamp("종료일시").toLocalDateTime());
-		경매.set상태(rs.getString("상태"));
-		경매.set최저가(rs.getBigDecimal("최저가").toBigInteger());
-		경매.set컨트랙트주소(rs.getString("컨트랙트주소"));
+		auction.setAuction_id(rs.getInt("auction_id"));
+		auction.setAuction_makedate(rs.getTimestamp("auction_makedate").toLocalDateTime());
+		auction.setAuction_makerid(rs.getLong("auction_makerid"));
+		auction.setAuction_goodsid(rs.getLong("auction_goodsid"));
+		auction.setAuction_status(rs.getString("auction_status"));
+		auction.setAuction_start(rs.getTimestamp("auction_start").toLocalDateTime());
+		auction.setAuction_end(rs.getTimestamp("auction_end").toLocalDateTime());
+		auction.setAuction_min(rs.getBigDecimal("auction_min").toBigInteger());
+		auction.setAuction_contract(rs.getString("auction_contranct"));
 
-		return 경매;
+		return auction;
 	}
 }

@@ -10,13 +10,13 @@ public class WalletFactory
 	public static Wallet 생성(ResultSet rs) throws SQLException
 	{
 		if (rs == null) return null;
-		Wallet 지갑 = new Wallet();
-		지갑.setId(rs.getLong("id"));
-		지갑.set소유자id(rs.getLong("소유자id"));
-		지갑.set주소(rs.getString("주소"));
-		지갑.set잔액(rs.getBigDecimal("잔액"));
-		지갑.set충전회수(rs.getInt("충전회수"));
+		Wallet wallet = new Wallet();
+		wallet.setWallet_id(rs.getLong("id"));
+		wallet.setWallet_mem(rs.getLong("소유자id"));
+		wallet.setWallet_addr(rs.getString("주소"));
+		wallet.setWallet_money(rs.getBigDecimal("잔액"));
+		wallet.setWallet_chargecount(rs.getInt("충전회수"));
 
-		return 지갑;
+		return wallet;
 	}
 }

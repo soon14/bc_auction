@@ -3,72 +3,60 @@ package com.bcauction.domain;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Bid
-{
-	private long id;
-	private long 경매참여자id;
-	private long 경매id;
-	private LocalDateTime 입찰일시;
-	private BigDecimal 입찰금액;
-	private String 낙찰여부 = "N";
+public class Bid {
+	private long bid_id;
+	private long bid_mem;
+	private long bid_auction;
+	private LocalDateTime bid_date;
+	private BigDecimal bid_price;
+	private String bid_issuccess = "N";
 
-	public long getId()
-	{
-		return id;
+	public long getBid_id() {
+		return bid_id;
 	}
 
-	public void setId(final long id)
-	{
-		this.id = id;
+	public void setBid_id(long bid_id) {
+		this.bid_id = bid_id;
 	}
 
-	public long get경매참여자id()
-	{
-		return 경매참여자id;
+	public long getBid_mem() {
+		return bid_mem;
 	}
 
-	public void set경매참여자id(final long 경매참여자id)
-	{
-		this.경매참여자id = 경매참여자id;
+	public void setBid_mem(long bid_mem) {
+		this.bid_mem = bid_mem;
 	}
 
-	public long get경매id()
-	{
-		return 경매id;
+	public long getBid_auction() {
+		return bid_auction;
 	}
 
-	public void set경매id(final long 경매id)
-	{
-		this.경매id = 경매id;
+	public void setBid_auction(long bid_auction) {
+		this.bid_auction = bid_auction;
 	}
 
-	public LocalDateTime get입찰일시()
-	{
-		return 입찰일시;
+	public LocalDateTime getBid_date() {
+		return bid_date;
 	}
 
-	public void set입찰일시(final LocalDateTime 입찰일시)
-	{
-		this.입찰일시 = 입찰일시;
+	public void setBid_date(LocalDateTime bid_date) {
+		this.bid_date = bid_date;
 	}
 
-	public BigDecimal get입찰금액()
-	{
-		return 입찰금액;
+	public BigDecimal getBid_price() {
+		return bid_price;
 	}
 
-	public void set입찰금액(final BigDecimal 입찰금액)
-	{
-		this.입찰금액 = 입찰금액;
+	public void setBid_price(BigDecimal bid_price) {
+		this.bid_price = bid_price;
 	}
 
-	public String get낙찰여부()
-	{
-		return 낙찰여부;
+	public String getBid_issuccess() {
+		return bid_issuccess;
 	}
 
-	public void set낙찰여부(final String 낙찰여부)
-	{
-		this.낙찰여부 = 낙찰여부;
+	public void setBid_issuccess(String bid_issuccess) {
+		this.bid_issuccess = bid_issuccess;
 	}
+
 }
