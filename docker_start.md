@@ -1,14 +1,15 @@
 # 우분투에 도커 설치 준비
 sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt update
 
 apt-cache policy docker-ce
 
 # 도커 설치
-sudo apt install docker-ce
+sudo apt install docker-ce docker-ce-cli containerd.io
 
 # 서비스 실행 확인(도커)
 sudo systemctl status docker
@@ -37,6 +38,7 @@ sudo usermod -a -G docker $USER
 sudo service docker restart
 
 # Dockerfile 작성
+```
 FROM ubuntu
 
 COPY ./go-ethereum /home/go-ethereum
@@ -53,4 +55,5 @@ WORKDIR /home/DATA_STORE/
 COPY ./CustomGenesis.json /home/DATA_STORE
 
 RUN geth --datadir "/home/DATA_STORE" init /home/DATA_STORE/CustomGenesis.json
+```
 

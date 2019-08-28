@@ -1,55 +1,3 @@
-## vagrant 설치
-# vagrant 생성(경로 지정)
-```
-vagrant init
-```
-
-# Vagrantfile
-```
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
-
-VAGRANTFILE_API_VERSION = "2"
-
-vms = {
-  eth00: ['10', 4096],
-  # eth01: ['11', 4096],
-  # eth02: ['12', 2048],
-  # eth03: ['13', 2048],
-  # eth04: ['14', 2048],
-}
-
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/bionic64"
-  vms.map do |key, value|
-    name = key.to_s
-    ip_num, mem = value
-    config.vm.define "#{name}" do |node|
-      node.vm.network "private_network", ip: "192.168.50.#{ip_num}"
-      node.vm.hostname = "#{name}"
-      node.vm.provider "virtualbox" do |nodev|
-        nodev.memory = "#{mem}"
-      end
-    end
-  end
-end
-```
-
-# 가상머신 구동
-```
-vagrant up
-```
-
-# 가상머신 접속
-```
-vagrant ssh "name"
-```
-
 ## 이더리움 설치
 ```
 sudo apt-get update
@@ -58,3 +6,50 @@ sudo add-apt-repository -y ppa:ethereum/ethereum
 sudo apt-get install ethereum
 geth version
 ```
+
+#genesis.json 
+```
+{
+       "config": {
+               "chainId": 15151,
+               "homesteadBlock": 0,
+               "eip155Block": 0,
+               "eip158Block": 0
+       },
+       "alloc": {},
+       "coinbase": "0x0000000000000000000000000000000000000000",
+       "difficulty": "0x10",
+       "extraData": "",
+       "gasLimit": "9999999",
+       "nonce": "0xdeadbeefdeadbeef",
+       "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+       "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+       "timestamp": "0x00"
+}
+```
+# json complie for javascript
+geth --datadir /home/ubuntu/dev/eth00/ init /home/ubuntu/dev/eth00/CustomGenesis.json
+geth --datadir /home/ubuntu/dev/eth01/ init /home/ubuntu/dev/eth01/CustomGenesis.json
+geth --datadir /home/ubuntu/dev/eth02/ init /home/ubuntu/dev/eth02/CustomGenesis.json
+
+# ethereum start
+geth --networkid 15151 --maxpeers 3 --datadir /home/ubuntu/dev/eth00/ --port 30300 console
+geth --networkid 15151 --maxpeers 3 --datadir /home/ubuntu/dev/eth01/ --port 30301 console
+geth --networkid 15151 --maxpeers 3 --datadir ~/dev/eth02 --port 30302 --rpc --rpcport 8545 --rpcaddr 0.0.0.0 --rpccorsdomain "*" --rpcapi "admin,net,miner,eth,rpc,web3,txpool,debug,db,personal" console
+
+# 위의 내용을 한 번에 실행 할 CustomLaunch.sh 생성
+```
+#!/bin/bash
+
+geth --networkid 15150 --maxpeers 3 --datadir /home/vagrant/dev/eth00/ --port 30300 console
+```
+
+# aws transaction send ethereum
+to 01 from 00
+eth.sendTransaction({from:"0x5dc668a8c3a5e4aa9cad38250fa2578dc7f18b24", to:"0x4aa73246616b664372649d09edad88390d684fab", value:web3.toWei(1, "ether")});
+
+
+
+
+
+
