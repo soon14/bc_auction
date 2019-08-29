@@ -34,7 +34,7 @@ var walletInfoView = Vue.component('walletInfoView', {
             wallet: {
                 id:0,
                 "소유자id":15,
-                "주소": "",
+                "주소" : "ss",
                 "잔액": 0,
                 "충전회수": 0
             },
@@ -60,8 +60,7 @@ var walletInfoView = Vue.component('walletInfoView', {
             var scope = this;
 
             walletService.findById(this.sharedState.user.id, function(data){
-                // TODO API 호출로 지갑 정보를 가져와 보여줍니다. 
-                // web3를 사용하여 잔액을 조회해 보는 것도 포함해보도록 합니다. 
+                scope.wallet=data
             });
         }
     },

@@ -9,6 +9,8 @@ var userService = {
             "비밀번호": password
         }
 
+        console.log(body)
+
         $.ajax({
             type: "POST",
             url: API_BASE_URL + "/api/members",
