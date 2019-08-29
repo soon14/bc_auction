@@ -2,61 +2,51 @@ package com.bcauction.domain;
 
 import java.time.LocalDateTime;
 
-public class Ownership
-{
-	private long id;
-	private long 소유자id;
-	private long 작품id;
-	private LocalDateTime 소유시작일자;
-	private LocalDateTime 소유종료일자;
+public class Ownership {
+	private long own_id;
+	private long own_mem;
+	private long own_art;
+	private LocalDateTime own_start;
+	private LocalDateTime own_end;
 
-	public long getId()
-	{
-		return id;
+	public long getOwn_id() {
+		return own_id;
 	}
 
-	public void setId(final long id)
-	{
-		this.id = id;
+	public void setOwn_id(long own_id) {
+		this.own_id = own_id;
 	}
 
-	public long get소유자id()
-	{
-		return 소유자id;
+	public long getOwn_mem() {
+		return own_mem;
 	}
 
-	public void set소유자id(final long 소유자id)
-	{
-		this.소유자id = 소유자id;
+	public void setOwn_mem(long own_mem) {
+		this.own_mem = own_mem;
 	}
 
-	public long get작품id()
-	{
-		return 작품id;
+	public long getOwn_art() {
+		return own_art;
 	}
 
-	public void set작품id(final long 작품id)
-	{
-		this.작품id = 작품id;
+	public void setOwn_art(long own_art) {
+		this.own_art = own_art;
 	}
 
-	public LocalDateTime get소유시작일자()
-	{
-		return 소유시작일자;
+	public LocalDateTime getOwn_start() {
+		return own_start;
 	}
 
-	public void set소유시작일자(final LocalDateTime 소유시작일자)
-	{
-		this.소유시작일자 = 소유시작일자;
+	public void setOwn_start(LocalDateTime own_start) {
+		this.own_start = own_start;
 	}
 
-	public LocalDateTime get소유종료일자()
-	{
-		return 소유종료일자;
+	public LocalDateTime getOwn_end() {
+		return own_end;
 	}
 
-	public void set소유종료일자(final LocalDateTime 소유종료일자)
-	{
-		this.소유종료일자 = 소유종료일자;
+	public void setOwn_end(LocalDateTime own_end) {
+		this.own_end = own_end;
 	}
+
 }

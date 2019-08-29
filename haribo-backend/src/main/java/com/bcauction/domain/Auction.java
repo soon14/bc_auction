@@ -3,105 +3,73 @@ package com.bcauction.domain;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
-public class Auction
-{
-	private long id;
-	private long 경매생성자id; //회원id
-	private long 경매작품id;
-	private LocalDateTime 생성일시;
-	private String 상태 = "V"; // V valid(유효함), C canceled, E ended
-	private LocalDateTime 시작일시;
-	private LocalDateTime 종료일시;
-	private BigInteger 최저가;
-	private String 컨트랙트주소;
-
-	public long getId()
-	{
-		return id;
+public class Auction {
+	private long auction_id;
+	private LocalDateTime auction_makedate;
+	private long auction_makerid; // 회원id
+	private long auction_goodsid;
+	private String auction_status = "V"; // V valid(유효함), C canceled, E ended
+	private LocalDateTime auction_start;
+	private LocalDateTime auction_end;
+	private BigInteger auction_min;
+	private String auction_contract;
+	
+	
+	public long getAuction_id() {
+		return auction_id;
 	}
-
-	public void setId(final long id)
-	{
-		this.id = id;
+	public void setAuction_id(long auction_id) {
+		this.auction_id = auction_id;
 	}
-
-	public long get경매생성자id()
-	{
-		return 경매생성자id;
+	public LocalDateTime getAuction_makedate() {
+		return auction_makedate;
 	}
-
-	public void set경매생성자id(final long 경매생성자id)
-	{
-		this.경매생성자id = 경매생성자id;
+	public void setAuction_makedate(LocalDateTime auction_makedate) {
+		this.auction_makedate = auction_makedate;
 	}
-
-	public long get경매작품id()
-	{
-		return 경매작품id;
+	public long getAuction_makerid() {
+		return auction_makerid;
 	}
-
-	public void set경매작품id(final long 경매작품id)
-	{
-		this.경매작품id = 경매작품id;
+	public void setAuction_makerid(long auction_makerid) {
+		this.auction_makerid = auction_makerid;
 	}
-
-	public LocalDateTime get생성일시()
-	{
-		return 생성일시;
+	public long getAuction_goodsid() {
+		return auction_goodsid;
 	}
-
-	public void set생성일시(final LocalDateTime 생성일시)
-	{
-		this.생성일시 = 생성일시;
+	public void setAuction_goodsid(long auction_goodsid) {
+		this.auction_goodsid = auction_goodsid;
 	}
-
-	public String get상태()
-	{
-		return 상태;
+	public String getAuction_status() {
+		return auction_status;
 	}
-
-	public void set상태(final String 상태)
-	{
-		this.상태 = 상태;
+	public void setAuction_status(String auction_status) {
+		this.auction_status = auction_status;
 	}
-
-	public LocalDateTime get시작일시()
-	{
-		return 시작일시;
+	public LocalDateTime getAuction_start() {
+		return auction_start;
 	}
-
-	public void set시작일시(final LocalDateTime 시작일시)
-	{
-		this.시작일시 = 시작일시;
+	public void setAuction_start(LocalDateTime auction_start) {
+		this.auction_start = auction_start;
 	}
-
-	public LocalDateTime get종료일시()
-	{
-		return 종료일시;
+	public LocalDateTime getAuction_end() {
+		return auction_end;
 	}
-
-	public void set종료일시(final LocalDateTime 종료일시)
-	{
-		this.종료일시 = 종료일시;
+	public void setAuction_end(LocalDateTime auction_end) {
+		this.auction_end = auction_end;
 	}
-
-	public BigInteger get최저가()
-	{
-		return 최저가;
+	public BigInteger getAuction_min() {
+		return auction_min;
 	}
-
-	public void set최저가(final BigInteger 최저가)
-	{
-		this.최저가 = 최저가;
+	public void setAuction_min(BigInteger auction_min) {
+		this.auction_min = auction_min;
 	}
-
-	public String get컨트랙트주소()
-	{
-		return 컨트랙트주소;
+	public String getAuction_contract() {
+		return auction_contract;
 	}
-
-	public void set컨트랙트주소(final String 컨트랙트주소)
-	{
-		this.컨트랙트주소 = 컨트랙트주소;
+	public void setAuction_contract(String auction_contract) {
+		this.auction_contract = auction_contract;
 	}
+	
+	
+	
 }

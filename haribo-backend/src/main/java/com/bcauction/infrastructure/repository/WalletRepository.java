@@ -72,9 +72,9 @@ public class WalletRepository implements IWalletRepository
 	{
 		try{
 			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("소유자id", 지갑.get소유자id());
-			paramMap.put("주소", 지갑.get주소());
-			paramMap.put("잔액", 지갑.get잔액());
+			paramMap.put("소유자id", 지갑.getWallet_mem());
+			paramMap.put("주소", 지갑.getWallet_addr());
+			paramMap.put("잔액", 지갑.getWallet_money());
 			paramMap.put("충전회수", 0);
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)

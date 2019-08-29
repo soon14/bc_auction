@@ -11,16 +11,16 @@ public class OwnershipFactory
 	public static Ownership 생성(ResultSet rs) throws SQLException
 	{
 		if(rs == null) return null;
-		Ownership 소유권 = new Ownership();
+		Ownership own = new Ownership();
 
-		소유권.setId(rs.getLong("id"));
-		소유권.set소유자id(rs.getLong("소유자id"));
-		소유권.set작품id(rs.getLong("작품id"));
-		if(rs.getString("소유시작일자") != null)
-			소유권.set소유시작일자(LocalDateTime.parse(rs.getString("소유시작일자")));
-		if(rs.getString("소유종료일자") != null)
-			소유권.set소유종료일자(LocalDateTime.parse(rs.getString("소유종료일자")));
+		own.setOwn_id(rs.getLong("own_id"));
+		own.setOwn_mem(rs.getLong("own_mem"));
+		own.setOwn_art(rs.getLong("own_art"));
+		if(rs.getString("own_start") != null)
+			own.setOwn_start(LocalDateTime.parse(rs.getString("own_start")));
+		if(rs.getString("own_end") != null)
+			own.setOwn_end(LocalDateTime.parse(rs.getString("own_end")));
 
-		return 소유권;
+		return own;
 	}
 }
