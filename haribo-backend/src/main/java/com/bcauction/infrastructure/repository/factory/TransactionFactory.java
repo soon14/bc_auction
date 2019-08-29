@@ -9,28 +9,28 @@ public class TransactionFactory {
 
     public static Transaction 생성(ResultSet rs) throws SQLException {
         if (rs == null) return null;
-        Transaction 트랜잭션 = new Transaction();
+        Transaction transaction = new Transaction();
 
-        트랜잭션.setId(rs.getLong("id"));
-        트랜잭션.setHash(rs.getString("hash"));
-        트랜잭션.setNonce(rs.getString("nonce"));
-        트랜잭션.setBlockHash(rs.getString("block_hash"));
-        트랜잭션.setBlockNumber(rs.getString("block_number"));
-        트랜잭션.setTransactionIndex(rs.getString("transaction_index"));
-        트랜잭션.setFrom(rs.getString("from_hash"));
-        트랜잭션.setTo(rs.getString("to_hash"));
-        트랜잭션.setValue(rs.getString("value"));
-        트랜잭션.setGasPrice(rs.getString("gas_price"));
-        트랜잭션.setGas(rs.getString("gas"));
-        트랜잭션.setInput(rs.getString("input"));
-        트랜잭션.setCreates(rs.getString("creates"));
-        트랜잭션.setPublicKey(rs.getString("public_key"));
-        트랜잭션.setRaw(rs.getString("raw"));
-        트랜잭션.setR(rs.getString("r"));
-        트랜잭션.setS(rs.getString("s"));
-        트랜잭션.setV(rs.getInt("v"));
-        트랜잭션.set저장일시(rs.getTimestamp("저장일시").toLocalDateTime());
+        transaction.setTrancation_id(rs.getLong("trancation_id"));
+        transaction.setHash(rs.getString("hash"));
+        transaction.setNonce(rs.getString("nonce"));
+        transaction.setBlockHash(rs.getString("block_hash"));
+        transaction.setBlockNumber(rs.getString("block_number"));
+        transaction.setTransactionIndex(rs.getString("transaction_index"));
+        transaction.setFrom(rs.getString("from_hash"));
+        transaction.setTo(rs.getString("to_hash"));
+        transaction.setValue(rs.getString("value"));
+        transaction.setGasPrice(rs.getString("gas_price"));
+        transaction.setGas(rs.getString("gas"));
+        transaction.setInput(rs.getString("input"));
+        transaction.setCreates(rs.getString("creates"));
+        transaction.setPublicKey(rs.getString("public_key"));
+        transaction.setRaw(rs.getString("raw"));
+        transaction.setR(rs.getString("r"));
+        transaction.setS(rs.getString("s"));
+        transaction.setV(rs.getInt("v"));
+        transaction.setTrancation_savedate(rs.getTimestamp("trancation_savedate").toLocalDateTime());
 
-        return 트랜잭션;
+        return transaction;
     }
 }

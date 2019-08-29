@@ -28,7 +28,7 @@ public class TransactionRepository implements ITransactionRepository {
 
     @Override
     public List<Transaction> 목록조회() {
-        StringBuilder sbSql =  new StringBuilder("SELECT * FROM 트랜잭션 ");
+        StringBuilder sbSql =  new StringBuilder("SELECT * FROM transaction  ");
         try {
             return this.jdbcTemplate.query(sbSql.toString(),
                     new Object[]{}, (rs, rowNum) -> TransactionFactory.생성(rs));
@@ -39,7 +39,7 @@ public class TransactionRepository implements ITransactionRepository {
 
     @Override
     public Transaction 조회(String hash) {
-        StringBuilder sbSql =  new StringBuilder("SELECT * FROM 트랜잭션 WHERE hash=?");
+        StringBuilder sbSql =  new StringBuilder("SELECT * FROM transaction  WHERE hash=?");
         try {
             return this.jdbcTemplate.queryForObject(sbSql.toString(),
                     new Object[] { hash }, (rs, rowNum) -> TransactionFactory.생성(rs) );
@@ -53,7 +53,7 @@ public class TransactionRepository implements ITransactionRepository {
     @Override
     public List<Transaction> 조회By주소(final String 주소)
     {
-        StringBuilder sbSql =  new StringBuilder("SELECT * FROM 트랜잭션 WHERE from_hash=? OR to_hash=?");
+        StringBuilder sbSql =  new StringBuilder("SELECT * FROM transaction  WHERE from_hash=? OR to_hash=?");
         try {
             return this.jdbcTemplate.query(sbSql.toString(),
                                            new Object[] { 주소, 주소 }, (rs, rowNum) -> TransactionFactory.생성(rs) );
@@ -65,31 +65,31 @@ public class TransactionRepository implements ITransactionRepository {
     }
 
     @Override
-    public long 추가(Transaction 트랜잭션) {
+    public long 추가(Transaction transaction) {
         try {
             Map<String, Object> paramMap = new HashMap<>();
-            paramMap.put("hash", 트랜잭션.getHash());
-            paramMap.put("nonce", 트랜잭션.getNonce());
-            paramMap.put("block_hash", 트랜잭션.getBlockHash());
-            paramMap.put("block_number", 트랜잭션.getBlockNumber());
-            paramMap.put("transaction_index", 트랜잭션.getTransactionIndex());
-            paramMap.put("from_hash", 트랜잭션.getFrom());
-            paramMap.put("to_hash", 트랜잭션.getTo());
-            paramMap.put("value", 트랜잭션.getValue());
-            paramMap.put("gas_price", 트랜잭션.getGasPrice());
-            paramMap.put("gas", 트랜잭션.getGas());
-            paramMap.put("input", 트랜잭션.getInput());
-            paramMap.put("creates", 트랜잭션.getCreates());
-            paramMap.put("public_key", 트랜잭션.getPublicKey());
-            paramMap.put("raw", 트랜잭션.getRaw());
-            paramMap.put("r", 트랜잭션.getR());
-            paramMap.put("s", 트랜잭션.getS());
-            paramMap.put("v", 트랜잭션.getV());
-            paramMap.put("저장일시", LocalDateTime.now());
+            paramMap.put("hash", transaction.getHash());
+            paramMap.put("nonce", transaction.getNonce());
+            paramMap.put("block_hash", transaction.getBlockHash());
+            paramMap.put("block_number", transaction.getBlockNumber());
+            paramMap.put("transaction_index", transaction.getTransactionIndex());
+            paramMap.put("from_hash", transaction.getFrom());
+            paramMap.put("to_hash", transaction.getTo());
+            paramMap.put("value", transaction.getValue());
+            paramMap.put("gas_price", transaction.getGasPrice());
+            paramMap.put("gas", transaction.getGas());
+            paramMap.put("input", transaction.getInput());
+            paramMap.put("creates", transaction.getCreates());
+            paramMap.put("public_key", transaction.getPublicKey());
+            paramMap.put("raw", transaction.getRaw());
+            paramMap.put("r", transaction.getR());
+            paramMap.put("s", transaction.getS());
+            paramMap.put("v", transaction.getV());
+            paramMap.put("trancation_savedate", LocalDateTime.now());
 
             this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-                    .withTableName("트랜잭션")
-                    .usingGeneratedKeyColumns("id");
+                    .withTableName("transaction")
+                    .usingGeneratedKeyColumns("trancation_id");
 
             Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);
             return newId.longValue();
