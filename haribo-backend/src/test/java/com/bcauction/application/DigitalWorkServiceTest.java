@@ -22,8 +22,8 @@ public class DigitalWorkServiceTest
 	@Test
 	public void test작품등록() {
 		DigitalWork 작품 = new DigitalWork();
-		작품.set이름("호롤롤롤로");
-		작품.set회원id(15);
+		작품.setArt_name("호롤롤롤로");
+		작품.setArt_mem(15);
 
 		DigitalWork 새작품 = this.digitalWorkService.작품등록(작품);
 		assert 새작품.get공개여부().equals("Y");

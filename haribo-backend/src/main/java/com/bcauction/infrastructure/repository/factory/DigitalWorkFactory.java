@@ -11,12 +11,12 @@ public class DigitalWorkFactory
 	{
 		if (rs == null) return null;
 		DigitalWork art = new DigitalWork();
-		art.setArt_id(rs.getLong("id"));
-		art.setArt_mem(rs.getLong("회원id"));
-		art.setArt_name(rs.getString("이름"));
-		art.setArt_detail(rs.getString("설명"));
-		art.setArt_status(rs.getString("상태"));
-		art.setArt_isopen(rs.getString("공개여부"));
+		art.setArt_id(rs.getLong("art_id"));
+		art.setArt_mem(rs.getLong("art_mem"));
+		art.setArt_name(rs.getString("art_name"));
+		art.setArt_detail(rs.getString("art_detail"));
+		art.setArt_status(rs.getString("art_status"));
+		art.setArt_isopen(rs.getString("art_isopen"));
 
 		return art;
 	}

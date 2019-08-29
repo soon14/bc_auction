@@ -6,7 +6,7 @@ import org.web3j.protocol.core.methods.response.EthBlock;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    private long id;
+    private long trancation_id;
     private String hash;
     private String nonce;
     private String blockHash;
@@ -24,7 +24,7 @@ public class Transaction {
     private String r;
     private String s;
     private int v;
-    private LocalDateTime 저장일시;
+    private LocalDateTime trancation_savedate;
 
     public Transaction()
     { }
@@ -52,19 +52,19 @@ public class Transaction {
         this.r = tx.getR();
         this.s = tx.getS();
         this.v = (int) tx.getV();
-        this.저장일시 = LocalDateTime.now();
+        this.trancation_savedate = LocalDateTime.now();
     }
 
+    
+    public long getTrancation_id() {
+		return trancation_id;
+	}
 
-    public long getId() {
-        return id;
-    }
+	public void setTrancation_id(long trancation_id) {
+		this.trancation_id = trancation_id;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getHash() {
+	public String getHash() {
         return hash;
     }
 
@@ -200,11 +200,12 @@ public class Transaction {
         this.v = v;
     }
 
-    public LocalDateTime get저장일시() {
-        return 저장일시;
-    }
+	public LocalDateTime getTrancation_savedate() {
+		return trancation_savedate;
+	}
 
-    public void set저장일시(LocalDateTime 저장일시) {
-        this.저장일시 = 저장일시;
-    }
+	public void setTrancation_savedate(LocalDateTime trancation_savedate) {
+		this.trancation_savedate = trancation_savedate;
+	}
+
 }

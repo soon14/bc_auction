@@ -67,8 +67,8 @@ public class AuctionController
 		if(경매정보 == null){
 			throw new NotFoundException(id + " 해당 경매 컨트랙트를 찾을 수 없습니다.");
 		}
-		경매정보.set경매시작시간(auction.getAuction_start());
-		경매정보.set경매종료시간(auction.getAuction_end());
+		경매정보.setAucInfo_start(auction.getAuction_start());
+		경매정보.setAucInfo_end(auction.getAuction_end());
 
 		return 경매정보;
 	}

@@ -39,12 +39,12 @@ public class AuctionContractServiceTest
 		AuctionInfo 경매정보 = this.auctionContractService.경매정보조회(경매컨트랙트주소);
 
 		assert 경매정보 != null;
-		assert 경매정보.get경매시작시간() != null;
-		assert 경매정보.get경매종료시간() != null;
-		assert 경매정보.get경매컨트랙트주소() != null;
-		assert 경매정보.get작품id() != 0;
-		log.info(경매정보.get최소금액().longValue() + "");
-		assert 경매정보.get최소금액().longValue() > 0;
+		assert 경매정보.getAucInfo_start() != null;
+		assert 경매정보.getAucInfo_end() != null;
+		assert 경매정보.getAucInfo_contract() != null;
+		assert 경매정보.getAucInfo_artId() != 0;
+		log.info(경매정보.getAucInfo_min().longValue() + "");
+		assert 경매정보.getAucInfo_min().longValue() > 0;
 	}
 
 	@Test

@@ -74,23 +74,23 @@ public class DigitalWorkService implements IDigitalWorkService
 
 	@Override
 	public DigitalWork 작품정보수정(final DigitalWork 작품) {
-		DigitalWork workStored = this.digitalWorkRepository.조회(작품.getId());
+		DigitalWork workStored = this.digitalWorkRepository.조회(작품.getArt_id());
 		if (workStored == null)
 			throw new ApplicationException("해당 작품을 찾을 수 없습니다.");
 
-		if (작품.get회원id() != 0 && 작품.get회원id() != workStored.get회원id())
+		if (작품.getArt_mem() != 0 && 작품.getArt_mem() != workStored.getArt_mem())
 			throw new ApplicationException("잘못된 접근입니다.");
 
-		if(작품.get이름() == null || "".equals(작품.get이름()))
-			작품.set이름(workStored.get이름());
-		if(작품.get설명() == null || "".equals(작품.get설명()))
-			작품.set설명(workStored.get설명());
-		if(작품.get공개여부() == null || "".equals(작품.get공개여부()))
-			작품.set공개여부(workStored.get공개여부());
-		if(작품.get상태() == null || "".equals(작품.get상태()))
-			작품.set상태(workStored.get상태());
-		if(작품.get회원id() == 0)
-			작품.set회원id(workStored.get회원id());
+		if(작품.getArt_name() == null || "".equals(작품.getArt_name()))
+			작품.setArt_name(workStored.getArt_name());
+		if(작품.getArt_detail() == null || "".equals(작품.getArt_detail()))
+			작품.setArt_detail(workStored.getArt_detail());
+		if(작품.getArt_isopen() == null || "".equals(작품.getArt_isopen()))
+			작품.setArt_isopen(workStored.getArt_isopen());
+		if(작품.getArt_status() == null || "".equals(작품.getArt_status()))
+			작품.setArt_status(workStored.getArt_status());
+		if(작품.getArt_mem() == 0)
+			작품.setArt_mem(workStored.getArt_mem());
 
 		int affected = this.digitalWorkRepository.수정(작품);
 		if(affected == 0)

@@ -11,11 +11,11 @@ public class WalletFactory
 	{
 		if (rs == null) return null;
 		Wallet wallet = new Wallet();
-		wallet.setWallet_id(rs.getLong("id"));
-		wallet.setWallet_mem(rs.getLong("소유자id"));
-		wallet.setWallet_addr(rs.getString("주소"));
-		wallet.setWallet_money(rs.getBigDecimal("잔액"));
-		wallet.setWallet_chargecount(rs.getInt("충전회수"));
+		wallet.setWallet_id(rs.getLong("wallet_id"));
+		wallet.setWallet_mem(rs.getLong("wallet_mem"));
+		wallet.setWallet_addr(rs.getString("wallet_addr"));
+		wallet.setWallet_money(rs.getBigDecimal("wallet_money"));
+		wallet.setWallet_chargecount(rs.getInt("wallet_chargecount"));
 
 		return wallet;
 	}

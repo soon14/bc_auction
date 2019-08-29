@@ -3,95 +3,78 @@ package com.bcauction.domain;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
-public class AuctionInfo
-{
-	private String 경매컨트랙트주소;
-	private BigInteger 최고입찰액;
-	private long 작품id;
-	private long 최고입찰자id;
-	private LocalDateTime 경매시작시간;
-	private LocalDateTime 경매종료시간;
-	private BigInteger 최소금액;
-	private boolean 종료;
+public class AuctionInfo {
+	private String aucInfo_contract; 		// 경매 컨트랙트 주
+	private BigInteger aucInfo_highest; 	// 최고 입찰액
+	private long aucInfo_artId; 			// 작품id
+	private long aucInfo_highestBider; 		// 최고입찰자id
+	private LocalDateTime aucInfo_start; 	// 경매시작시간
+	private LocalDateTime aucInfo_end; 		// 경매종료시간
+	private BigInteger aucInfo_min; 		// 최소금액
+	private boolean aucInfo_close; 			// 종료
 
-	public String get경매컨트랙트주소()
-	{
-		return 경매컨트랙트주소;
+	public String getAucInfo_contract() {
+		return aucInfo_contract;
 	}
 
-	public void set경매컨트랙트주소(final String 경매컨트랙트주소)
-	{
-		this.경매컨트랙트주소 = 경매컨트랙트주소;
+	public void setAucInfo_contract(String aucInfo_contract) {
+		this.aucInfo_contract = aucInfo_contract;
 	}
 
-	public BigInteger get최고입찰액()
-	{
-		return 최고입찰액;
+	public BigInteger getAucInfo_highest() {
+		return aucInfo_highest;
 	}
 
-	public void set최고입찰액(final BigInteger 최고입찰액)
-	{
-		this.최고입찰액 = 최고입찰액;
+	public void setAucInfo_highest(BigInteger aucInfo_highest) {
+		this.aucInfo_highest = aucInfo_highest;
 	}
 
-	public long get최고입찰자id()
-	{
-		return 최고입찰자id;
+	public long getAucInfo_artId() {
+		return aucInfo_artId;
 	}
 
-	public void set최고입찰자id(final long 최고입찰자id)
-	{
-		this.최고입찰자id = 최고입찰자id;
+	public void setAucInfo_artId(long aucInfo_artId) {
+		this.aucInfo_artId = aucInfo_artId;
 	}
 
-
-	public LocalDateTime get경매시작시간()
-	{
-		return 경매시작시간;
+	public long getAucInfo_highestBider() {
+		return aucInfo_highestBider;
 	}
 
-	public void set경매시작시간(final LocalDateTime 경매시작시간)
-	{
-		this.경매시작시간 = 경매시작시간;
+	public void setAucInfo_highestBider(long aucInfo_highestBider) {
+		this.aucInfo_highestBider = aucInfo_highestBider;
 	}
 
-	public LocalDateTime get경매종료시간()
-	{
-		return 경매종료시간;
+	public LocalDateTime getAucInfo_start() {
+		return aucInfo_start;
 	}
 
-	public void set경매종료시간(final LocalDateTime 경매종료시간)
-	{
-		this.경매종료시간 = 경매종료시간;
+	public void setAucInfo_start(LocalDateTime aucInfo_start) {
+		this.aucInfo_start = aucInfo_start;
 	}
 
-	public BigInteger get최소금액()
-	{
-		return 최소금액;
+	public LocalDateTime getAucInfo_end() {
+		return aucInfo_end;
 	}
 
-	public void set최소금액(final BigInteger 최소금액)
-	{
-		this.최소금액 = 최소금액;
+	public void setAucInfo_end(LocalDateTime aucInfo_end) {
+		this.aucInfo_end = aucInfo_end;
 	}
 
-	public boolean is종료()
-	{
-		return 종료;
+	public BigInteger getAucInfo_min() {
+		return aucInfo_min;
 	}
 
-	public void set종료(final boolean 종료)
-	{
-		this.종료 = 종료;
+	public void setAucInfo_min(BigInteger aucInfo_min) {
+		this.aucInfo_min = aucInfo_min;
 	}
 
-	public long get작품id()
-	{
-		return 작품id;
+	public boolean isAucInfo_close() {
+		return aucInfo_close;
 	}
 
-	public void set작품id(final long 작품id)
-	{
-		this.작품id = 작품id;
+	public void setAucInfo_close(boolean aucInfo_close) {
+		this.aucInfo_close = aucInfo_close;
 	}
+
 }

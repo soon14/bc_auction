@@ -62,11 +62,11 @@ public class DigitalWorkController
 	}
 
 	@RequestMapping(value = "/works", method = RequestMethod.PUT)
-	public DigitalWork 수정(@RequestBody DigitalWork work) {
-		DigitalWork 수정된작품 = digitalWorkService.작품정보수정(work);
+	public DigitalWork 수정(@RequestBody DigitalWork art) {
+		DigitalWork 수정된작품 = digitalWorkService.작품정보수정(art);
 		if (수정된작품 == null) {
-			logger.error("NOT FOUND WORK ID: ", work.getId());
-			throw new NotFoundException(work.getId() + " 작품 정보를 찾을 수 없습니다.");
+			logger.error("NOT FOUND WORK ID: ", art.getArt_id());
+			throw new NotFoundException(art.getArt_id() + " 작품 정보를 찾을 수 없습니다.");
 		}
 
 		return 수정된작품;

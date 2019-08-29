@@ -93,9 +93,9 @@ public class FabricService implements IFabricService
 
 		// 작품 정보 update
 		DigitalWork 작품정보 = this.digitalWorkRepository.조회(작품id);
-		if(작품정보.get회원id() != from) return null;
+		if(작품정보.getArt_mem() != from) return null;
 
-		작품정보.set회원id(to);
+		작품정보.setArt_mem(to);
 		result = this.digitalWorkRepository.수정(작품정보);
 		if(result == 0)
 			return null;
