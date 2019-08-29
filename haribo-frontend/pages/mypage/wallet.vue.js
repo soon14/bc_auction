@@ -53,10 +53,15 @@ var walletCreateView = Vue.component('WalletCreateView', {
     methods: {
         // TODO web3 API를 이용하여 내 지갑을 생성합니다.
         createWallet: function(){
-            alert("지갑 생성하는 기능을 완성합니다.");
+            var wallet=web3.eth.accounts.create();
+            this.privateKey=wallet.privateKey;
+            this.walletAddress=wallet.address;
+            this.step=1;
         },
         saveWallet: function(){
             var scope = this;
+            
+            // 아래 scope.sharedState.user.id : 경매회원 테이블 id, 지갑 테이블 소유자 id fk
 
             walletService.registerWallet(
                 scope.sharedState.user.id,
