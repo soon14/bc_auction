@@ -47,7 +47,6 @@ var walletInfoView = Vue.component('walletInfoView', {
         charge: function(){
             var scope = this;
             scope.isCharging = true;
-
             walletService.chargeEther(this.wallet.wallet_addr, function(response){
                 scope.isCharging = false;
                 
