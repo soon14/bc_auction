@@ -87,6 +87,7 @@ public class WalletService implements IWalletService
 	@Override
 	public Wallet 충전회수갱신(final String 지갑주소)
 	{
+		System.out.println("충전회수 갱신 진입");
 		int affected = this.walletRepository.충전회수갱신(지갑주소);
 		if(affected == 0)
 			throw new ApplicationException("충전회수갱신 처리가 반영되지 않았습니다.");

@@ -54,7 +54,7 @@ public class MemberRepository implements IMemberRepository {
     @Override
     public Member selectMemberByMail(final String mail)
     {
-        StringBuilder sbSql = new StringBuilder("SELECT * FROM member WHERE mem_mailc=?");
+        StringBuilder sbSql = new StringBuilder("SELECT * FROM member WHERE mem_mail=?");
         try{
             return this.jdbcTemplate.queryForObject(sbSql.toString(),
                                                     new Object[] { mail }, (rs, rowNum) -> MemberFactory.생성(rs) );
@@ -103,7 +103,7 @@ public class MemberRepository implements IMemberRepository {
     @Override
     public int deleteMember(long id) {
         StringBuilder sbSql =  new StringBuilder("DELETE FROM member ");
-        sbSql.append("WHERE mem_idid=?");
+        sbSql.append("WHERE mem_id=?");
         try {
             return this.jdbcTemplate.update(sbSql.toString(),
                     new Object[] { id });

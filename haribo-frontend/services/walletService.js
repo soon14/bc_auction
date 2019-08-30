@@ -33,8 +33,8 @@ var walletService = {
     registerWallet: function(userId, walletAddress, callback){
         // TODO 지갑 등록 API를 호출합니다.      
         var body={
-            "주소" : walletAddress,
-            "소유자id" : userId
+            "wallet_addr" : walletAddress,
+            "wallet_mem" : userId
         }
         $.ajax({
             type : "POST",
@@ -48,6 +48,22 @@ var walletService = {
         
     },
     chargeEther: function(walletAddress, callback){
+        console.log("충전요청");
+        console.log(walletAddress);
         // TODO 코인 충전 API를 호출합니다.
+        var body={
+            "wallet_addr" : walletAddress
+        }
+        $.ajax({
+            type : "PUT",
+            url : API_BASE_URL+"/api/wallets/"+walletAddress,
+            data : JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' },
+            success : function(response) {
+                console.log("충전 중");
+                console.log(response);
+                callback(response);
+            }
+        })
     }
 }

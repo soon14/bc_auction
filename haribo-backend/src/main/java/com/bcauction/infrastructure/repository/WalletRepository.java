@@ -105,6 +105,7 @@ public class WalletRepository implements IWalletRepository
 
 	@Override
 	public int 충전회수갱신(final String 지갑주소){
+		System.out.println("충전회수 쿼리");
 		StringBuilder sbSql =  new StringBuilder("UPDATE wallet SET wallet_chargecount = wallet_chargecount + 1 ");
 		sbSql.append("WHERE wallet_addr=?");
 		try {
