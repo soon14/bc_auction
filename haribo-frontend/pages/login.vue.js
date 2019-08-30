@@ -39,13 +39,11 @@ var loginView = Vue.component('LoginView', {
                     store.state.user.id = data.mem_id;
 
                     walletService.findById(store.state.user.id, function(response){
-                        if(response.status == 204) {
+                        if(response === undefined) {
                             store.state.user.hasWallet = false;
-                        } else if(response.status == 200) {
-                            store.state.user.hasWallet = true;
                         } else {
-                            alert("Unexpected status code : " + response.status);
-                        }
+                            store.state.user.hasWallet = true;
+                        } 
                     });
 
                     scope.$router.push('/');

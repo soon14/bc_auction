@@ -61,7 +61,7 @@ var walletCreateView = Vue.component('WalletCreateView', {
         },
         saveWallet: function(){
             var scope = this;
-            
+            alert(store.state.user.id)
             // 아래 scope.sharedState.user.id : 경매회원 테이블 id, 지갑 테이블 소유자 id fk
 
             walletService.registerWallet(
