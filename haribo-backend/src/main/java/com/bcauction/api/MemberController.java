@@ -54,7 +54,7 @@ public class MemberController {
         Member mem = memberService.조회(member.getMem_mail());
         if (!mem.getMem_pass().equals(member.getMem_pass()))
             throw new DomainException("비밀번호가 일치하지 않습니다.");
-        return member;
+        return mem;
     }
 
     @RequestMapping(value = "/members", method = RequestMethod.POST)

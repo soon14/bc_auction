@@ -11,16 +11,16 @@ var walletInfoView = Vue.component('walletInfoView', {
                             <table class="table table-bordered">
                                 <tr>
                                     <th>총보유 ETH</th>
-                                    <td class="text-right">{{ wallet['잔액'] }} ETH</td>
+                                    <td class="text-right">{{ wallet.wallet_money }} ETH</td>
                                     <td colspan="2">
                                         <button type="button" class="btn btn-secondary" v-on:click="charge()" v-bind:disabled="isCharging">{{ isCharging ? "충전중" : "ETH 충전하기"}}</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>내 지갑주소</th>
-                                    <td class="text-right">{{ wallet['주소'] }}</td>
+                                    <td class="text-right">{{ wallet.wallet_addr }}</td>
                                     <th>충전 회수</th>
-                                    <td class="text-right">{{ wallet['충전회수'] }}회</td>
+                                    <td class="text-right">{{ wallet.wallet_chargecount }}회</td>
                                 </tr>
                             </table>
                         </div>
@@ -32,11 +32,11 @@ var walletInfoView = Vue.component('walletInfoView', {
     data() {
         return {
             wallet: {
-                id:0,
-                "소유자id":15,
-                "주소" : "ss",
-                "잔액": 0,
-                "충전회수": 0
+                wallet_id:0,
+                wallet_mem :15,
+                wallet_addr : "ss",
+                wallet_money: 0,
+                wallet_chargecount: 0
             },
             isCharging: false,          // 현재 코인을 충전하고 있는 중인지 확인하는 변수
             sharedState: store.state
@@ -48,7 +48,7 @@ var walletInfoView = Vue.component('walletInfoView', {
             var scope = this;
             scope.isCharging = true;
 
-            walletService.chargeEther(this.wallet['주소'], function(response){
+            walletService.chargeEther(this.wallet.wallet_addr, function(response){
                 scope.isCharging = false;
                 
                 alert("코인이 충전 되었습니다.");
