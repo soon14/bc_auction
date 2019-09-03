@@ -43,6 +43,7 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
             fetchLatestBlock().then(r=>{
                 console.log(r);
                 console.log('jira intergration test');
+                console.log('jira intergration test');
                 
             })
         }
