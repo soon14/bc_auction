@@ -42,9 +42,6 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
              */
             fetchLatestBlock().then(r=>{
                 console.log(r);
-                console.log("this is for git jira intergration test");
-                console.log("this is for git jira intergration test");
-                
             })
         }
     },
@@ -58,4 +55,3 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
         })
     }
 })
-

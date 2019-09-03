@@ -1,3 +1,0 @@
-2019-08-29 10:02:53 [main] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 3368 (C:\Users\multicampus\Desktop\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\blockchain-sub2\haribo-backend)
-2019-08-29 10:02:53 [main] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
-2019-08-29 10:02:53 [main] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
