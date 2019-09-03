@@ -44,6 +44,7 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
                 console.log(r);
                 console.log('jira intergration test');
                 console.log('jira intergration test');
+                console.log('jira intergration test');
                 
             })
         }
