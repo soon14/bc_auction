@@ -158,7 +158,7 @@ public class EthereumService implements IEthereumService {
 		PersonalUnlockAccount personalUnlockAccount;
 		// wallet file(지갑파일) 불러오기(admin.wallet file을 만들 것)
 		Credentials credentials;
-		String hexValue = null;
+		String transactionHash = null;
 		try {
 			System.out.println("충전 함수 진입 중");
 			personalUnlockAccount = admin.personalUnlockAccount("0x56f66a3fd8c811c2699509cd7b59962f9c280041", "eth02")
@@ -179,11 +179,11 @@ public class EthereumService implements IEthereumService {
 				
 				// 트랜잭션에 서명하고 인코딩 할 수 있습니다.
 				byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
-				hexValue = Numeric.toHexString(signedMessage);
+				String hexValue = Numeric.toHexString(signedMessage);
 				
 				// eth_sendRawTransaction을 사용하여 트랜잭션을 보냅니다.
 				EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
-				String transactionHash = ethSendTransaction.getTransactionHash();
+				transactionHash = ethSendTransaction.getTransactionHash();
 
 				System.out.println(주소+" 송금완료");
 			}
@@ -192,7 +192,7 @@ public class EthereumService implements IEthereumService {
 			e.printStackTrace();
 		} finally {
 			// hash 반환
-			return hexValue;
+			return transactionHash;
 		}
 	}
 
