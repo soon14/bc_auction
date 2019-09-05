@@ -10,14 +10,21 @@ import org.hyperledger.fabric.sdk.*;
 import org.hyperledger.fabric.sdk.exception.CryptoException;
 import org.hyperledger.fabric.sdk.exception.ProposalException;
 import org.hyperledger.fabric.sdk.exception.TransactionException;
+import org.hyperledger.fabric.sdk.helper.Utils;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 import org.hyperledger.fabric_ca.sdk.HFCAClient;
+import org.hyperledger.fabric_ca.sdk.RegistrationRequest;
 import org.hyperledger.fabric_ca.sdk.exception.EnrollmentException;
 import org.hyperledger.fabric_ca.sdk.exception.InvalidArgumentException;
+import org.hyperledger.fabric_ca.sdk.helper.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.web3j.protocol.admin.methods.response.NewAccountIdentifier;
+import org.web3j.protocol.http.HttpService;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -30,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
@@ -40,7 +48,7 @@ public class FabricCCService implements IFabricCCService
 
 	private HFClient hfClient;
 	private Channel channel;
-
+	private HFCAClient hfcaClient=null;
 	/**
 	 * 패브릭 네트워크를 이용하기 위한 정보
 	 */
@@ -81,11 +89,84 @@ public class FabricCCService implements IFabricCCService
 	 * 구축해놓은 패브릭 네트워크의 채널을 가져오는
 	 * 기능을 구현한다.
 	 * 여기에서 this.channel의 값을 초기화 한다
+
 	 */
 	private void loadChannel(){
-		// TODO
-	}
+		try {
 
+			// create HFCAClient instance
+			Properties hfca_properties=getPropertiesWith(CA_SERVER_PEM_FILE);
+			hfcaClient=HFCAClient.createNewInstance(CA_SERVER_ADMIN_NAME, CA_SERVER_URL, hfca_properties);
+			
+//			// use cryptoSuite
+			CryptoSuite cryptoSuite = CryptoSuite.Factory.getCryptoSuite();
+			hfcaClient.setCryptoSuite(cryptoSuite);
+			
+			//set admin_userContext
+			FabricUser admin_userContext=new FabricUser();
+			admin_userContext.setName(ORG_ADMIN_NAME);
+			admin_userContext.setAfflication(ORG_NAME);
+			admin_userContext.setMspid(ORG_MSP_NAME);
+			
+			//set enrollment
+			Enrollment enrollment=hfcaClient.enroll(admin_userContext.getName(), USER_SECRET);
+			admin_userContext.setEnrollment(enrollment);
+			
+			//register hfclient
+			hfClient=hfClient.createNewInstance();
+			hfClient.setCryptoSuite(cryptoSuite);
+			hfClient.setUserContext(admin_userContext);
+			
+			//pem 읽기(peer)
+			Properties peer_properties=getPropertiesWith(PEER_PEM_FILE);
+			Peer peer=hfClient.newPeer(PEER_NAME, PEER_URL, peer_properties);
+			
+			//pem 읽기(orderer)
+			Properties orderer_properties=getPropertiesWith(ORDERER_PEM_FILE);
+			Orderer orderer=hfClient.newOrderer(ORDERER_NAME, ORDERER_URL, orderer_properties);
+			
+			channel=hfClient.newChannel(CHANNEL_NAME);
+			channel.addPeer(peer);
+			channel.addOrderer(orderer);
+			channel.initialize();
+			System.out.println("채널 로드 완료");
+			
+		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (org.hyperledger.fabric.sdk.exception.InvalidArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CryptoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EnrollmentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	private Properties getPropertiesWith(String filename) {
 		Properties properties = new Properties();
 		properties.put("pemBytes", CommonUtil.readString(filename).getBytes());
@@ -104,6 +185,8 @@ public class FabricCCService implements IFabricCCService
 	public FabricAsset registerOwnership(final long 소유자, final long 작품id){
 		if(this.channel == null)
 			loadChannel();
+		else
+			System.out.println("load hojin error");
 
 		boolean res = registerAsset(작품id, 소유자);
 		if(!res)
@@ -168,6 +251,7 @@ public class FabricCCService implements IFabricCCService
 	 */
 	private boolean registerAsset(final long 작품id, final long 소유자) {
 		// TODO
+		
 		return false;
 	}
 
@@ -243,5 +327,4 @@ public class FabricCCService implements IFabricCCService
 
 		return asset;
 	}
-
 }

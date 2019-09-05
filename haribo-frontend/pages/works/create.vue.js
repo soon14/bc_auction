@@ -44,17 +44,18 @@ var worksCreateView = Vue.component("worksCreateView", {
             var scope = this;
 
             workService.create({
-                "이름": this.work.name,
-                "설명": this.work.description,
-                "공개여부": this.work.isActive ? "Y" : "N",
-                "상태": this.work.status ? "Y" : "N",
-                "회원id": this.sharedStates.user.id
+                "art_name": this.work.name,
+                "art_detail": this.work.description,
+                "art_isopen": this.work.isActive ? "Y" : "N",
+                "art_status": this.work.status ? "Y" : "N",
+                "art_mem": this.sharedStates.user.id
             },
             function(){
                 alert('작품이 등록되었습니다.');
                 scope.$router.push('/artworks');
             },
             function(error){
+                console.log(error)
                 alert("입력폼을 모두 입력해주세요.");
             });
         }

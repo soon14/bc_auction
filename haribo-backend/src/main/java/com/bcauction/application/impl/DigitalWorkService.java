@@ -56,7 +56,11 @@ public class DigitalWorkService implements IDigitalWorkService
 	@Override
 	public DigitalWork 작품등록(final DigitalWork 작품) {
 		// TODO
-		return null;
+		long l = this.digitalWorkRepository.추가(작품);
+		if (l != 0 ) {
+			this.fabricService.소유권등록(작품.getArt_mem(), l);
+		}
+		return 작품;
 	}
 
 	/**
