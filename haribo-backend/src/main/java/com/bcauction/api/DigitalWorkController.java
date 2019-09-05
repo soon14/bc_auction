@@ -3,6 +3,7 @@ package com.bcauction.api;
 
 import com.bcauction.application.IDigitalWorkService;
 import com.bcauction.application.IFabricService;
+import com.bcauction.application.impl.FabricService;
 import com.bcauction.domain.DigitalWork;
 import com.bcauction.domain.FabricAsset;
 import com.bcauction.domain.exception.EmptyListException;
@@ -36,7 +37,7 @@ public class DigitalWorkController
 
 	@RequestMapping(value = "/works", method = RequestMethod.POST)
 	public DigitalWork 등록(@RequestBody DigitalWork work) {
-		return  digitalWorkService.작품등록(work);
+		return digitalWorkService.작품등록(work);
 	}
 
 
