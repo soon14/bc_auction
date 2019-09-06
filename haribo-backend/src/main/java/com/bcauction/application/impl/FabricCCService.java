@@ -148,13 +148,24 @@ public class FabricCCService implements IFabricCCService
 	public FabricAsset registerOwnership(final long 소유자, final long 작품id){
 		if(this.channel == null)
 			loadChannel();
-		else
-			System.out.println("load hojin error");
 
 		boolean res = registerAsset(작품id, 소유자);
+		
+		logger.info("stop");
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		logger.info("start");
+		System.out.println("res : "+res);
+		
 		if(!res)
 			return null;
+		
 		res = confirmTimestamp(작품id);
+		
 		if(!res)
 			return null;
 
@@ -214,7 +225,6 @@ public class FabricCCService implements IFabricCCService
 	 */
 	private boolean registerAsset(final long 작품id, final long 소유자) {
 		// TODO
-		
 		String[] args=new String[2];
 		args[0]=Long.toString(작품id);
 		args[1]=Long.toString(소유자);
@@ -234,13 +244,13 @@ public class FabricCCService implements IFabricCCService
 			}
 			// block 생성됨
 			channel.sendTransaction(responses);
-			
+			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		} 
 		
-		return false;
 	}
 
 	/**
@@ -250,7 +260,30 @@ public class FabricCCService implements IFabricCCService
 	 */
 	private boolean confirmTimestamp(final long 작품id){
 		// TODO
-		return false;
+		String[] args=new String[1];
+		args[0]=Long.toString(작품id);
+		
+		TransactionProposalRequest tpr=hfClient.newTransactionProposalRequest();
+		ChaincodeID faChaincodeID=ChaincodeID.newBuilder().setName("asset").build();
+		
+		tpr.setChaincodeID(faChaincodeID);
+		tpr.setFcn("confirmTimestamp");
+		tpr.setArgs(args);
+		
+		try {
+			Collection<ProposalResponse> responses=channel.sendTransactionProposal(tpr);
+			for (ProposalResponse res: responses) {
+				Status status=res.getStatus();
+				logger.info(status.toString());
+			}
+			channel.sendTransaction(responses);
+			return true;
+			// block 생성됨
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} 
 	}
 
 	/**
@@ -298,6 +331,32 @@ public class FabricCCService implements IFabricCCService
 		if(this.hfClient == null || this.channel == null)
 			loadChannel();
 
+		FabricAsset tmp=null;
+		String response=null;
+		
+		String []args=new String[1];
+		args[0]=Long.toString(작품id);
+		
+		QueryByChaincodeRequest qbr=hfClient.newQueryProposalRequest();
+		ChaincodeID faChaincodeID=ChaincodeID.newBuilder().setName("asset").build();
+		
+		qbr.setChaincodeID(faChaincodeID);
+		qbr.setFcn("query");
+		qbr.setArgs(args);
+		
+		Collection<ProposalResponse> responseQuery;
+		try {
+			responseQuery = channel.queryByChaincode(qbr);
+			for (ProposalResponse res: responseQuery) {
+				response=new String(res.getChaincodeActionResponsePayload());
+				System.out.println("query호출");
+				logger.info(res.getMessage());
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
