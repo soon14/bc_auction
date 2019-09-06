@@ -119,9 +119,9 @@ var worksDetailView = Vue.component("WorkDetailView", {
             scope.work.ownerId = data["art_mem"];
 
             userService.findById(scope.work.ownerId, function(user){
-                scope.user.id = user["user_id"];
-                scope.user.name = user["user_name"];
-                scope.user.email = user["user_mail"];
+                scope.user.id = user["mem_id"];
+                scope.user.name = user["mem_name"];
+                scope.user.email = user["mem_mail"];
             });
         });
 
