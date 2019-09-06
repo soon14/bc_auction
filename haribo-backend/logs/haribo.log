@@ -2054,3 +2054,1327 @@ Consider defining a bean of type 'org.hyperledger.fabric_ca.sdk.HFCAClient' in y
 2019-09-06 11:39:20 [http-nio-8080-exec-9] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
 2019-09-06 11:39:21 [http-nio-8080-exec-9] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 3, name: auctionchannel001} eventThread started shutdown: false  thread: null 
 2019-09-06 11:39:22 [http-nio-8080-exec-9] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 11:58:12 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 11:58:12 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 11:58:12 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 11:58:12 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 11:58:12 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 11:58:13 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 11:58:13 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 11:58:13 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 11:58:13 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 11:58:14 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 11:58:14 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 11:58:14 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 11:58:14 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 11:58:14 [restartedMain] INFO  com.bcauction.Application - Started Application in 2.266 seconds (JVM running for 3.687)
+2019-09-06 11:58:19 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 11:58:19 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-09-06 11:58:20 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-09-06 11:58:45 [http-nio-8080-exec-7] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 11:58:45 [http-nio-8080-exec-7] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 11:58:45 [http-nio-8080-exec-7] WARN  o.h.fabric_ca.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 11:58:45 [http-nio-8080-exec-7] WARN  o.h.fabric.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 11:58:45 [http-nio-8080-exec-7] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 11:58:45 [http-nio-8080-exec-7] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 11:58:45 [http-nio-8080-exec-7] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 11:58:45 [http-nio-8080-exec-7] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 11:58:47 [http-nio-8080-exec-7] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 3, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 11:58:47 [http-nio-8080-exec-7] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 12:01:10 [Thread-9] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:10 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-09-06 12:01:11 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-09-06 12:01:11 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:01:11 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:01:11 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:01:11 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:01:11 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:01:11 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:01:11 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:01:12 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:01:12 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:12 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:01:12 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:01:12 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.45 seconds (JVM running for 181.158)
+2019-09-06 12:01:12 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:01:16 [Thread-15] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:17 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:01:17 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:01:17 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:01:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:01:17 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:01:17 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:01:17 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:01:17 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:01:17 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:17 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:01:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:01:17 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.429 seconds (JVM running for 186.654)
+2019-09-06 12:01:17 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:01:32 [Thread-23] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:32 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:01:32 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:01:32 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:01:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:01:33 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:01:33 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:01:33 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:01:33 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:01:33 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:33 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:01:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:01:33 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.437 seconds (JVM running for 202.285)
+2019-09-06 12:01:33 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:01:39 [Thread-31] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:40 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:01:40 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:01:40 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:01:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:01:40 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:01:40 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:01:40 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:01:40 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:01:40 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:01:40 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:01:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:01:40 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.412 seconds (JVM running for 209.76)
+2019-09-06 12:01:40 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:02:00 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 12:02:00 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-09-06 12:02:00 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-09-06 12:02:04 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 12:02:04 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 12:02:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 12:02:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 12:02:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 12:02:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 12:02:05 [http-nio-8080-exec-5] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 9, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 12:02:05 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 12:02:05 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 12:02:15 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 12:02:29 [Thread-39] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:02:29 [Thread-39] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2019-09-06 12:02:29 [Thread-39] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2019-09-06 12:02:30 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:02:30 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:02:30 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:02:30 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:02:30 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:02:30 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:02:30 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:02:30 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:02:30 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:02:30 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:02:30 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:02:30 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.411 seconds (JVM running for 259.701)
+2019-09-06 12:02:30 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:02:35 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 12:02:35 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2019-09-06 12:02:35 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2019-09-06 12:02:40 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 12:02:40 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 12:02:41 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 12:02:41 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 12:02:41 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 12:02:41 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 12:02:41 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 15, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 12:02:41 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 12:02:54 [Thread-49] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:02:54 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2019-09-06 12:02:54 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2019-09-06 12:02:55 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:02:55 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:02:55 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:02:55 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:02:55 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:02:55 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:02:55 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:02:55 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:02:55 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:02:55 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:02:55 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:02:55 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.389 seconds (JVM running for 284.429)
+2019-09-06 12:02:55 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:03:02 [Thread-59] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:03:03 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:03:03 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:03:03 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:03:03 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:03:03 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:03:03 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:03:03 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:03:03 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:03:03 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:03:03 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:03:03 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:03:03 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.408 seconds (JVM running for 292.955)
+2019-09-06 12:03:03 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:04:44 [Thread-67] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:04:44 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:04:44 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:04:44 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:04:45 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:04:45 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:04:45 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:04:45 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:04:45 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:04:45 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:04:45 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:04:45 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:04:45 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.395 seconds (JVM running for 394.415)
+2019-09-06 12:04:45 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:18:51 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 12:45:08 [Thread-75] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:45:08 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:45:08 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:45:08 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:45:08 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:45:08 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:45:08 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:45:08 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:45:08 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:45:09 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:45:09 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:45:09 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:45:09 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.417 seconds (JVM running for 2818.103)
+2019-09-06 12:45:09 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:45:32 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 12:45:32 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2019-09-06 12:45:32 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 21, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 12:45:43 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 12:45:45 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 12:47:09 [Thread-83] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:47:09 [Thread-83] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2019-09-06 12:47:09 [Thread-83] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2019-09-06 12:47:10 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:47:10 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:47:10 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:47:10 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:47:10 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:47:10 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:47:10 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:47:10 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:47:10 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:47:10 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:47:10 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:47:10 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.41 seconds (JVM running for 2939.725)
+2019-09-06 12:47:10 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:47:49 [Thread-93] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:47:50 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:47:50 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:47:50 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:47:50 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:47:50 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:47:50 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:47:50 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:47:50 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:47:50 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:47:50 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:47:50 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:47:50 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.405 seconds (JVM running for 2979.525)
+2019-09-06 12:47:50 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:47:52 [Thread-101] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:47:53 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:47:53 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:47:53 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:47:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:47:53 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:47:53 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:47:53 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:47:53 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:47:53 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:47:53 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:47:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:47:53 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.409 seconds (JVM running for 2982.958)
+2019-09-06 12:47:53 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:48:07 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 12:48:07 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2019-09-06 12:48:07 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 27, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 12:48:14 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 12:48:24 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 12:49:23 [Thread-109] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:49:23 [Thread-109] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2019-09-06 12:49:23 [Thread-109] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2019-09-06 12:49:23 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:49:23 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:49:23 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:49:24 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:49:24 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:49:24 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:49:24 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:49:24 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:49:24 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:49:24 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:49:24 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:49:24 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.401 seconds (JVM running for 3073.399)
+2019-09-06 12:49:24 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 33, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 12:49:32 [http-nio-8080-exec-2] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 12:49:42 [http-nio-8080-exec-2] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 12:51:36 [Thread-119] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:51:36 [Thread-119] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown initiated...
+2019-09-06 12:51:36 [Thread-119] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown completed.
+2019-09-06 12:51:36 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 12:51:36 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 12:51:36 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 12:51:36 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 12:51:36 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 12:51:36 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 12:51:36 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 12:51:37 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 12:51:37 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 12:51:37 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 12:51:37 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 12:51:37 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.41 seconds (JVM running for 3206.139)
+2019-09-06 12:51:37 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 12:58:33 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:09:31 [Thread-127] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:09:31 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:09:31 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:09:31 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:09:32 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:09:32 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:09:32 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:09:32 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:09:32 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:09:32 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:09:32 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:09:32 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:09:32 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.426 seconds (JVM running for 4281.329)
+2019-09-06 13:09:32 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:09:37 [Thread-135] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:09:38 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 5492 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:09:38 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:09:38 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:09:38 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:09:38 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:09:38 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:09:38 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:09:38 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:09:38 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:09:38 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:09:38 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:09:38 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.385 seconds (JVM running for 4287.871)
+2019-09-06 13:09:38 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:09:40 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-09-06 13:09:40 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:09:45 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:09:45 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:09:45 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:09:45 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 13:09:45 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 13:09:46 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:09:46 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:09:46 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:09:46 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:09:47 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:09:47 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:09:47 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:09:47 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:09:47 [restartedMain] INFO  com.bcauction.Application - Started Application in 2.216 seconds (JVM running for 3.192)
+2019-09-06 13:09:55 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:09:56 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-09-06 13:09:56 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-09-06 13:10:02 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:10:02 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:10:02 [http-nio-8080-exec-4] WARN  o.h.fabric_ca.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 13:10:02 [http-nio-8080-exec-4] WARN  o.h.fabric.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 13:10:02 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:10:02 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:10:02 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:10:02 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:10:04 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 3, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:10:04 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:10:09 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - FAILURE
+2019-09-06 13:10:53 [Thread-9] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:10:53 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-09-06 13:10:53 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-09-06 13:10:54 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:10:54 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:10:54 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:10:54 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:10:54 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:10:54 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:10:54 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:10:54 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:10:54 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:10:54 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:10:54 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:10:54 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.445 seconds (JVM running for 70.468)
+2019-09-06 13:10:54 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:11:00 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 7200 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:11:00 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:11:00 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:11:00 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 13:11:00 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 13:11:00 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:11:00 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:11:00 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:11:01 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:11:01 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:11:01 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:02 [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2019-09-06 13:11:02 [restartedMain] ERROR o.apache.catalina.util.LifecycleBase - Failed to start component [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1008)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:226)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:552)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.bcauction.Application.main(Application.java:12)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketAdaptor.bind(Unknown Source)
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1103)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1189)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:568)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1005)
+	... 19 common frames omitted
+2019-09-06 13:11:02 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2019-09-06 13:11:02 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-09-06 13:11:02 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-09-06 13:11:02 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:13 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11132 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:11:13 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:11:13 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:11:13 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 13:11:13 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 13:11:13 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:11:14 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:11:14 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:11:14 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:11:14 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:11:15 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:15 [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2019-09-06 13:11:15 [restartedMain] ERROR o.apache.catalina.util.LifecycleBase - Failed to start component [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1008)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:226)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:552)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.bcauction.Application.main(Application.java:12)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketAdaptor.bind(Unknown Source)
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1103)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1189)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:568)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1005)
+	... 19 common frames omitted
+2019-09-06 13:11:15 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2019-09-06 13:11:15 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-09-06 13:11:15 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-09-06 13:11:15 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:20 [Thread-15] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:20 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 4260 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:11:20 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:11:20 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:11:20 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 13:11:20 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 13:11:21 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:11:21 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:11:21 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:11:21 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:11:21 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:11:21 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:11:21 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:11:21 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:11:21 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:21 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:11:21 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:11:21 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.451 seconds (JVM running for 97.259)
+2019-09-06 13:11:21 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:11:21 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:11:21 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:11:21 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:11:21 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:11:22 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:11:22 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:22 [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2019-09-06 13:11:22 [restartedMain] ERROR o.apache.catalina.util.LifecycleBase - Failed to start component [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1008)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:226)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:552)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.bcauction.Application.main(Application.java:12)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketAdaptor.bind(Unknown Source)
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1103)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1189)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:568)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1005)
+	... 19 common frames omitted
+2019-09-06 13:11:22 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2019-09-06 13:11:22 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-09-06 13:11:22 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-09-06 13:11:22 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:27 [Thread-23] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:28 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:11:28 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:11:28 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:11:28 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:11:28 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:11:28 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:11:28 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:11:28 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:11:29 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:11:29 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:11:29 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:11:29 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.429 seconds (JVM running for 104.836)
+2019-09-06 13:11:29 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:12:27 [Thread-31] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:12:27 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:12:27 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:12:27 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:12:27 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:12:27 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:12:27 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:12:27 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:12:27 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:12:28 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:12:28 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:12:28 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:12:28 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.405 seconds (JVM running for 163.829)
+2019-09-06 13:12:28 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:12:39 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:12:39 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-09-06 13:12:40 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 9, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:12:44 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:13:11 [Thread-39] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:13:11 [Thread-39] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2019-09-06 13:13:11 [Thread-39] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2019-09-06 13:13:12 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:13:12 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:13:12 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:13:12 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:13:12 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:13:12 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:13:12 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:13:12 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:13:12 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:13:12 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:13:13 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:13:13 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.421 seconds (JVM running for 208.752)
+2019-09-06 13:13:13 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:13:22 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:13:22 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2019-09-06 13:13:22 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 14, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:13:27 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:13:32 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:13:53 [Thread-49] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:13:53 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2019-09-06 13:13:53 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2019-09-06 13:13:54 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:13:54 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:13:54 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:13:54 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:13:54 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:13:54 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:13:54 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:13:54 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:13:54 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:13:54 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:13:54 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:13:54 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.405 seconds (JVM running for 250.734)
+2019-09-06 13:13:54 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:13:59 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:13:59 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2019-09-06 13:13:59 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2019-09-06 13:14:03 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:14:03 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:14:04 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:14:04 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:14:04 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:14:04 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:14:04 [http-nio-8080-exec-6] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 19, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:14:04 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:14:53 [Thread-59] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:14:53 [Thread-59] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2019-09-06 13:14:53 [Thread-59] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2019-09-06 13:14:53 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:14:53 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:14:53 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:14:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:14:53 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:14:53 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:14:53 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:14:54 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:14:54 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:14:54 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:14:54 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:14:54 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.416 seconds (JVM running for 309.882)
+2019-09-06 13:14:54 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:15:01 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:15:01 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2019-09-06 13:15:01 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 24, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:15:05 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:15:13 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:15:51 [Thread-69] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:15:51 [Thread-69] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2019-09-06 13:15:51 [Thread-69] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2019-09-06 13:15:51 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:15:51 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:15:51 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:15:52 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:15:52 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:15:52 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:15:52 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:15:52 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:15:52 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:15:52 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:15:52 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:15:52 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.42 seconds (JVM running for 368.08)
+2019-09-06 13:15:52 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:16:40 [Thread-79] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:16:40 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:16:40 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:16:40 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:16:41 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:16:41 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:16:41 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:16:41 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:16:41 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:16:41 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:16:41 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:16:41 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:16:41 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.391 seconds (JVM running for 416.989)
+2019-09-06 13:16:41 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:18:11 [Thread-87] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:18:12 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:18:12 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:18:12 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:18:12 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:18:12 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:18:12 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:18:12 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:18:12 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:18:12 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:18:12 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:18:13 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:18:13 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.417 seconds (JVM running for 508.754)
+2019-09-06 13:18:13 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:18:19 [Thread-95] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:18:20 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:18:20 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:18:20 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:18:20 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:18:20 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:18:20 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:18:20 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:18:20 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:18:20 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:18:20 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:18:20 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:18:20 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.398 seconds (JVM running for 516.302)
+2019-09-06 13:18:20 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:18:52 [Thread-103] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:18:53 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:18:53 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:18:53 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:18:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:18:53 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:18:53 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:18:53 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:18:53 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:18:53 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:18:53 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:18:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:18:53 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.406 seconds (JVM running for 549.284)
+2019-09-06 13:18:53 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:19:03 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:19:03 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
+2019-09-06 13:19:03 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
+2019-09-06 13:19:06 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:19:06 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:19:06 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:19:06 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:19:06 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:19:06 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:19:06 [http-nio-8080-exec-5] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 30, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:19:07 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:19:41 [Thread-111] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:19:41 [Thread-111] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown initiated...
+2019-09-06 13:19:41 [Thread-111] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown completed.
+2019-09-06 13:19:42 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:19:42 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:19:42 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:19:42 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:19:42 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:19:42 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:19:42 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:19:42 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:19:42 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:19:42 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:19:42 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:19:42 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.389 seconds (JVM running for 598.3)
+2019-09-06 13:19:42 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:25:02 [Thread-121] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:25:02 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:25:02 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:25:02 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:25:02 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:25:02 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:25:02 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:25:02 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:25:03 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:25:03 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:25:03 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:25:03 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:25:03 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.409 seconds (JVM running for 918.855)
+2019-09-06 13:25:03 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:25:15 [Thread-129] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:25:16 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:25:16 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:25:16 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:25:16 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:25:16 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:25:16 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:25:16 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:25:16 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:25:16 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:25:16 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:25:16 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:25:16 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.418 seconds (JVM running for 932.462)
+2019-09-06 13:25:16 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:25:26 [Thread-137] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:25:26 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:25:26 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:25:26 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:25:27 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:25:27 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:25:27 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:25:27 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:25:27 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:25:27 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:25:27 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:25:27 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:25:27 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.393 seconds (JVM running for 943.04)
+2019-09-06 13:25:27 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:25:39 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:25:39 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Starting...
+2019-09-06 13:25:39 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Start completed.
+2019-09-06 13:25:43 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:25:43 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:25:43 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:25:43 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:25:43 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:25:43 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:25:44 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 36, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:25:44 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:25:44 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:25:49 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:26:16 [Thread-145] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:26:16 [Thread-145] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown initiated...
+2019-09-06 13:26:16 [Thread-145] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown completed.
+2019-09-06 13:26:16 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:26:16 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:26:16 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:26:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:26:17 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:26:17 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:26:17 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:26:17 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:26:17 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:26:17 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:26:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:26:17 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.391 seconds (JVM running for 993.037)
+2019-09-06 13:26:17 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:26:32 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:26:32 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Starting...
+2019-09-06 13:26:32 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Start completed.
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 42, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:26:36 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:26:41 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:27:22 [Thread-155] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:27:22 [Thread-155] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown initiated...
+2019-09-06 13:27:22 [Thread-155] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown completed.
+2019-09-06 13:27:23 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:27:23 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:27:23 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:27:23 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:27:23 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:27:23 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:27:23 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:27:23 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:27:23 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:27:23 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:27:23 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:27:23 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.387 seconds (JVM running for 1059.201)
+2019-09-06 13:27:23 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:27:28 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:27:28 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Starting...
+2019-09-06 13:27:28 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Start completed.
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 48, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:27:32 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:27:37 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:27:37 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:27:37 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:27:42 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:29:02 [Thread-165] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:29:02 [Thread-165] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Shutdown initiated...
+2019-09-06 13:29:02 [Thread-165] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-9 - Shutdown completed.
+2019-09-06 13:29:03 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:29:03 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:29:03 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:29:03 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:29:03 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:29:03 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:29:03 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:29:03 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:29:03 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:29:04 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:29:04 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:29:04 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.41 seconds (JVM running for 1159.794)
+2019-09-06 13:29:04 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:29:37 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:29:37 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Starting...
+2019-09-06 13:29:37 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Start completed.
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 54, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:29:41 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:29:46 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:29:46 [http-nio-8080-exec-5] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:32:07 [Thread-175] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:32:07 [Thread-175] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Shutdown initiated...
+2019-09-06 13:32:07 [Thread-175] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-10 - Shutdown completed.
+2019-09-06 13:32:08 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:32:08 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:32:08 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:32:08 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:32:08 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:32:08 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:32:08 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:32:08 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:32:08 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:32:08 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:32:08 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:32:08 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.383 seconds (JVM running for 1344.317)
+2019-09-06 13:32:08 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:32:32 [Thread-185] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:32:32 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 1860 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:32:32 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:32:32 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:32:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:32:33 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:32:33 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:32:33 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:32:33 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:32:33 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:32:33 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:32:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:32:33 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.384 seconds (JVM running for 1369.02)
+2019-09-06 13:32:33 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 13:33:18 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-09-06 13:33:18 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:33:22 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 14284 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 13:33:22 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 13:33:22 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 13:33:22 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 13:33:22 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 13:33:23 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 13:33:23 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 13:33:23 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 13:33:23 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 13:33:24 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 13:33:24 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 13:33:24 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 13:33:24 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 13:33:24 [restartedMain] INFO  com.bcauction.Application - Started Application in 2.276 seconds (JVM running for 3.256)
+2019-09-06 13:33:31 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 13:33:32 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-09-06 13:33:32 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-09-06 13:33:36 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 13:33:36 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 13:33:36 [http-nio-8080-exec-4] WARN  o.h.fabric_ca.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 13:33:36 [http-nio-8080-exec-4] WARN  o.h.fabric.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 13:33:37 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 13:33:37 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 13:33:37 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 13:33:37 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 13:33:39 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 3, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 13:33:39 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:33:39 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:33:44 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:33:44 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:59:11 [http-nio-8080-exec-10] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 13:59:11 [http-nio-8080-exec-10] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 13:59:16 [http-nio-8080-exec-10] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 13:59:16 [http-nio-8080-exec-10] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:20:20 [Thread-9] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:20:20 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-09-06 14:20:20 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-09-06 14:20:20 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 14284 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:20:20 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:20:20 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:20:20 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:20:20 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:20:20 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:20:21 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:20:21 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:20:21 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:20:21 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:20:21 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:20:21 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.447 seconds (JVM running for 2819.581)
+2019-09-06 14:20:21 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:21:25 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:26:39 [Thread-17] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:26:40 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 14284 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:26:40 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:26:40 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:26:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:26:40 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:26:40 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:26:40 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:26:40 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:26:40 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:26:40 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:26:40 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:26:40 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.431 seconds (JVM running for 3199.214)
+2019-09-06 14:26:40 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:26:49 [Thread-25] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:26:49 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 14284 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:26:49 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:26:49 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:26:50 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:26:50 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:26:50 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:26:50 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:26:50 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:26:50 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:26:50 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:26:50 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:26:50 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.408 seconds (JVM running for 3208.775)
+2019-09-06 14:26:50 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:26:58 [Thread-33] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:26:59 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 14284 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:26:59 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:26:59 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:26:59 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:26:59 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:26:59 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:26:59 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:26:59 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:26:59 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:26:59 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:26:59 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:26:59 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.403 seconds (JVM running for 3218.276)
+2019-09-06 14:26:59 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:27:31 [Thread-41] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:27:32 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 14284 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:27:32 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:27:32 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:27:32 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:27:32 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:27:32 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:27:32 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:27:32 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:27:32 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:27:32 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:27:32 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:27:32 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.409 seconds (JVM running for 3251.025)
+2019-09-06 14:27:32 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:27:42 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:27:42 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-09-06 14:27:42 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-09-06 14:27:48 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 14:27:48 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 14:27:48 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 14:27:48 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 14:27:48 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 14:27:48 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 14:27:49 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 9, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 14:27:49 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:27:49 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:27:54 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:27:54 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - FAILURE
+2019-09-06 14:27:54 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - 
+2019-09-06 14:28:59 [Thread-49] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:28:59 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2019-09-06 14:28:59 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2019-09-06 14:29:03 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11420 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:29:03 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:29:03 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:29:03 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 14:29:03 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 14:29:04 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:29:04 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:29:04 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:29:04 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:29:05 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:29:05 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:29:05 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:29:05 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:29:05 [restartedMain] INFO  com.bcauction.Application - Started Application in 2.258 seconds (JVM running for 3.227)
+2019-09-06 14:29:13 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:29:14 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-09-06 14:29:14 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-09-06 14:29:18 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 14:29:18 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 14:29:18 [http-nio-8080-exec-6] WARN  o.h.fabric_ca.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 14:29:18 [http-nio-8080-exec-6] WARN  o.h.fabric.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 14:29:18 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 14:29:18 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 14:29:18 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 14:29:18 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 14:29:20 [http-nio-8080-exec-6] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 3, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 14:29:20 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:29:20 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:29:25 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:29:25 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - FAILURE
+2019-09-06 14:29:25 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - 
+2019-09-06 14:30:11 [Thread-9] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:30:11 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-09-06 14:30:11 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-09-06 14:30:12 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11420 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:30:12 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:30:12 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:30:12 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:30:12 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:30:12 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:30:12 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:30:12 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:30:12 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:30:12 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:30:12 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:30:12 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.449 seconds (JVM running for 70.397)
+2019-09-06 14:30:12 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:31:05 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:31:05 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-09-06 14:31:06 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 8, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:31:10 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:31:13 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:31:13 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - FAILURE
+2019-09-06 14:31:13 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:31:16 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:31:16 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - 
+2019-09-06 14:32:04 [Thread-15] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:32:04 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2019-09-06 14:32:04 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2019-09-06 14:32:04 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11420 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:32:04 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:32:04 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:32:05 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:32:05 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:32:05 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:32:05 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:32:05 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:32:05 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:32:05 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:32:05 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:32:05 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.426 seconds (JVM running for 183.094)
+2019-09-06 14:32:05 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:32:55 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:34:08 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-09-06 14:34:08 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:34:12 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11076 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:34:12 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:34:12 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:34:12 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-06 14:34:12 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-06 14:34:12 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:34:12 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:34:12 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:34:13 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:34:13 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:34:13 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:34:14 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:34:14 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:34:14 [restartedMain] INFO  com.bcauction.Application - Started Application in 2.237 seconds (JVM running for 3.199)
+2019-09-06 14:34:23 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:34:23 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-09-06 14:34:23 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-09-06 14:34:37 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 14:34:37 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 14:34:37 [http-nio-8080-exec-6] WARN  o.h.fabric_ca.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 14:34:37 [http-nio-8080-exec-6] WARN  o.h.fabric.sdk.helper.Config - Failed to load any configuration from: config.properties. Using toolkit defaults
+2019-09-06 14:34:38 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 14:34:38 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 14:34:38 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 14:34:38 [http-nio-8080-exec-6] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 14:34:40 [http-nio-8080-exec-6] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 3, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 14:34:40 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:34:40 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:34:43 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:34:43 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - FAILURE
+2019-09-06 14:34:43 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:34:46 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:34:46 [http-nio-8080-exec-6] INFO  c.b.application.impl.FabricCCService - 
+2019-09-06 14:37:26 [Thread-9] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:37:26 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-09-06 14:37:26 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-09-06 14:37:27 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11076 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:37:27 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:37:27 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:37:27 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:37:27 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:37:27 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:37:27 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:37:27 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:37:27 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:37:27 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:37:27 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:37:27 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.443 seconds (JVM running for 196.6)
+2019-09-06 14:37:27 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:37:36 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:37:36 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2019-09-06 14:37:36 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 8, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:37:40 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:37:43 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:37:43 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - FAILURE
+2019-09-06 14:37:43 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:37:46 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:38:32 [Thread-17] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:38:32 [Thread-17] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2019-09-06 14:38:32 [Thread-17] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2019-09-06 14:38:33 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11076 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:38:33 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:38:33 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:38:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:38:33 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:38:33 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:38:33 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:38:33 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:38:33 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:38:33 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:38:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:38:33 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.465 seconds (JVM running for 262.875)
+2019-09-06 14:38:33 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:38:44 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:38:44 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2019-09-06 14:38:44 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2019-09-06 14:38:47 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 14:38:47 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 14:38:47 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 14:38:47 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 14:38:47 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 14:38:47 [http-nio-8080-exec-4] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 14:38:48 [http-nio-8080-exec-4] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 13, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 14:38:48 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:38:48 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:38:53 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:38:53 [http-nio-8080-exec-4] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:39:23 [Thread-27] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:39:23 [Thread-27] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2019-09-06 14:39:23 [Thread-27] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2019-09-06 14:39:24 [restartedMain] INFO  com.bcauction.Application - Starting Application on DESKTOP-KVCQHCD with PID 11076 (C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes started by multicampus in C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend)
+2019-09-06 14:39:24 [restartedMain] DEBUG com.bcauction.Application - Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-09-06 14:39:24 [restartedMain] INFO  com.bcauction.Application - No active profile set, falling back to default profiles: default
+2019-09-06 14:39:24 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-09-06 14:39:24 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-09-06 14:39:24 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-09-06 14:39:24 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-09-06 14:39:24 [restartedMain] INFO  c.b.a.impl.EthBlockListeningService - New Block Subscribed Here
+2019-09-06 14:39:24 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:39:24 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-09-06 14:39:24 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-06 14:39:24 [restartedMain] INFO  com.bcauction.Application - Started Application in 0.413 seconds (JVM running for 313.89)
+2019-09-06 14:39:24 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2019-09-06 14:39:31 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-06 14:39:31 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2019-09-06 14:39:31 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-ca.pem
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-ca.pem
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-peer.pem
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-peer.pem
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - file| url=file:/C:/Users/multicampus/Desktop/fabric_registerAsset_hojin/blockchain-sub2/haribo-backend/target/classes/fabric-orderer.pem
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  com.bcauction.domain.CommonUtil - C:\Users\multicampus\Desktop\fabric_registerAsset_hojin\blockchain-sub2\haribo-backend\target\classes\fabric-orderer.pem
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  org.hyperledger.fabric.sdk.Channel - Channel Channel{id: 19, name: auctionchannel001} eventThread started shutdown: false  thread: null 
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:39:35 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - stop
+2019-09-06 14:39:40 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - start
+2019-09-06 14:39:40 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - SUCCESS
+2019-09-06 14:39:40 [http-nio-8080-exec-3] INFO  c.b.application.impl.FabricCCService - 
+2019-09-06 14:40:12 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-09-06 14:40:12 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-06 14:40:12 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2019-09-06 14:40:12 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
