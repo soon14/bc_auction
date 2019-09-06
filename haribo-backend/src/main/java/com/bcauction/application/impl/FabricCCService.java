@@ -4,18 +4,13 @@ import com.bcauction.application.IFabricCCService;
 import com.bcauction.domain.CommonUtil;
 import com.bcauction.domain.FabricAsset;
 import com.bcauction.domain.FabricUser;
-import com.bcauction.domain.exception.ApplicationException;
 import com.google.protobuf.ByteString;
 import org.hyperledger.fabric.sdk.*;
-import org.hyperledger.fabric.sdk.exception.CryptoException;
-import org.hyperledger.fabric.sdk.exception.ProposalException;
-import org.hyperledger.fabric.sdk.exception.TransactionException;
+import org.hyperledger.fabric.sdk.ChaincodeResponse.Status;
 import org.hyperledger.fabric.sdk.helper.Utils;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 import org.hyperledger.fabric_ca.sdk.HFCAClient;
 import org.hyperledger.fabric_ca.sdk.RegistrationRequest;
-import org.hyperledger.fabric_ca.sdk.exception.EnrollmentException;
-import org.hyperledger.fabric_ca.sdk.exception.InvalidArgumentException;
 import org.hyperledger.fabric_ca.sdk.helper.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,14 +26,12 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import java.io.ByteArrayInputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 @Service
@@ -131,40 +124,10 @@ public class FabricCCService implements IFabricCCService
 			channel.initialize();
 			System.out.println("채널 로드 완료");
 			
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (org.hyperledger.fabric.sdk.exception.InvalidArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CryptoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EnrollmentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 	private Properties getPropertiesWith(String filename) {
@@ -251,6 +214,31 @@ public class FabricCCService implements IFabricCCService
 	 */
 	private boolean registerAsset(final long 작품id, final long 소유자) {
 		// TODO
+		
+		String[] args=new String[2];
+		args[0]=Long.toString(작품id);
+		args[1]=Long.toString(소유자);
+		
+		TransactionProposalRequest tpr=hfClient.newTransactionProposalRequest();
+		ChaincodeID faChaincodeID=ChaincodeID.newBuilder().setName("asset").build();
+		
+		tpr.setChaincodeID(faChaincodeID);
+		tpr.setFcn("registerAsset");
+		tpr.setArgs(args);
+		
+		try {
+			Collection<ProposalResponse> responses=channel.sendTransactionProposal(tpr);
+			for (ProposalResponse res: responses) {
+				Status status=res.getStatus();
+				logger.info(status.toString());
+			}
+			// block 생성됨
+			channel.sendTransaction(responses);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
 		return false;
 	}
