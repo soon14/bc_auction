@@ -3,51 +3,50 @@ package com.bcauction.domain;
 import java.time.LocalDateTime;
 
 public class Member {
-    private long id;
-    private String 이름;
-    private String 이메일;
-    private String 비밀번호;
-    private LocalDateTime 등록일시;
+	private long mem_id;
+	private String mem_name;
+	private String mem_mail;
+	private String mem_pass;
+	private LocalDateTime mem_registdate;
 
-    public long getId() {
-        return id;
-    }
+	public long getMem_id() {
+		return mem_id;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setMem_id(long mem_id) {
+		this.mem_id = mem_id;
+	}
 
-    public String get이름() {
-        return 이름;
-    }
+	public String getMem_name() {
+		return mem_name;
+	}
 
-    public void set이름(String 이름) {
-        this.이름 = 이름;
-    }
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
 
-    public String get이메일() {
-        return 이메일;
-    }
+	public String getMem_mail() {
+		return mem_mail;
+	}
 
-    public void set이메일(String 이메일) {
-        this.이메일 = 이메일;
-    }
+	public void setMem_mail(String mem_mail) {
+		this.mem_mail = mem_mail;
+	}
 
-    public LocalDateTime get등록일시() {
-        return 등록일시;
-    }
+	public String getMem_pass() {
+		return mem_pass;
+	}
 
-    public void set등록일시(LocalDateTime 등록일시) {
-        this.등록일시 = 등록일시;
-    }
+	public void setMem_pass(String mem_pass) {
+		this.mem_pass = mem_pass;
+	}
 
-    public String get비밀번호()
-    {
-        return 비밀번호;
-    }
+	public LocalDateTime getMem_registdate() {
+		return mem_registdate;
+	}
 
-    public void set비밀번호(final String 비밀번호)
-    {
-        this.비밀번호 = 비밀번호;
-    }
+	public void setMem_registdate(LocalDateTime mem_registdate) {
+		this.mem_registdate = mem_registdate;
+	}
+
 }

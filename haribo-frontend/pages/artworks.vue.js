@@ -14,10 +14,10 @@ var artworksView = Vue.component('artworksView', {
                         <div class="card">
                             <div class="card-body">
                                 <img src="./assets/images/artworks/artwork1.jpg">
-                                <h4>{{ item["이름"] }}</h4>
-                                <p v-if="item['설명'] != null">{{ item["설명"] }}</p>
-                                <p v-if="item['설명'] == null">-</p>
-                                <router-link :to="{ name: 'work.detail', params: { id: item['id'] } }" class="btn btn-block btn-secondary">이력보기</router-link>
+                                <h4>{{ item["art_name"] }}</h4>
+                                <p v-if="item['art_detail'] != null">{{ item["art_detail"] }}</p>
+                                <p v-if="item['art_detail'] == null">-</p>
+                                <router-link :to="{ name: 'work.detail', params: { id: item['art_id'] } }" class="btn btn-block btn-secondary">이력보기</router-link>
                             </div>
                         </div>
                     </div>
@@ -48,8 +48,9 @@ var artworksView = Vue.component('artworksView', {
     data() {
         return {
             artworks: [{
-                "이름": "",
-                "설명": ""
+                "art_id":"",
+                "art_name": "",
+                "art_detail": ""
             }]
         }
     },

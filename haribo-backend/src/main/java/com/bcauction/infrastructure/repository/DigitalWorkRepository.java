@@ -28,7 +28,7 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 
 	@Override
 	public List<DigitalWork> 목록조회() {
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품 WHERE 공개여부=? AND 상태=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM art WHERE art_isopen=? AND art_status=?");
 		try {
 			return this.jdbcTemplate.query(sbSql.toString(),
 							   new Object[]{"Y", "Y"}, (rs, rowNum) -> DigitalWorkFactory.생성(rs));
@@ -40,7 +40,7 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 
 	@Override
 	public List<DigitalWork> 사용자작품목록조회(final long 회원id) {
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품 WHERE 상태=? AND 회원id=? ");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM art WHERE art_status=? AND art_mem=? ");
 		try {
 			return this.jdbcTemplate.query(sbSql.toString(),
 							   new Object[]{"Y", 회원id}, (rs, rowNum) -> DigitalWorkFactory.생성(rs));
@@ -51,7 +51,7 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 
 	@Override
 	public DigitalWork 조회(final long id) {
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품 WHERE id=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM art WHERE art_id=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 								new Object[] { id }, (rs, rowNum) -> DigitalWorkFactory.생성(rs) );
@@ -64,7 +64,7 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 
 	@Override
 	public DigitalWork 조회(final long 회원id, final String 이름) {
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품 WHERE 회원id=? AND 이름=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM art WHERE art_mem=? AND art_name=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 			                                        new Object[] { 회원id, 이름 }, (rs, rowNum) -> DigitalWorkFactory.생성(rs) );
@@ -76,18 +76,18 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 	}
 
 	@Override
-	public long 추가(final DigitalWork 작품) {
+	public long 추가(final DigitalWork art) {
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("이름", 작품.get이름());
-			paramMap.put("설명", 작품.get설명());
-			paramMap.put("공개여부", 작품.get공개여부());
-			paramMap.put("상태", 작품.get상태());
-			paramMap.put("회원id", 작품.get회원id());
+			paramMap.put("art_name", art.getArt_name());
+			paramMap.put("art_detail", art.getArt_detail());
+			paramMap.put("art_isopen", art.getArt_isopen());
+			paramMap.put("art_status", art.getArt_status());
+			paramMap.put("art_mem", art.getArt_mem());
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-					.withTableName("작품")
-					.usingGeneratedKeyColumns("id");
+					.withTableName("art")
+					.usingGeneratedKeyColumns("art_id");
 
 			Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);
 			return newId.longValue();
@@ -98,19 +98,19 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 	}
 
 	@Override
-	public int 수정(final DigitalWork 작품) {
-		StringBuilder sbSql =  new StringBuilder("UPDATE 작품 ");
-		sbSql.append("SET 이름=?, 설명=?, 공개여부=?, 상태=?, 회원id=? ");
-		sbSql.append("where id=?");
+	public int 수정(final DigitalWork art) {
+		StringBuilder sbSql =  new StringBuilder("UPDATE art ");
+		sbSql.append("SET art_name=?, art_detail=?, art_isopen=?, art_status=?, art_mem=? ");
+		sbSql.append("where art_id=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 								new Object[] {
-										작품.get이름(),
-										작품.get설명(),
-										작품.get공개여부(),
-										작품.get상태(),
-										작품.get회원id(),
-										작품.getId()
+										art.getArt_name() ,
+										art.getArt_detail(),
+										art.getArt_isopen() ,
+										art.getArt_status(),
+										art.getArt_mem(),
+										art.getArt_id()
 			                                });
 		} catch (Exception e) {
 			throw new RepositoryException(e, e.getMessage());
@@ -119,9 +119,9 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 
 	@Override
 	public int 삭제(final long id) { // 상태를 N으로 업데이트
-		StringBuilder sbSql =  new StringBuilder("UPDATE 작품 ");
-		sbSql.append("SET 상태=?, 공개여부=? ");
-		sbSql.append("where id=?");
+		StringBuilder sbSql =  new StringBuilder("UPDATE art ");
+		sbSql.append("SET art_status=?, art_isopen=? ");
+		sbSql.append("where art_id=?");
 
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),

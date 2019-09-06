@@ -30,7 +30,7 @@ public class BidRepository implements IBidRepository
 
 	@Override
 	public List<Bid> 목록조회() {
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 경매입찰");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid");
 		try {
 			return this.jdbcTemplate.query(sbSql.toString(),
 							   new Object[]{}, (rs, rowNum) -> BidFactory.생성(rs));
@@ -41,7 +41,7 @@ public class BidRepository implements IBidRepository
 
 	@Override
 	public Bid 조회(final long id) {
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 경매입찰 WHERE id=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid WHERE bid_id=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 								new Object[] { id }, (rs, rowNum) -> BidFactory.생성(rs) );
@@ -53,16 +53,16 @@ public class BidRepository implements IBidRepository
 	}
 
 	@Override
-	public Bid 조회(final Bid 입찰)
+	public Bid 조회(final Bid bid)
 	{
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 경매입찰 WHERE 경매참여자id=? AND 경매id=? AND 입찰일시=? AND 입찰금액=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid WHERE bid_mem=? AND bid_id=? AND bid_date=? AND bid_price=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 								new Object[] {
-										입찰.get경매참여자id(),
-										입찰.get경매id(),
-										입찰.get입찰일시(),
-										입찰.get입찰금액() },
+										bid.getBid_mem(),
+										bid.getBid_id(),
+										bid.getBid_date(),
+										bid.getBid_price() },
 								(rs, rowNum) -> BidFactory.생성(rs) );
 		} catch (EmptyResultDataAccessException e) {
 			return null;
@@ -73,7 +73,7 @@ public class BidRepository implements IBidRepository
 
 	@Override
 	public Bid 조회(final long 경매id, final long 낙찰자id, final BigInteger 최고가) {
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 경매입찰 WHERE 경매참여자id=? AND 경매id=? AND 입찰금액=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid WHERE bid_mem=? AND bid_auction=? AND bid_price=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 								new Object[] {낙찰자id, 경매id, 최고가 }, (rs, rowNum) -> BidFactory.생성(rs) );
@@ -85,18 +85,18 @@ public class BidRepository implements IBidRepository
 	}
 
 	@Override
-	public long 생성(final Bid 입찰) {
+	public long 생성(final Bid bid) {
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("경매참여자id", 입찰.get경매참여자id());
-			paramMap.put("경매id", 입찰.get경매id());
-			paramMap.put("입찰일시", 입찰.get입찰일시());
-			paramMap.put("입찰금액", 입찰.get입찰금액());
-			paramMap.put("낙찰여부", 입찰.get낙찰여부());
+			paramMap.put("bid_mem", bid.getBid_mem());
+			paramMap.put("bid_auction",  bid.getBid_id());
+			paramMap.put("bid_date", bid.getBid_date());
+			paramMap.put("bid_price", bid.getBid_price());
+			paramMap.put("bid_issuccess", bid.getBid_issuccess());
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-					.withTableName("경매입찰")
-					.usingGeneratedKeyColumns("id");
+					.withTableName("bid")
+					.usingGeneratedKeyColumns("bid_id");
 
 			Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);
 			return newId.longValue();
@@ -107,17 +107,17 @@ public class BidRepository implements IBidRepository
 	}
 
 	@Override
-	public int 수정(final Bid 입찰){
-		StringBuilder sbSql =  new StringBuilder("UPDATE 경매입찰 ");
-		sbSql.append("SET 낙찰여부=? ");
-		sbSql.append("WHERE 경매참여자id=? AND 경매id=? AND 입찰금액=?");
+	public int 수정(final Bid bid){
+		StringBuilder sbSql =  new StringBuilder("UPDATE bid ");
+		sbSql.append("SET bid_issuccess=? ");
+		sbSql.append("WHERE bid_memid=? AND bid_auction=? AND bid_price=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 							new Object[] {
-									입찰.get낙찰여부(),
-									입찰.get경매참여자id(),
-									입찰.get경매id(),
-									입찰.get입찰금액()
+									bid.getBid_issuccess(),
+									bid.getBid_mem(),
+									bid.getBid_id(),
+									bid.getBid_price()
 							});
 		} catch (Exception e) {
 			throw new RepositoryException(e, e.getMessage());
@@ -126,9 +126,9 @@ public class BidRepository implements IBidRepository
 
 	@Override
 	public int 수정(final long 경매id, final long 낙찰자id, final BigInteger 입찰최고가) {
-		StringBuilder sbSql =  new StringBuilder("UPDATE 경매입찰 ");
-		sbSql.append("SET 낙찰여부=? ");
-		sbSql.append("WHERE 경매id=? AND 경매참여자id=? AND 입찰금액=?");
+		StringBuilder sbSql =  new StringBuilder("UPDATE bid ");
+		sbSql.append("SET bid_issuccess=? ");
+		sbSql.append("WHERE bid_auction=? AND bid_mem=? AND bid_date=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 								new Object[] { "Y", 경매id, 낙찰자id, 입찰최고가 });
@@ -139,7 +139,7 @@ public class BidRepository implements IBidRepository
 
 	@Override
 	public int 삭제(final long id) {
-		StringBuilder sbSql =  new StringBuilder("DELETE FROM 경매입찰 WHERE id=?");
+		StringBuilder sbSql =  new StringBuilder("DELETE FROM bid WHERE bid_id=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(), new Object[] { id });
 		} catch (Exception e) {

@@ -50,17 +50,17 @@ var worksByUserView = Vue.component('WorksByUserView', {
 
             for(var i = 0; i < result.length; i++) {
                 scope.works.push({
-                    id: result[i]['id'],
-                    title: result[i]['이름'],
-                    description: result[i]['설명'] != "" ? "-" : result[i]['설명']
+                    id: result[i]['art_id'],
+                    title: result[i]['art_name'],
+                    description: result[i]['art_detail'] != "" ? "-" : result[i]['art_detail']
                 });
             }
         });
 
         userService.findById(userId, function(data){
-            scope.user.id = data["id"];
-            scope.user.name = data["이름"];
-            scope.user.email = data["이메일"];
+            scope.user.id = data["mem_id"];
+            scope.user.name = data["mem_name"];
+            scope.user.email = data["mem_mail"];
         });
     }
 })

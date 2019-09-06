@@ -70,7 +70,8 @@ var explorerBlockDetailView = Vue.component('ExplorerBlockDetailView', {
         if(blockNumber) {
             /**
              * 블록 번호로 블록 정보를 가져옵니다. 
-             */  
+             */ 
+             
         } else {
             this.isValid = false;
         }

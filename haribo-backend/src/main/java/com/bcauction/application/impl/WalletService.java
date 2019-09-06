@@ -11,9 +11,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.DefaultBlockParameterName;
+import org.web3j.protocol.core.Ethereum;
+import org.web3j.protocol.core.methods.response.EthGetBalance;
+import org.web3j.protocol.http.HttpService;
+import org.web3j.utils.Convert;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class WalletService implements IWalletService
@@ -29,6 +37,9 @@ public class WalletService implements IWalletService
 		this.walletRepository = walletRepository;
 		this.ethereumService = ethereumService;
 	}
+	
+	@Autowired
+	private Web3j web3j;
 
 	@Override
 	public List<Wallet> 목록조회()
@@ -48,12 +59,28 @@ public class WalletService implements IWalletService
 		if(wallet == null)
 			throw new NotFoundException(지갑주소 + " 해당 주소 지갑을 찾을 수 없습니다.");
 
-		/**
-		 * 	TODO 이더리움으로부터 잔액을 조회하여
-		 * 	잔액정보가 다를 경우 정보를 갱신하여 반환한다.
-		 * 	ethereumService.java에 추가 메소드를 구현하는 것을 권장한다.
-		 */
-
+		web3j=Web3j.build(new HttpService("http://13.124.65.11:8545"));
+		
+	    EthGetBalance ethGetBalance = null;
+	    
+	    try {
+	    	//이더리움 노드에게 지정한 Address 잔액을 조회. DB에 저장된 BigDecimal형태로 변환하여 사용(wei_dec)
+	    	ethGetBalance = web3j.ethGetBalance(지갑주소, DefaultBlockParameterName.LATEST).sendAsync().get();
+	    	BigInteger wei = ethGetBalance.getBalance();
+	    	BigDecimal wei_dec=new BigDecimal(ethGetBalance.getBalance());
+	    	
+	    	//DB에 있는 잔액 != Ethereum network에서 조회한 잔액
+	    	if(wallet.getWallet_money()!=wei_dec) {
+	    		walletRepository.잔액갱신(지갑주소, wei_dec);
+	    		wei_dec=Convert.fromWei(wei.toString() , Convert.Unit.ETHER);
+	    		wallet.setWallet_money(wei_dec);
+	    	}
+	    }catch (InterruptedException e) {
+	    	e.printStackTrace();
+	    }catch (ExecutionException e) {
+	    	e.printStackTrace();
+	    }
+	    
 		return wallet;
 	}
 
@@ -64,7 +91,7 @@ public class WalletService implements IWalletService
 		if(wallet == null)
 			throw new NotFoundException(id + " 해당 회원의 주소 지갑을 찾을 수 없습니다.");
 
-		return 조회_ETH잔액동기화(wallet.get주소());
+		return 조회_ETH잔액동기화(wallet.getWallet_addr());
 	}
 
 	@Override
@@ -87,6 +114,7 @@ public class WalletService implements IWalletService
 	@Override
 	public Wallet 충전회수갱신(final String 지갑주소)
 	{
+		System.out.println("충전회수 갱신 진입");
 		int affected = this.walletRepository.충전회수갱신(지갑주소);
 		if(affected == 0)
 			throw new ApplicationException("충전회수갱신 처리가 반영되지 않았습니다.");
@@ -103,7 +131,7 @@ public class WalletService implements IWalletService
 	@Override
 	public Wallet 충전(String 지갑주소) {
 		Wallet wallet = this.조회_ETH잔액동기화(지갑주소);
-		if (wallet == null || !wallet.충전가능()) {
+		if (wallet == null || !wallet.isCharge()) {
 			throw new ApplicationException("[1] 충전할 수 없습니다!");
 		}
 

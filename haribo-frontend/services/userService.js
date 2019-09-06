@@ -4,10 +4,12 @@ var userService = {
     },
     signUp: function(email, name, password, callback){
         var body = {
-            "이메일": email,
-            "이름": name,
-            "비밀번호": password
+            "mem_mail": email,
+            "mem_name": name,
+            "mem_pass": password
         }
+
+        console.log(body)
 
         $.ajax({
             type: "POST",
@@ -21,8 +23,8 @@ var userService = {
     },
     login: function(email, password, callback, whenError){
         var body = {
-            "이메일": email,
-            "비밀번호": password
+            "mem_mail": email,
+            "mem_pass": password
         }
 
         $.ajax({

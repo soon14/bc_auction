@@ -33,7 +33,7 @@ public class OwnershipRepository implements IOwnershipRepository
 	@Override
 	public List<Ownership> 목록조회()
 	{
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품소유");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM own");
 		try {
 			return this.jdbcTemplate.query(sbSql.toString(),
 			                               new Object[]{}, (rs, rowNum) -> OwnershipFactory.생성(rs));
@@ -45,14 +45,14 @@ public class OwnershipRepository implements IOwnershipRepository
 	@Override
 	public List<Ownership> 소유자별목록조회(final long id)
 	{
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품소유 WHERE 소유자id=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM own WHERE own_id=?");
 		return getOwnerships(id, sbSql);
 	}
 
 	@Override
 	public List<Ownership> 작품별목록조회(final long id)
 	{
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품소유 WHERE 작품id=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM own WHERE own_art=?");
 		return getOwnerships(id, sbSql);
 	}
 
@@ -69,7 +69,7 @@ public class OwnershipRepository implements IOwnershipRepository
 	@Override
 	public Ownership 조회(final long id)
 	{
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품소유 WHERE id=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM own WHERE own_id=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 			                                        new Object[] { (int)id }, (rs, rowNum) -> OwnershipFactory.생성(rs) );
@@ -84,7 +84,7 @@ public class OwnershipRepository implements IOwnershipRepository
 	public Ownership 조회(final long 소유자id, final long 작품id)
 	{
 		logger.info("조회 (소유자id, 작품id) = (" + 소유자id + ", " + 작품id + ")");
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM 작품소유 WHERE 소유자id=? AND 작품id=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM own WHERE own_mem=? AND own_art=?");
 		try {
 			Ownership o = this.jdbcTemplate.queryForObject(sbSql.toString(),
 			                                        new Object[] { 소유자id, 작품id }, (rs, rowNum) -> OwnershipFactory.생성(rs) );
@@ -100,18 +100,18 @@ public class OwnershipRepository implements IOwnershipRepository
 	}
 
 	@Override
-	public long 생성(final Ownership 소유권) {
+	public long 생성(final Ownership own) {
 		//StringBuilder sbSql = new StringBuilder("INSERT INTO 작품소유(소유자id,작품id,소유시작일자,소유종료일자) VALUES(?,?,?,?)");
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("소유자id", 소유권.get소유자id());
-			paramMap.put("작품id", 소유권.get작품id());
-			paramMap.put("소유시작일자", 소유권.get소유시작일자());
-			paramMap.put("소유종료일자", 소유권.get소유종료일자());
+			paramMap.put("own_mem", own.getOwn_mem());
+			paramMap.put("own_art", own.getOwn_art());
+			paramMap.put("own_start", own.getOwn_start());
+			paramMap.put("own_end", own.getOwn_end());
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-					.withTableName("작품소유")
-					.usingGeneratedKeyColumns("id");
+					.withTableName("own")
+					.usingGeneratedKeyColumns("own_id");
 
 			Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);
 			return newId.longValue();
@@ -122,16 +122,16 @@ public class OwnershipRepository implements IOwnershipRepository
 	}
 
 	@Override
-	public int 수정(final Ownership 소유권) {
-		StringBuilder sbSql =  new StringBuilder("UPDATE 작품소유 ");
-		sbSql.append("SET 소유종료일자=? ");
-		sbSql.append("where 소유자id=? AND 작품id=?");
+	public int 수정(final Ownership own) {
+		StringBuilder sbSql =  new StringBuilder("UPDATE own ");
+		sbSql.append("SET own_end=? ");
+		sbSql.append("where own_mem=? AND own_art=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 							new Object[] {
-									소유권.get소유종료일자(),
-									소유권.get소유자id(),
-									소유권.get작품id()
+									own.getOwn_end(),
+									own.getOwn_mem(),
+									own.getOwn_art()
 							});
 		} catch (Exception e) {
 			throw new RepositoryException(e, e.getMessage());

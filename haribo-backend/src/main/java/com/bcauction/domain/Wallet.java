@@ -2,65 +2,54 @@ package com.bcauction.domain;
 
 import java.math.BigDecimal;
 
-public class Wallet
-{
-	private long id;
-	private long 소유자id;
-	private String 주소;
-	private BigDecimal 잔액 = BigDecimal.valueOf(0);
-	private int 충전회수 = 0;
+public class Wallet {
+	private long wallet_id;
+	private String wallet_addr;
+	private long wallet_mem;
+	private BigDecimal wallet_money = BigDecimal.valueOf(0);
+	private int wallet_chargecount = 0;
 
-	public long get소유자id()
-	{
-		return 소유자id;
+	public long getWallet_id() {
+		return wallet_id;
 	}
 
-	public void set소유자id(final long 소유자id)
-	{
-		this.소유자id = 소유자id;
+	public void setWallet_id(long wallet_id) {
+		this.wallet_id = wallet_id;
 	}
 
-	public String get주소()
-	{
-		return 주소;
+	public String getWallet_addr() {
+		return wallet_addr;
 	}
 
-	public void set주소(final String 주소)
-	{
-		this.주소 = 주소;
+	public void setWallet_addr(String wallet_addr) {
+		this.wallet_addr = wallet_addr;
 	}
 
-	public BigDecimal get잔액()
-	{
-		return 잔액;
+	public long getWallet_mem() {
+		return wallet_mem;
 	}
 
-	public void set잔액(final BigDecimal 잔액)
-	{
-		this.잔액 = 잔액;
+	public void setWallet_mem(long wallet_mem) {
+		this.wallet_mem = wallet_mem;
 	}
 
-	public long getId()
-	{
-		return id;
+	public BigDecimal getWallet_money() {
+		return wallet_money;
 	}
 
-	public void setId(final long id)
-	{
-		this.id = id;
+	public void setWallet_money(BigDecimal wallet_money) {
+		this.wallet_money = wallet_money;
 	}
 
-	public int get충전회수()
-	{
-		return 충전회수;
+	public int getWallet_chargecount() {
+		return wallet_chargecount;
 	}
 
-	public void set충전회수(final int 충전회수)
-	{
-		this.충전회수 = 충전회수;
+	public void setWallet_chargecount(int wallet_chargecount) {
+		this.wallet_chargecount = wallet_chargecount;
 	}
 
-	public boolean 충전가능(){
-		return this.충전회수 < 10;
+	public boolean isCharge() {
+		return this.wallet_chargecount < 10;
 	}
 }

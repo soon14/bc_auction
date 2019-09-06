@@ -51,21 +51,21 @@ public class FabricService implements IFabricService
 	 * @return Ownership
 	 */
 	@Override
-	public Ownership 소유권등록(final long 소유자, final long 작품id)
+	public Ownership 소유권등록(final long own_mem, final long own_art)
 	{
-		FabricAsset asset = this.fabricCCService.registerOwnership(소유자, 작품id);
+		FabricAsset asset = this.fabricCCService.registerOwnership(own_mem, own_art);
 		if(asset == null) return null;
 
-		Ownership 소유권 = new Ownership();
-		소유권.set소유자id(소유자);
-		소유권.set작품id(작품id);
-		소유권.set소유시작일자(asset.getCreatedAt());
+		Ownership own = new Ownership();
+		own.setOwn_mem(own_mem);
+		own.setOwn_art(own_art);
+		own.setOwn_start(asset.getCreatedAt());
 
-		long result = this.ownershipRepository.생성(소유권);
+		long result = this.ownershipRepository.생성(own);
 		if(result == 0)
 			return null;
 
-		Ownership 조회된소유권 = this.ownershipRepository.조회(소유자, 작품id);
+		Ownership 조회된소유권 = this.ownershipRepository.조회(own_mem, own_art);
 		return 조회된소유권;
 	}
 
@@ -86,24 +86,24 @@ public class FabricService implements IFabricService
 		Ownership 소멸소유권 = this.ownershipRepository.조회(from, 작품id);
 		if(소멸소유권 == null) return null;
 
-		소멸소유권.set소유종료일자(assets.get(0).getExpiredAt());
+		소멸소유권.setOwn_end(assets.get(0).getExpiredAt());
 		long result = this.ownershipRepository.수정(소멸소유권);
 		if(result == 0)
 			return null;
 
 		// 작품 정보 update
 		DigitalWork 작품정보 = this.digitalWorkRepository.조회(작품id);
-		if(작품정보.get회원id() != from) return null;
+		if(작품정보.getArt_mem() != from) return null;
 
-		작품정보.set회원id(to);
+		작품정보.setArt_mem(to);
 		result = this.digitalWorkRepository.수정(작품정보);
 		if(result == 0)
 			return null;
 
 		Ownership 새소유권 = new Ownership();
-		새소유권.set소유자id(to);
-		새소유권.set작품id(작품id);
-		새소유권.set소유시작일자(assets.get(1).getCreatedAt());
+		새소유권.setOwn_mem(to);
+		새소유권.setOwn_art(작품id);
+		새소유권.setOwn_start(assets.get(1).getCreatedAt());
 
 		result = this.ownershipRepository.생성(새소유권);
 		if(result == 0)
@@ -130,7 +130,7 @@ public class FabricService implements IFabricService
 		if(소멸소유권 == null)
 			return null;
 
-		소멸소유권.set소유종료일자(asset.getExpiredAt());
+		소멸소유권.setOwn_end(asset.getExpiredAt());
 
 		long result = this.ownershipRepository.수정(소멸소유권);
 		if(result == 0)
