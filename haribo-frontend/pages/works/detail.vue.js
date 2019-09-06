@@ -112,16 +112,16 @@ var worksDetailView = Vue.component("WorkDetailView", {
         // 작품 상세 정보 조회
         workService.findById(workId, function(data){
             scope.work.id = workId;
-            scope.work.name = data["이름"];
-            scope.work.description = data["설명"];
-            scope.work.isActive = data["공개여부"];
-            scope.work.status = data["상태"];
-            scope.work.ownerId = data["회원id"];
+            scope.work.name = data["art_name"];
+            scope.work.description = data["art_detail"];
+            scope.work.isActive = data["art_isopen"];
+            scope.work.status = data["art_status"];
+            scope.work.ownerId = data["art_mem"];
 
             userService.findById(scope.work.ownerId, function(user){
-                scope.user.id = user["id"];
-                scope.user.name = user["이름"];
-                scope.user.email = user["이메일"];
+                scope.user.id = user["user_id"];
+                scope.user.name = user["user_name"];
+                scope.user.email = user["user_mail"];
             });
         });
 
