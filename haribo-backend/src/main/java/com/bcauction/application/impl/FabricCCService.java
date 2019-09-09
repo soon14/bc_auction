@@ -4,6 +4,8 @@ import com.bcauction.application.IFabricCCService;
 import com.bcauction.domain.CommonUtil;
 import com.bcauction.domain.FabricAsset;
 import com.bcauction.domain.FabricUser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.google.protobuf.ByteString;
 import org.hyperledger.fabric.sdk.*;
 import org.hyperledger.fabric.sdk.ChaincodeResponse.Status;
@@ -25,7 +27,10 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonValue;
+
 import java.io.ByteArrayInputStream;
+import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -151,20 +156,24 @@ public class FabricCCService implements IFabricCCService
 
 		boolean res = registerAsset(작품id, 소유자);
 		
-		logger.info("stop");
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		logger.info("start");
-		System.out.println("res : "+res);
 		
 		if(!res)
 			return null;
 		
 		res = confirmTimestamp(작품id);
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if(!res)
 			return null;
@@ -331,9 +340,6 @@ public class FabricCCService implements IFabricCCService
 		if(this.hfClient == null || this.channel == null)
 			loadChannel();
 
-		FabricAsset tmp=null;
-		String response=null;
-		
 		String []args=new String[1];
 		args[0]=Long.toString(작품id);
 		
@@ -344,20 +350,23 @@ public class FabricCCService implements IFabricCCService
 		qbr.setFcn("query");
 		qbr.setArgs(args);
 		
+		JsonObject json=null;
+		
 		Collection<ProposalResponse> responseQuery;
 		try {
 			responseQuery = channel.queryByChaincode(qbr);
 			for (ProposalResponse res: responseQuery) {
-				response=new String(res.getChaincodeActionResponsePayload());
-				System.out.println("query호출");
-				logger.info(res.getMessage());
-				
+				String response=new String(res.getChaincodeActionResponsePayload());
+				JsonReader reader=Json.createReader(new StringReader(response));
+				json=reader.readObject();
 			}
+			return getAssetRecord(json);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	private static FabricAsset getAssetRecord(final JsonObject rec)
