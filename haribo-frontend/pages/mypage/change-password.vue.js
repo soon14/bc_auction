@@ -78,9 +78,9 @@ var myChangePasswordView = Vue.component('MyChangePasswordView', {
             }
 
             userService.update({
-                "이메일": this.user.email,
-                "이름": this.user.name, 
-                "비밀번호": this.input.newPassword // 신규 비밀번호
+                "mem_mail": this.user.email,
+                "mem_name": this.user.name, 
+                "mem_pass": this.input.newPassword // 신규 비밀번호
             }, function(data){
                 alert("비밀번호가 변경되었습니다.");
                 this.$router.go(-1);
@@ -94,10 +94,10 @@ var myChangePasswordView = Vue.component('MyChangePasswordView', {
         var scope = this;
 
         userService.findById(this.sharedStates.user.id, function(data){
-            scope.user.id = data["id"];
-            scope.user.email = data["이메일"];
-            scope.user.name = data["이름"];
-            scope.user.password = data["비밀번호"];
+            scope.user.id = data["mem_id"];
+            scope.user.email = data["mem_mail"];
+            scope.user.name = data["mem_name"];
+            scope.user.password = data["mem_pass"];
         });
     }
 })

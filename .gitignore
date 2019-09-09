@@ -16,7 +16,6 @@ spring-test/test-output/
 argfile*
 activemq-data/
 
-
 /logs/*
 classes/
 /build
