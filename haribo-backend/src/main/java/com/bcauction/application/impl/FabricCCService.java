@@ -195,11 +195,13 @@ public class FabricCCService implements IFabricCCService
 
 		List<FabricAsset> assets = new ArrayList<>();
 		boolean res = this.expireAssetOwnership(작품id, from);
+		
 		if(!res) return null;
 		FabricAsset expired = query(작품id);
 		if(expired == null) return null;
 		assets.add(expired);
-
+		System.out.println(expired.toString());
+		
 		res = this.updateAssetOwnership(작품id, to);
 		if(!res) return null;
 		FabricAsset transferred = query(작품id);
@@ -303,7 +305,33 @@ public class FabricCCService implements IFabricCCService
 	 */
 	private boolean expireAssetOwnership(final long 작품id, final long 소유자) {
 		// TODO
-		return false;
+		// 작품id : assetID 
+		// 소유자 : ?
+		String[] args=new String[1];
+		args[0]=Long.toString(작품id);
+		
+		TransactionProposalRequest tpr=hfClient.newTransactionProposalRequest();
+		ChaincodeID faChaincodeID=ChaincodeID.newBuilder().setName("asset").build();
+		
+		tpr.setChaincodeID(faChaincodeID);
+		tpr.setFcn("expireAssetOwnership");
+		tpr.setArgs(args);
+		
+		try {
+			Collection<ProposalResponse> responses=channel.sendTransactionProposal(tpr);
+			for (ProposalResponse res: responses) {
+				Status status=res.getStatus();
+				logger.info(status.toString());
+			}
+			channel.sendTransaction(responses);
+			Thread.sleep(2000);
+			return true;
+			// block 생성됨
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} 
 	}
 
 	/**
@@ -314,7 +342,33 @@ public class FabricCCService implements IFabricCCService
 	 */
 	private boolean updateAssetOwnership(final long 작품id, final long to) {
 		// TODO
-		return false;
+		// 작품id : assetID
+		// to : new Owner
+		String[] args=new String[2];
+		args[0]=Long.toString(작품id);
+		args[1]=Long.toString(to);
+		
+		TransactionProposalRequest tpr=hfClient.newTransactionProposalRequest();
+		ChaincodeID faChaincodeID=ChaincodeID.newBuilder().setName("asset").build();
+		
+		tpr.setChaincodeID(faChaincodeID);
+		tpr.setFcn("updateAssetOwnership");
+		tpr.setArgs(args);
+		
+		try {
+			Collection<ProposalResponse> responses=channel.sendTransactionProposal(tpr);
+			for (ProposalResponse res: responses) {
+				Status status=res.getStatus();
+				logger.info(status.toString());
+			}
+			// block 생성됨
+			channel.sendTransaction(responses);
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} 
 	}
 
 	/**
@@ -360,6 +414,7 @@ public class FabricCCService implements IFabricCCService
 				JsonReader reader=Json.createReader(new StringReader(response));
 				json=reader.readObject();
 			}
+			
 			return getAssetRecord(json);
 			
 		} catch (Exception e) {
