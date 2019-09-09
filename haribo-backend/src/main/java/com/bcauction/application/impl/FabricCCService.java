@@ -320,7 +320,6 @@ public class FabricCCService implements IFabricCCService
 				logger.info(status.toString());
 			}
 			channel.sendTransaction(responses);
-			channel.sendTransaction(responses);
 			CompletableFuture<BlockEvent.TransactionEvent> txFuture = channel.sendTransaction(responses);
 			BlockEvent.TransactionEvent event = txFuture.get(600, TimeUnit.SECONDS);
 			if(event.getBlockEvent() != null) {
@@ -359,7 +358,6 @@ public class FabricCCService implements IFabricCCService
 				Status status=res.getStatus();
 				logger.info(status.toString());
 			}
-			channel.sendTransaction(responses);
 			channel.sendTransaction(responses);
 			CompletableFuture<BlockEvent.TransactionEvent> txFuture = channel.sendTransaction(responses);
 			BlockEvent.TransactionEvent event = txFuture.get(600, TimeUnit.SECONDS);
