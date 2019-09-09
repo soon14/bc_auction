@@ -49,4 +49,11 @@ public class Ownership {
 		this.own_end = own_end;
 	}
 
+	@Override
+	public String toString() {
+		return "Ownership [own_id=" + own_id + ", own_mem=" + own_mem + ", own_art=" + own_art + ", own_start="
+				+ own_start + ", own_end=" + own_end + "]";
+	}
+
+	
 }
