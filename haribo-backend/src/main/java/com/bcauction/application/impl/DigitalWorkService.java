@@ -59,6 +59,7 @@ public class DigitalWorkService implements IDigitalWorkService
 		long l = this.digitalWorkRepository.추가(작품);
 		if (l != 0 ) {
 			this.fabricService.소유권등록(작품.getArt_mem(), l);
+//			this.fabricService.소유권이전(2, 1, 178);
 		}
 		return 작품;
 	}
@@ -73,14 +74,7 @@ public class DigitalWorkService implements IDigitalWorkService
 	public DigitalWork 작품삭제(final long id)
 	{
 		// TODO
-		DigitalWork digitalWork = this.digitalWorkRepository.조회(id);
-		long own = digitalWork.getArt_mem();
-		long l = this.digitalWorkRepository.삭제(id);
-		if (l != 0) {
-			this.fabricService.소유권소멸(own, id);
-			this.digitalWorkRepository.조회(id);
-		}
-		return digitalWork;
+		return null;
 	}
 
 	@Override

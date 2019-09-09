@@ -65,12 +65,4 @@ public class FabricAsset
 		else
 			this.expiredAt = LocalDateTime.parse(expiredAt, formatter);
 	}
-
-	@Override
-	public String toString() {
-		return "FabricAsset [assetId=" + assetId + ", owner=" + owner + ", createdAt=" + createdAt + ", expiredAt="
-				+ expiredAt + ", formatter=" + formatter + "]";
-	}
-	
-	
 }

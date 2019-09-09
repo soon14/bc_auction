@@ -7,6 +7,9 @@ import com.bcauction.domain.FabricUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.protobuf.ByteString;
+
+import io.reactivex.Completable;
+
 import org.hyperledger.fabric.sdk.*;
 import org.hyperledger.fabric.sdk.ChaincodeResponse.Status;
 import org.hyperledger.fabric.sdk.helper.Utils;
@@ -21,6 +24,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.web3j.protocol.admin.methods.response.NewAccountIdentifier;
+import org.web3j.protocol.core.methods.response.EthBlock.Block;
 import org.web3j.protocol.http.HttpService;
 
 import javax.json.Json;
@@ -37,6 +41,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Service
@@ -156,24 +162,10 @@ public class FabricCCService implements IFabricCCService
 
 		boolean res = registerAsset(작품id, 소유자);
 		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		if(!res)
 			return null;
 		
 		res = confirmTimestamp(작품id);
-		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		if(!res)
 			return null;
@@ -195,13 +187,11 @@ public class FabricCCService implements IFabricCCService
 
 		List<FabricAsset> assets = new ArrayList<>();
 		boolean res = this.expireAssetOwnership(작품id, from);
-		
 		if(!res) return null;
 		FabricAsset expired = query(작품id);
 		if(expired == null) return null;
 		assets.add(expired);
-		System.out.println(expired.toString());
-		
+
 		res = this.updateAssetOwnership(작품id, to);
 		if(!res) return null;
 		FabricAsset transferred = query(작품id);
@@ -255,13 +245,16 @@ public class FabricCCService implements IFabricCCService
 			}
 			// block 생성됨
 			channel.sendTransaction(responses);
-			return true;
+			CompletableFuture<BlockEvent.TransactionEvent> txFuture = channel.sendTransaction(responses);
+			BlockEvent.TransactionEvent event = txFuture.get(600, TimeUnit.SECONDS);
+			if(event.getBlockEvent() != null) {
+				return true;
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
 		} 
-		
+		return false;
 	}
 
 	/**
@@ -288,13 +281,18 @@ public class FabricCCService implements IFabricCCService
 				logger.info(status.toString());
 			}
 			channel.sendTransaction(responses);
+			CompletableFuture<BlockEvent.TransactionEvent> txFuture = channel.sendTransaction(responses);
+			BlockEvent.TransactionEvent event = txFuture.get(600, TimeUnit.SECONDS);
+			if(event.getBlockEvent() != null) {
+				return true;
+			}
 			return true;
 			// block 생성됨
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
 		} 
+		return false;
 	}
 
 	/**
@@ -304,9 +302,7 @@ public class FabricCCService implements IFabricCCService
 	 * @return
 	 */
 	private boolean expireAssetOwnership(final long 작품id, final long 소유자) {
-		// TODO
-		// 작품id : assetID 
-		// 소유자 : ?
+		
 		String[] args=new String[1];
 		args[0]=Long.toString(작품id);
 		
@@ -324,14 +320,18 @@ public class FabricCCService implements IFabricCCService
 				logger.info(status.toString());
 			}
 			channel.sendTransaction(responses);
-			Thread.sleep(2000);
-			return true;
+			channel.sendTransaction(responses);
+			CompletableFuture<BlockEvent.TransactionEvent> txFuture = channel.sendTransaction(responses);
+			BlockEvent.TransactionEvent event = txFuture.get(600, TimeUnit.SECONDS);
+			if(event.getBlockEvent() != null) {
+				return true;
+			}
 			// block 생성됨
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
 		} 
+		return false;
 	}
 
 	/**
@@ -342,8 +342,6 @@ public class FabricCCService implements IFabricCCService
 	 */
 	private boolean updateAssetOwnership(final long 작품id, final long to) {
 		// TODO
-		// 작품id : assetID
-		// to : new Owner
 		String[] args=new String[2];
 		args[0]=Long.toString(작품id);
 		args[1]=Long.toString(to);
@@ -361,14 +359,19 @@ public class FabricCCService implements IFabricCCService
 				Status status=res.getStatus();
 				logger.info(status.toString());
 			}
-			// block 생성됨
 			channel.sendTransaction(responses);
-			return true;
+			channel.sendTransaction(responses);
+			CompletableFuture<BlockEvent.TransactionEvent> txFuture = channel.sendTransaction(responses);
+			BlockEvent.TransactionEvent event = txFuture.get(600, TimeUnit.SECONDS);
+			if(event.getBlockEvent() != null) {
+				return true;
+			}
+			// block 생성됨
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
-		} 
+		}
+		return false;
 	}
 
 	/**
@@ -411,10 +414,10 @@ public class FabricCCService implements IFabricCCService
 			responseQuery = channel.queryByChaincode(qbr);
 			for (ProposalResponse res: responseQuery) {
 				String response=new String(res.getChaincodeActionResponsePayload());
+				logger.info(response);
 				JsonReader reader=Json.createReader(new StringReader(response));
 				json=reader.readObject();
 			}
-			
 			return getAssetRecord(json);
 			
 		} catch (Exception e) {
