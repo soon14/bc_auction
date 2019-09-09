@@ -50,11 +50,11 @@ var worksUpdateView = Vue.component("worksUpdateView", {
             var workId = this.$route.params.id;
 
             workService.update({
-                "id": this.work.ownerId,
-                "이름": this.work.name,
-                "설명": this.work.description,
-                "공개여부": this.work.isActive ? "Y" : "N",
-                "상태": this.work.status ? "Y" : "N"
+                "art_mem": this.work.ownerId,
+                "art_name": this.work.name,
+                "art_detail": this.work.description,
+                "art_isopen": this.work.isActive ? "Y" : "N",
+                "art_status": this.work.status ? "Y" : "N"
             },
             function(){
                 alert('작품이 수정되었습니다.');
@@ -70,11 +70,11 @@ var worksUpdateView = Vue.component("worksUpdateView", {
         var workId = this.$route.params.id;
 
         workService.findById(workId, function(data){
-            scope.work.name = data["이름"];
-            scope.work.description = data["설명"];
-            scope.work.isActive = data["공개여부"] == "Y" ? true : false;
-            scope.work.status = data["상태"] == "Y" ? true : false;
-            scope.work.ownerId = data["회원id"];
+            scope.work.name = data["art_id"];
+            scope.work.description = data["art_detail"];
+            scope.work.isActive = data["art_isopen"] == "Y" ? true : false;
+            scope.work.status = data["art_status"] == "Y" ? true : false;
+            scope.work.ownerId = data["art_mem"];
         });
     }
 });

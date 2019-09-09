@@ -20,7 +20,7 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
                                 <div class="form-group">
                                     <label id="work">작품 선택</label>
                                     <select v-model="before.selectedWork" class="form-control">
-                                        <option v-for="work in before.works" :value="work.id">{{ work['이름'] }}</option>
+                                        <option v-for="work in before.works" :value="work.id">{{ work['art_name'] }}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -118,7 +118,7 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
             this.isCreatingContract = true;
 
             // 1. 내 지갑 주소를 가져옵니다.
-            walletService.findAddressById(this.sharedStates.user.id, function(walletAddress){
+            walletService.findAddressById(this.sharedStates.user.mem_id, function(walletAddress){
                 
                 // 2. 경매 컨트랙트를 블록체인에 생성합니다.
                 // components/auctionFactory.js의 createAuction 함수를 호출합니다.
