@@ -151,9 +151,7 @@ public class FabricService implements IFabricService
 	@Override
 	public List<FabricAsset> 작품이력조회(final long id){
 		List<FabricAsset> history = this.fabricCCService.queryHistory(id);
-
 		// TODO
-
 		return history;
 	}
 
