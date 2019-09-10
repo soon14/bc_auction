@@ -60,7 +60,7 @@ public class FabricService implements IFabricService
 		own.setOwn_mem(own_mem);
 		own.setOwn_art(own_art);
 		own.setOwn_start(asset.getCreatedAt());
-
+		System.out.println("FabricService Ownership 소유권 start "+asset.getCreatedAt());
 		long result = this.ownershipRepository.생성(own);
 		if(result == 0)
 			return null;
@@ -131,6 +131,7 @@ public class FabricService implements IFabricService
 			return null;
 
 		소멸소유권.setOwn_end(asset.getExpiredAt());
+		System.out.println("FabricService Ownership 소유권 end "+asset.getExpiredAt());
 
 		long result = this.ownershipRepository.수정(소멸소유권);
 		if(result == 0)
@@ -153,7 +154,7 @@ public class FabricService implements IFabricService
 
 		// TODO
 
-		return null;
+		return history;
 	}
 
 	/**
