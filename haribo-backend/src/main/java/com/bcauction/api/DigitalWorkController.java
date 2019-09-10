@@ -88,6 +88,7 @@ public class DigitalWorkController
 	 * @param id
 	 * @return
 	 */
+	@RequestMapping(value = "/works/owner/{id}", method = RequestMethod.GET)
 	public List<DigitalWork> 사용자별작품목록조회(@PathVariable int id){
 		List<DigitalWork> 목록 = digitalWorkService.사용자작품목록조회(id);
 
@@ -104,6 +105,7 @@ public class DigitalWorkController
 	 * mission. 3
 	 * Req. 1-2
 	 */
+	@RequestMapping(value = "/works/history/{id}", method = RequestMethod.GET)
 	public List<FabricAsset> 작품이력조회(@PathVariable int id){
 		List<FabricAsset> history = this.fabricService.작품이력조회(id);
 		if(history == null || history.isEmpty())
