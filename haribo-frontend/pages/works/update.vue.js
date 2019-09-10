@@ -50,6 +50,7 @@ var worksUpdateView = Vue.component("worksUpdateView", {
             var workId = this.$route.params.id;
 
             workService.update({
+                "art_id": workId,
                 "art_mem": this.work.ownerId,
                 "art_name": this.work.name,
                 "art_detail": this.work.description,
@@ -70,7 +71,7 @@ var worksUpdateView = Vue.component("worksUpdateView", {
         var workId = this.$route.params.id;
 
         workService.findById(workId, function(data){
-            scope.work.name = data["art_id"];
+            scope.work.name = data["art_name"];
             scope.work.description = data["art_detail"];
             scope.work.isActive = data["art_isopen"] == "Y" ? true : false;
             scope.work.status = data["art_status"] == "Y" ? true : false;
