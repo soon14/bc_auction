@@ -381,8 +381,9 @@ public class FabricCCService implements IFabricCCService
 	public List<FabricAsset> queryHistory(final long 작품id){
 		if(this.hfClient == null || this.channel == null)
 			loadChannel();
-
-		return null;
+		
+		List<FabricAsset> assetList = new ArrayList<>();
+		return assetList;
 	}
 
 	/**

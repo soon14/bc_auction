@@ -108,6 +108,8 @@ public class OwnershipRepository implements IOwnershipRepository
 			paramMap.put("own_art", own.getOwn_art());
 			paramMap.put("own_start", own.getOwn_start());
 			paramMap.put("own_end", own.getOwn_end());
+			
+			System.out.println("OwnershipRepo own start & end " + own.getOwn_start() + " ~ " + own.getOwn_end());
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
 					.withTableName("own")
@@ -127,9 +129,10 @@ public class OwnershipRepository implements IOwnershipRepository
 		sbSql.append("SET own_end=? ");
 		sbSql.append("where own_mem=? AND own_art=?");
 		try {
+			System.out.println("OwnershipRepo own start & end " + own.getOwn_start() + " ~ " + own.getOwn_end());
 			return this.jdbcTemplate.update(sbSql.toString(),
 							new Object[] {
-									own.getOwn_end(),
+									own.getOwn_end().toString(),
 									own.getOwn_mem(),
 									own.getOwn_art()
 							});
