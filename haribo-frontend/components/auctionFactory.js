@@ -24,8 +24,17 @@ function createAuctionContract(web3, contractAddress){
 function createAuction(options, walletAddress, privateKey, onConfirm){
     var web3 = createWeb3();
     var contract = createFactoryContract(web3);
-    var createAuctionCall; // 함수 호출 Object 초기화
-    var encodedABI = createAuctionCall.encodeABI();
+    // var createAuctionCall = contract.methods.createAuction(options.workId, options.minValue, options.startTime, options.endTime); // 함수 호출 Object 초기화
+    var encodedABI = contract.methods.createAuction(options.workId, options.minValue, options.startTime, options.endTime).encodeABI();
+
+    // createAuctionCall.send({from : walletAddress}).then(function(receipt){
+    //     // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
+    //     console.log(receipt);
+        
+    // });
+        
+    // console.log(encodedABI);
+    
 
     /**
      * 트랜잭션 생성
@@ -35,13 +44,27 @@ function createAuction(options, walletAddress, privateKey, onConfirm){
         gas: 2000000,
         data: encodedABI
     }
-     */  
+     */
+    
+    // console.log('txCount', web3.eth.getTransactionCount());
+    
+
+    var tx = {
+        from: '0x9A0885bAB5752b3Cd1A08D62ade9Dfa509508048',
+        to: AUCTION_CONTRACT_ADDRESS,
+        gas: 2000000,
+        data: encodedABI
+    }
 
      /**
       * 트랜잭션 전자 서명 후 트랜잭션 전송/처리
       */
-}
+     const transaction = web3.eth.accounts.signTransaction(tx, '0x58df8Cc8644C3DCE4EE748C988B7c560D55d9491');
+     web3.eth.sendTransaction(tx).then(console.log);
 
+
+}
+3
 /**
  * TODO [입찰] 
  * 해당 컨트랙트 주소의 bid함수를 호출하여 입찰합니다.

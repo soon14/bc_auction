@@ -7,6 +7,8 @@ var workService = {
     findWorksByOwner: function(userId, callback){
         $.get(API_BASE_URL + '/api/works/owner/' + userId, function(data){
             callback(data);
+            console.log(data);
+            
         });
     },
     findById: function(workId, callback){
@@ -39,7 +41,6 @@ var workService = {
         });
     },
     create: function(body, success, whenError){
-        console.log("front_workservice",body)
         $.ajax({
             type: 'POST',
             url: API_BASE_URL + '/api/works',
