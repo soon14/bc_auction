@@ -162,6 +162,8 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
 
         // 내 작품 목록 가져오기
         workService.findWorksByOwner(this.sharedStates.user.id, function(result){
+            console.log('register.',this.sharedStates.user.id);
+            
             scope.before.works = result;
         });
     }
