@@ -92,10 +92,10 @@ public class DigitalWorkController
 	@RequestMapping(value = "/works/owner/{id}", method = RequestMethod.GET)
 	public List<DigitalWork> 사용자별작품목록조회(@PathVariable int id){
 		List<DigitalWork> 목록 = digitalWorkService.사용자작품목록조회(id);
-
 		if (목록 == null || 목록.isEmpty() )
 			throw new EmptyListException("사용자 소유의 작품이 없습니다.");
 
+		System.out.println(목록);
 		return 목록;
 	}
 

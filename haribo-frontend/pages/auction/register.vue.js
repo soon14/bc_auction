@@ -20,7 +20,7 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
                                 <div class="form-group">
                                     <label id="work">작품 선택</label>
                                     <select v-model="before.selectedWork" class="form-control">
-                                        <option v-for="work in before.works" :value="work.id">{{ work['art_name'] }}</option>
+                                        <option v-for="work in before.works" :value="work['art_id']">{{ work['art_name'] }}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -110,6 +110,7 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
         },
         register: function(){
            /**
+            * 계약 생성하기 버튼 클릭시 작동
              * 컨트랙트를 호출하여 경매를 생성하고
              * 경매 정보 등록 API를 호출합니다. 
              */
@@ -118,7 +119,7 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
             this.isCreatingContract = true;
 
             // 1. 내 지갑 주소를 가져옵니다.
-            walletService.findAddressById(this.sharedStates.user.mem_id, function(walletAddress){
+            walletService.findAddressById(this.sharedStates.user.id, function(walletAddress){
                 
                 // 2. 경매 컨트랙트를 블록체인에 생성합니다.
                 // components/auctionFactory.js의 createAuction 함수를 호출합니다.
@@ -159,12 +160,11 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
     },
     mounted: function(){
         var scope = this;
-
+        
         // 내 작품 목록 가져오기
         workService.findWorksByOwner(this.sharedStates.user.id, function(result){
-            console.log('register.',this.sharedStates.user.id);
-            
             scope.before.works = result;
         });
+        
     }
 })
