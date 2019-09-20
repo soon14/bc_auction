@@ -24,78 +24,33 @@ function createAuctionContract(web3, contractAddress){
 function createAuction(options, walletAddress, privateKey, onConfirm){
     var web3 = createWeb3();
     var contract = createFactoryContract(web3);
-    console.log('contract', contract);
-    
     var createAuctionCall = contract.methods.createAuction(options.workId, options.minValue, options.startTime, options.endTime); // 함수 호출 Object 초기화
     var encodedABI = createAuctionCall.encodeABI();
 
-    //ganache account[0] use
-    walletAddress = "0x7572FB95CC9eaA201aFE41FC06B7aac8b2a993B2";
-    privateKey = '0x58df8Cc8644C3DCE4EE748C988B7c560D55d9491';
-
-    // console.log('createAuctionCall', createAuctionCall);
-    var returnVal = createAuctionCall.call().then(res=>{ console.log('res', res);
-    });
-
-
-
-
-    
-
-    // console.log('returnVal', returnVal);
-    
-    
-
-
-    // createAuctionCall.send({from : walletAddress}).then(function(receipt){
-    //     // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
-    //     console.log(receipt);
-        
-    // });
-        
-    // console.log(encodedABI);
-    
-
-    /**
-     * 트랜잭션 생성
-     *  var tx = {
+    var contractAddress = createAuctionCall.call().then(res=> {
+        contractAddress = res;
+    })
+    var tx = {
+        // nonce : txCount,
         from: walletAddress,
         to: AUCTION_CONTRACT_ADDRESS,
         gas: 2000000,
+        // gasPrice: "20000000000",
         data: encodedABI
     }
-     */
-    
-    // console.log('txCount', web3.eth.getTransactionCount());
-    
 
-    
-    web3.eth.getTransactionCount(walletAddress, (err, txCount) =>{
-
-        var tx = {
-            nonce: txCount,
-            from: walletAddress,
-            to: AUCTION_CONTRACT_ADDRESS,
-            gas: 2000000,
-            data: encodedABI
-        }
-
-        /**
-         * 트랜잭션 전자 서명 후 트랜잭션 전송/처리
-         */
-        const transaction = web3.eth.accounts.signTransaction(tx, privateKey);
-        web3.eth.sendTransaction(tx).then(res=>{
-            var auctionContract = createAuctionContract(web3, returnVal);
-            console.log('returnVal', auctionContract);
-            var returnVal = createAuctionCall.call().then(res=>{ console.log('res', res);
-        });
+    const transaction = web3.eth.accounts.signTransaction(tx, privateKey).then(res =>{
+        console.log('res', res);
         
-    })
-
-});
-
-
-
+        web3.eth.sendSignedTransaction(res.rawTransaction)
+        .on('receipt', receipt=>{
+            console.log(receipt);
+            
+            // var newAuctionContract = createAuctionContract(web3, contractAddress);
+            // console.log(newAuctionContract);
+            
+        });        
+    });
 
 }
 
