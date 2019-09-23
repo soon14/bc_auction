@@ -6,6 +6,7 @@ Vue.component('explorer-nav', {
                     <router-link class="nav-item nav-link" v-bind:class="{ active: path.startsWith('/explorer/auction') }" :to="{ name: 'explorer.auction'}">Auctions</router-link>
                     <router-link class="nav-item nav-link" v-bind:class="{ active: path.startsWith('/explorer/block') }" :to="{ name: 'explorer.block' }">Blocks</router-link>
                     <router-link class="nav-item nav-link" v-bind:class="{ active: path.startsWith('/explorer/tx') }" :to="{ name: 'explorer.tx' }">Transactions</router-link>
+                    <router-link class="nav-item nav-link" v-bind:class="{ active: path.startsWith('/explorer/search') }" :to="{ name: 'explorer.search' }">Search Transaction</router-link>
                 </nav>
             </div>
         </div>

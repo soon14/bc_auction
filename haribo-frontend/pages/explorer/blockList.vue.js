@@ -32,20 +32,20 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
     data(){
         return {
             lastReadBlock: 0,
-            blocks: []
+            blocks: [],
         }
     },
     methods: {
         fetchBlocks: function(){
-            /**
-             * TODO 최근 10개의 블록 정보를 업데이트 합니다.
-             */
-            fetchLatestBlock().then(r=>{
-                console.log(r);
-                console.log('jira intergration test');
-                console.log('jira intergration test');
-                console.log('jira intergration test');
-                console.log('jira intergration test');
+             //TODO 최근 10개의 블록 정보를 업데이트 합니다.  
+            fetchLatestBlock().then(res=>{
+                this.lastReadBlock = res
+                this.blocks=[]
+                fetchBlocks(this.lastReadBlock-9,this.lastReadBlock ,res=>{
+                    res.timestamp=timeSince(res.timestamp)
+                    res.txCount=res.transactions.length
+                    this.blocks.unshift(res)
+                })
                 
             })
         }
