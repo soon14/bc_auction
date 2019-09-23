@@ -29,8 +29,8 @@ public class WalletController {
 
 	@RequestMapping(value = "/wallets", method = RequestMethod.POST)
 	public Wallet 등록(@Valid @RequestBody Wallet wallet) {
-		logger.debug(wallet.getWallet_addr());
-		logger.debug(String.valueOf(wallet.getWallet_mem()));
+		logger.debug("지갑의 번지 : " + wallet.getWallet_addr());
+		logger.debug("지갑의 소유자 : " + String.valueOf(wallet.getWallet_mem()));
 
 		this.walletService.등록(wallet);
 		Wallet 새지갑 = walletService.조회_ETH잔액동기화(wallet.getWallet_addr());

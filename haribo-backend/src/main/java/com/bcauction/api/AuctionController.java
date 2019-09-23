@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
@@ -38,7 +40,9 @@ public class AuctionController
 
 	@RequestMapping(value = "/auctions", method = RequestMethod.POST)
 	public Auction 생성(@RequestBody Auction auction) {
+		logger.info("api/auctions POST ",auction);
 		Auction 경매 = auctionService.생성(auction);
+		
 		if( 경매 == null )
 			throw new ApplicationException("경매 정보를 입력할 수 없습니다!");
 

@@ -130,24 +130,35 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
                     startTime: new Date(scope.before.input.startDate).getTime(),
                     endTime: new Date(scope.before.input.untilDate).getTime()
                 }, walletAddress, scope.before.input.privateKey, function(log){
-                    console.log(log);
+                    console.log("경매 생성 시 log", log);
                     var contractAddress = log.newAuction;
+                    console.log("경매 생성 시 log.newAuction", contractAddress);
+
                     var data = {
-                        "경매생성자id": scope.sharedStates.user.id,
-                        "경매작품id": scope.before.selectedWork,
-                        "시작일시": new Date(scope.before.input.startDate),
-                        "종료일시": new Date(scope.before.input.untilDate),
-                        "최저가": Number(scope.before.input.minPrice),
-                        "컨트랙트주소": contractAddress,
+                        "auction_makerid": scope.sharedStates.user.id,
+                        "auction_goodsid": scope.before.selectedWork,
+
+                        "auction_makedate" : new Date(scope.before.input.startDate).getTime(),
+                        "auction_status" : "Y",   
+
+                        "auction_start": new Date(scope.before.input.startDate).getTime(),
+                        "auction_end": new Date(scope.before.input.untilDate).getTime(),
+                        "auction_min": Number(scope.before.input.minPrice),
+                        "auction_contract": contractAddress,
                     }
+
+                    // DB에 넣을 옥션 데이터
+                    console.log("DB에 넣을 옥션 데이터(객체) ",data)
 
                     // 3. 선택한 작업 정보를 가져옵니다.
                     workService.findById(scope.before.selectedWork, function(result){
+                        console.log("workService.findById ", result)
                         scope.after.work = result;
                     });
                     
                     // 4. 생성한 경매를 등록 요청 합니다.
                     auctionService.register(data, function(result){
+                        console.log("auction register result ", result)
                         alert("경매가 등록되었습니다.");
                         scope.registered = true;
                         scope.after.result = data;
