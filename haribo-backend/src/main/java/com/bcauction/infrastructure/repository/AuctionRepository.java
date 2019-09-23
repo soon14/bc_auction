@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,11 +70,14 @@ public class AuctionRepository implements IAuctionRepository
 
 	@Override
 	public long 생성(final Auction auction) {
+//		Timestamp datas = new Timestamp(auction.getAuction_makedate());
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("auction_makerid", auction.getAuction_makedate());
+			paramMap.put("auction_makerid", auction.getAuction_makerid());
+//			paramMap.put("auction_makerid", auction.getAuction_makedate());
 			paramMap.put("auction_goodsid", auction.getAuction_goodsid());
-			paramMap.put("auction_makedate", auction.getAuction_makerid());
+//			paramMap.put("auction_makedate", auction.getAuction_makerid());
+			paramMap.put("auction_makedate", auction.getAuction_makedate());
 			paramMap.put("auction_status", auction.getAuction_status());
 			paramMap.put("auction_start", auction.getAuction_start());
 			paramMap.put("auction_end", auction.getAuction_end());
@@ -80,8 +85,9 @@ public class AuctionRepository implements IAuctionRepository
 			paramMap.put("auction_contract", auction.getAuction_contract());
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-					.withTableName("action")
-					.usingGeneratedKeyColumns("id");
+					.withTableName("auction")
+//					.usingGeneratedKeyColumns("id");
+					.usingGeneratedKeyColumns("auction_id");
 
 			Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);
 			return newId.longValue();
