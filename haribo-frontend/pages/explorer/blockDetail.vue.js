@@ -65,15 +65,18 @@ var explorerBlockDetailView = Vue.component('ExplorerBlockDetailView', {
     },
     mounted: function(){
         // TODO 
-        var blockNumber; // 조회할 블록 번호를 초기화 합니다. 
+        var blockNumber=this.$route.params.blockNumber
 
         if(blockNumber) {
-            /**
-             * 블록 번호로 블록 정보를 가져옵니다. 
-             */ 
-             
-        } else {
-            this.isValid = false;
-        }
+            this.block.number=blockNumber
+            
+            web3.eth.getBlock(blockNumber).then(res=>{
+                 this.block=res
+                 var date=new Date(res.timestamp)
+                 this.block.timestamp=date
+            })
+         } else {
+             this.isValid = false;
+         }
     }
 })

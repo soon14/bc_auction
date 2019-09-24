@@ -12,6 +12,7 @@ function createFactoryContract(web3){
 
 // Auction Object 컨트랙트 생성
 function createAuctionContract(web3, contractAddress){
+    console.log("컨트랙트 객체 생성 함수 호출 중 컨트랙트 주소 ", contractAddress)
     var auctionContract = new web3.eth.Contract(AUCTION_CONTRACT_ABI, contractAddress);
     return auctionContract;
 }
@@ -21,7 +22,7 @@ function createAuctionContract(web3, contractAddress){
  * AuctionFactory의 createAuction 함수를 호출하여 경매를 생성합니다.
  * 경매 생성 시, (작품id, 최소입찰가, 경매시작시간, 경매종료시간)을 반드시 지정해야합니다. 
  *  */ 
-function createAuction(options, walletAddress, privateKey, onConfirm){
+function createAuction(options, walletAddress, privateKey, onConfirm){  
     var web3 = createWeb3();
     var contract = createFactoryContract(web3);
     var createAuctionCall = contract.methods.createAuction(options.workId, options.minValue, options.startTime, options.endTime); // 함수 호출 Object 초기화
@@ -29,6 +30,7 @@ function createAuction(options, walletAddress, privateKey, onConfirm){
 
     var contractAddress = createAuctionCall.call().then(res=> {
         contractAddress = res;
+        console.log("contract address ", contractAddress)
     })
     var tx = {
         // nonce : txCount,
@@ -38,17 +40,37 @@ function createAuction(options, walletAddress, privateKey, onConfirm){
         // gasPrice: "20000000000",
         data: encodedABI
     }
+    
 
+    // 트랜잭션 보내기 전 두 번째 contract
+    createAuctionCall.call().then(res=> {
+        contractAddress = res;
+        console.log("트랜잭션 보내기 전 두 번째 contract address ", contractAddress)
+    })
+    
+    // 트랜잭션 보내는 함수
     const transaction = web3.eth.accounts.signTransaction(tx, privateKey).then(res =>{
         console.log('res', res);
         
         web3.eth.sendSignedTransaction(res.rawTransaction)
         .on('receipt', receipt=>{
-            console.log(receipt);
+            console.log("send tranaction result ",receipt);
             
-            // var newAuctionContract = createAuctionContract(web3, contractAddress);
-            // console.log(newAuctionContract);
-            
+            // 트랜잭션 후 만들어진 컨트랙트 주소로 컨트랙트 객체 생성
+            var newAuctionContract = createAuctionContract(web3, contractAddress);
+            console.log("생성된 컨트랙트 객체", newAuctionContract);
+
+            // 이건 진짜 모르겠따
+            var log = { newAuction:contractAddress};
+            onConfirm(log)
+
+            // 옥션 주소 변동 유무 확인
+            createAuctionCall.call().then(res=> {
+                contractAddress = res;
+                console.log("트랜잭션 보낸 후 contract address ", contractAddress)
+                
+            })
+
         });        
     });
 

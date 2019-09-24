@@ -7,7 +7,7 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
                 <explorer-nav></explorer-nav>
                 <div class="row" v-if="transactions.length == 0">
                     <div class="col-md-8 mx-auto">
-                        <div class="alert alert-warning">No transaction recorded at. #{{ block && block.number }} blocks</div>
+                        <div class="alert alert-warning">No transaction recorded at. {{ block && block.number }} blocks</div>
                     </div>
                 </div>
                 <div class="row">
@@ -36,14 +36,32 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
     data(){
         return {
             transactions: [],
-            block: {}
+            block: {
+                number : null
+            }
         };
     },
     methods: {
         fetchTxes: function(){
-            /**
-             * TODO 최근 블록에 포함된 트랜잭션 리스트를 반환합니다. 
-             */
+            //TODO 최근 블록에 포함된 트랜잭션 리스트를 반환합니다. 
+            fetchLatestBlock().then(res=>{
+                this.block=res
+                this.transactions=[]
+                web3.eth.getBlock(this.block).then(q=>{
+                    var len=q.transactions.length
+                    if(len!=0){
+                        var date=timeSince(q.timestamp)
+                        fetchTransaction_FromBlock(this.block,0,len,temp=>{
+                            temp.timestamp=date
+                            this.transactions.unshift(temp)
+                        })
+                    }else{
+                        console.log("없어")
+                    }
+                })
+            })
+
+             
         }      
     },
     mounted: function(){
