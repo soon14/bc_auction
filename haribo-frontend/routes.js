@@ -106,4 +106,8 @@ const routes = [{
     name: "explorer.tx.detail",
     path: '/explorer/tx/:hash',
     component: explorerTxDetailView
+},{
+    name: "explorer.search",
+    path: '/explorer/search',
+    component: explorerTxSearchView
 }];

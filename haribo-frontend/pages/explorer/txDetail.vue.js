@@ -17,7 +17,7 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
                                     </tr>
                                     <tr>
                                         <th>블록 넘버</th>
-                                        <td>{{ tx.block }}</td>
+                                        <td>{{ tx.blockNumber }}</td>
                                     </tr>
                                     <tr>
                                         <th>날짜</th>
@@ -59,7 +59,7 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
     `,
     data(){
         return {
-            isValid: true, 
+            isExist: true, 
             tx: {
                 hash: "-",
                 timestamp: "-"
@@ -67,17 +67,19 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
         }
     },
     mounted: function(){
-        /**
-         *  TODO 트랜잭션 해시로 트랜잭션 상세 정보를 조회합니다.
-         */
-        var hash; // 조회할 트랜잭션 해시를 초기화합니다. 
+        var hash=this.$route.params.hash
 
         if(hash) {
-            /**
-             * 트랜잭션 해시값으로 트랜잭션 정보를 가져옵니다. 
-             */
-        } else {
-            this.isValid = false;
-        }
+            web3.eth.getTransaction(hash).then(res=>{
+                this.tx=res;
+                web3.eth.getBlock(this.tx.blockNumber).then(res2=>{
+                     var date=new Date(res2.timestamp)
+                     this.tx.timestamp=date
+                     console.log(this.tx)
+                })
+            })
+         } else {
+             this.isValid = false;
+         }
     }
 })
