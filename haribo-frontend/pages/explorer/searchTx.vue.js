@@ -67,7 +67,7 @@ var explorerTxSearchView = Vue.component('ExplorerTxSearchView',{
     data(){
         return {
             search_data: "",
-            isExist: false, 
+            isExist: true, 
             tx: {
                 hash: "-",
                 timestamp: "-"

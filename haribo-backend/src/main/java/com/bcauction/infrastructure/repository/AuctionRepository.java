@@ -57,7 +57,7 @@ public class AuctionRepository implements IAuctionRepository
 	@Override
 	public Auction 조회(final String auction_contract)
 	{
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM auction  WHERE auction_contract=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM auction WHERE auction_contract=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 			                                        new Object[] { auction_contract }, (rs, rowNum) -> AuctionFactory.생성(rs) );
@@ -70,7 +70,6 @@ public class AuctionRepository implements IAuctionRepository
 
 	@Override
 	public long 생성(final Auction auction) {
-//		Timestamp datas = new Timestamp(auction.getAuction_makedate());
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
 			paramMap.put("auction_makerid", auction.getAuction_makerid());

@@ -19,7 +19,8 @@ public class AuctionFactory {
 		auction.setAuction_start(rs.getTimestamp("auction_start").toLocalDateTime());
 		auction.setAuction_end(rs.getTimestamp("auction_end").toLocalDateTime());
 		auction.setAuction_min(rs.getBigDecimal("auction_min").toBigInteger());
-		auction.setAuction_contract(rs.getString("auction_contranct"));
+//		auction.setAuction_contract(rs.getString("auction_contranct"));
+		auction.setAuction_contract(rs.getString("auction_contract"));
 
 		return auction;
 	}
