@@ -2,12 +2,26 @@
 API_BASE_URL = "http://localhost:8080";
 
 // 배포한 옥션 컨트랙트 주소를 지정합니다. 
-var AUCTION_CONTRACT_ADDRESS = "0xC874629Dd95ebfb2a09204c7EA4a745699eE2d33";
+var AUCTION_CONTRACT_ADDRESS = "0xfb489084436bA00FD774eb91453e05DF0d1398ff";
 // 이더리움 블록체인 네트워크의 URL을 설정합니다. 
 var BLOCKCHAIN_URL = "http://13.124.65.11:8545";
-//var BLOCKCHAIN_URL = "http://127.0.0.1:7545";
+// var BLOCKCHAIN_URL = "http://127.0.0.1:7545";
 // AuctionFactory.sol의 ABI를 설정합니다.
 AUCTION_FACTORY_CONTRACT_ABI = [
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "allAuctions",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
 	{
 		"constant": false,
 		"inputs": [
@@ -37,6 +51,39 @@ AUCTION_FACTORY_CONTRACT_ABI = [
 		],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "auctions",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -139,53 +186,6 @@ AUCTION_FACTORY_CONTRACT_ABI = [
 		],
 		"name": "OwnershipTransferred",
 		"type": "event"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "allAuctions",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "auctions",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
 	}
 ];
 // Auction.sol의 ABI를 설정합니다.

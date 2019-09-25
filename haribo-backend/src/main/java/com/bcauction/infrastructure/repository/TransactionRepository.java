@@ -85,7 +85,7 @@ public class TransactionRepository implements ITransactionRepository {
             paramMap.put("r", transaction.getR());
             paramMap.put("s", transaction.getS());
             paramMap.put("v", transaction.getV());
-            paramMap.put("trancation_savedate", LocalDateTime.now());
+            paramMap.put("transaction_savedate", LocalDateTime.now().plusHours(9));
 
             this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
                     .withTableName("transaction")
