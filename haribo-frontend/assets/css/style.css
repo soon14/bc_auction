@@ -139,3 +139,15 @@ nav.bottom-pagination {
     padding: 0;
     margin: 0;
 }
+
+
+
+/* Loading Css */
+#cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center #FFF;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display:none;
+    z-index: 99;
+}

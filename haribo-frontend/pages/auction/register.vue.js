@@ -33,12 +33,12 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label id="startDate">경매 시작일시</label>
-                                    <input id="startDate" v-model="before.input.startDate" type="text" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss, 예: 2019-04-21 21:00:00">
+                                    <label id="startDateLabel">경매 시작일시</label>
+                                    <input id="startDate" v-model="before.input.startDate" type="text" class="form-control" placeholder="2019-04-21 21:00:00">
                                 </div>
                                 <div class="form-group">
-                                    <label id="untilDate">경매 종료일시</label>
-                                    <input id="untilDate" v-model="before.input.untilDate" type="text" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss, 예: 2019-05-03 12:00:00">
+                                    <label id="untilDateLabel">경매 종료일시</label>
+                                    <input id="untilDate" v-model="before.input.untilDate" type="text" class="form-control" placeholder="2019-05-03 12:00:00">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -177,5 +177,16 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
             scope.before.works = result;
         });
         
+        $('#startDate').datetimepicker({ 
+            footer: true,
+            modal: true,
+            format: 'yyyy-mm-dd HH:MM:ss'
+          });
+
+        $('#untilDate').datetimepicker({ 
+            footer: true,
+            modal: true,
+            format: 'yyyy-mm-dd HH:MM:ss'
+          });
     }
 })
