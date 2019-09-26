@@ -7,6 +7,8 @@ import com.bcauction.domain.exception.DomainException;
 import com.bcauction.domain.repository.IWalletRepository;
 import com.bcauction.domain.wrapper.AuctionContract;
 import com.bcauction.domain.wrapper.AuctionFactoryContract;
+import com.bcauction.infrastructure.repository.AuctionRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,22 +87,18 @@ public class AuctionContractService implements IAuctionContractService {
 		log.info("parameter to address " + 컨트랙트주소);
 		
 		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
-		auctionContract = AuctionContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
+		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
 		String contractAddress = auctionContract.getContractAddress();
 		log.info("Smart contract loaded to address " + contractAddress);
 		log.info("Auction contract factory loaded to address " + auctionFactoryContract.getContractAddress());
 		log.info("getTransactionReceipt "+auctionContract.getTransactionReceipt());
 		
 		AuctionInfo auctionInfo = new AuctionInfo();
-		Auction  
-		//auctionInfo.setAucInfo_artId(aucInfo_artId); // 작품id
 		//auctionInfo.setAucInfo_close(aucInfo_close); // 종료
-		auctionInfo.setAucInfo_contract(컨트랙트주소); // 경매 컨트랙트 주소
 		//auctionInfo.setAucInfo_highest(aucInfo_highest); // 최고 입찰액
 		//auctionInfo.setAucInfo_highestBider(aucInfo_highestBider); // 최고입찰자id
-		//auctionInfo.setAucInfo_min(aucInfo_min); // 최소금액
 		
-		return null;
+		return auctionInfo;
 	}
 
 	/**
