@@ -2,10 +2,13 @@ package com.bcauction.application.impl;
 
 import com.bcauction.application.IEthereumService;
 import com.bcauction.domain.*;
+import com.bcauction.domain.Transaction;
 import com.bcauction.domain.exception.ApplicationException;
 import com.bcauction.domain.repository.ITransactionRepository;
 import com.bcauction.domain.wrapper.Block;
 import com.bcauction.domain.wrapper.EthereumTransaction;
+import com.bcauction.infrastructure.repository.TransactionRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,8 +121,23 @@ public class EthereumService implements IEthereumService {
 	 */
 	@Override
 	public List<EthereumTransaction> 최근트랜잭션조회() {
-		// TODO
-		return null;
+		// DB pk에러(trancation_id) 추후 insert, select 한번에 수정
+		List<Transaction>tmp=transactionRepository.목록조회();
+		List<EthereumTransaction>res=new ArrayList<EthereumTransaction>();
+		for(Transaction q : tmp) {
+			EthereumTransaction mid=null;
+			EthBlock recievedEthBlock;
+			try {
+				//여기부터 다시 작업
+				recievedEthBlock = web3j.ethGetBlockByNumber(DefaultBlockParameter.valueOf(BigInteger.valueOf(Long.parseLong(q.getBlockNumber()))), true).sendAsync().get();
+				mid=mid.convertTransaction(q,recievedEthBlock.getBlock().getTimestamp(),true);
+				res.add(mid);
+			} catch (NumberFormatException | InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return res;
 	}
 
 	/**

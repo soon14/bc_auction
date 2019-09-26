@@ -60,8 +60,8 @@ public class EthereumTransaction {
 
         return tx;
     }
-
-    public static EthereumTransaction convertTransaction(final com.bcauction.domain.Transaction transaction)
+    //아래 메소드를 사용하여 convert함 ->timestamp, accepted 변수 추가
+    public static EthereumTransaction convertTransaction(final com.bcauction.domain.Transaction transaction,final BigInteger timestamp, final boolean accepted)
     {
         EthereumTransaction tx = new EthereumTransaction();
         tx.txHash = transaction.getHash();
@@ -71,6 +71,8 @@ public class EthereumTransaction {
         if(transaction.getValue() != null)
             tx.amount = new BigInteger(transaction.getValue());
 
+        tx.accepted = accepted;
+        tx.timestamp = (timestamp != null) ? LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp.longValue()), TimeZone.getDefault().toZoneId()) : null;
         return tx;
     }
 

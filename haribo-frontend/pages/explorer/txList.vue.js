@@ -18,8 +18,8 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
                                 <div class="row tx-info" v-for="item in transactions">
                                     <div class="col-md-2">Tx</div>
                                     <div class="col-md-4">
-                                        <router-link :to="{name: 'explorer.tx.detail', params: { hash: item.hash }}" class="tx-number">{{ item.hash | truncate(10) }}</router-link>
-                                        <p class="tx-timestamp">{{ item.timeSince }}</p>
+                                        <router-link :to="{name: 'explorer.tx.detail', params: { hash: item.txHash }}" class="tx-number">{{ item.txHash | truncate(10) }}</router-link>
+                                        <p class="tx-timestamp">{{ item.timestamp }}</p>
                                     </div>
                                     <div class="col-md-6">
                                         <p><label class="text-secondary">From</label> {{ item.from | truncate(10) }}</p>
@@ -35,33 +35,17 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
     `,
     data(){
         return {
-            transactions: [],
-            block: {
-                number : null
-            }
+            transactions: []
         };
     },
     methods: {
         fetchTxes: function(){
-            //TODO 최근 블록에 포함된 트랜잭션 리스트를 반환합니다. 
-            fetchLatestBlock().then(res=>{
-                this.block=res
-                this.transactions=[]
-                web3.eth.getBlock(this.block).then(q=>{
-                    var len=q.transactions.length
-                    if(len!=0){
-                        var date=timeSince(q.timestamp)
-                        fetchTransaction_FromBlock(this.block,0,len,temp=>{
-                            temp.timestamp=date
-                            this.transactions.unshift(temp)
-                        })
-                    }else{
-                        console.log("없어")
-                    }
-                })
-            })
-
-             
+            //TODO 최근 트랜잭션 10개 리스트를 반환합니다.
+            var scope=this
+            explorerService.call_txList(function(data){
+                scope.transactions=data
+                console.log(data[0])
+            })             
         }      
     },
     mounted: function(){
