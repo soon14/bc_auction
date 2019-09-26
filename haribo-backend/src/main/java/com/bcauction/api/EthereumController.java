@@ -73,7 +73,7 @@ public class EthereumController {
     public EthereumTransaction 트랜잭션검색(@PathVariable String id)
     {
         EthereumTransaction 트랜잭션 = this.explorerService.트랜잭션검색(id);
-
+        
         if (트랜잭션 == null)
             throw new NotFoundException(id + " 트랜잭션 정보를 찾을 수 없습니다.");
 

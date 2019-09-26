@@ -7,7 +7,7 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
                 <explorer-nav></explorer-nav>
                 <div class="row" v-if="transactions.length == 0">
                     <div class="col-md-8 mx-auto">
-                        <div class="alert alert-warning">No transaction recorded at. {{ block && block.number }} blocks</div>
+                        <div class="alert alert-warning">No transaction recorded at blocks</div>
                     </div>
                 </div>
                 <div class="row">
@@ -44,7 +44,9 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
             var scope=this
             explorerService.call_txList(function(data){
                 scope.transactions=data
-                console.log(data[0])
+                for(var tmp in data){
+                    data[tmp].timestamp=explorerService.timeSince(data[tmp].timestamp)
+                }
             })             
         }      
     },

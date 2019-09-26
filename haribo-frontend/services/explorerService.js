@@ -26,7 +26,7 @@ var explorerService = {
         }
         return Math.floor(seconds) + " seconds ago";
     },
-    // 최신블록기준 10개 블록 가져오기
+    // 최신 블록 10개 블록 가져오기
     call_Blocklist : function(callback){
         $.get(API_BASE_URL + "/api/eth/blocks", function(data){
             callback(data);
@@ -38,9 +38,16 @@ var explorerService = {
             callback(data)
         });
     },
+    // 최신 트랜잭션 10개 가져오기
     call_txList : function(callback){
         $.get(API_BASE_URL + "/api/eth/trans",function(data){
             callback(data)
         })
-    }
+    },
+    // 특정트랜잭션의 상세정보 가져오기
+    call_detailTx : function(hash, callback){
+        $.get(API_BASE_URL + "/api/eth/trans/" + hash, function(data){
+            callback(data)
+        });
+    },
 }

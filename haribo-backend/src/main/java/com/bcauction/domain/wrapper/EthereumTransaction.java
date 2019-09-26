@@ -15,11 +15,14 @@ public class EthereumTransaction {
     private String txHash;
     private String Status;
     private String blockId;
-    private LocalDateTime timestamp;
+    private BigInteger timestamp;
     private String from;
     private String to;
     private BigInteger amount;
     private boolean accepted;
+    private String gasPrice;
+    private String gas;
+    private String input;
 
     public static EthereumTransaction getEthereumTransaction(final EthBlock.TransactionResult tx,
                                                               final BigInteger timestamp,
@@ -32,7 +35,7 @@ public class EthereumTransaction {
         }
 
         ethTx.accepted = accepted;
-        ethTx.timestamp = (timestamp != null) ? LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp.longValue()), TimeZone.getDefault().toZoneId()) : null;
+        ethTx.timestamp = timestamp;
 
         return ethTx;
     }
@@ -61,6 +64,7 @@ public class EthereumTransaction {
         return tx;
     }
     //아래 메소드를 사용하여 convert함 ->timestamp, accepted 변수 추가
+    //기존 localtime timestamp를 BigInteger로 변환후 프론트에서 처리
     public static EthereumTransaction convertTransaction(final com.bcauction.domain.Transaction transaction,final BigInteger timestamp, final boolean accepted)
     {
         EthereumTransaction tx = new EthereumTransaction();
@@ -72,7 +76,10 @@ public class EthereumTransaction {
             tx.amount = new BigInteger(transaction.getValue());
 
         tx.accepted = accepted;
-        tx.timestamp = (timestamp != null) ? LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp.longValue()), TimeZone.getDefault().toZoneId()) : null;
+        tx.timestamp = timestamp;
+        tx.gas=transaction.getGas();
+        tx.gasPrice=transaction.getGasPrice();
+        tx.input=transaction.getInput();
         return tx;
     }
 
@@ -116,15 +123,15 @@ public class EthereumTransaction {
         this.blockId = blockId;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
+    public BigInteger getTimestamp() {
+		return timestamp;
+	}
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
+	public void setTimestamp(BigInteger timestamp) {
+		this.timestamp = timestamp;
+	}
 
-    public String getFrom() {
+	public String getFrom() {
         return from;
     }
 
@@ -139,4 +146,30 @@ public class EthereumTransaction {
     public void setTo(String to) {
         this.to = to;
     }
+
+	public String getGasPrice() {
+		return gasPrice;
+	}
+
+	public void setGasPrice(String gasPrice) {
+		this.gasPrice = gasPrice;
+	}
+
+	public String getGas() {
+		return gas;
+	}
+
+	public void setGas(String gas) {
+		this.gas = gas;
+	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
+	}
+    
+    
 }

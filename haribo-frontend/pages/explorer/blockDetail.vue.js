@@ -70,6 +70,7 @@ var explorerBlockDetailView = Vue.component('ExplorerBlockDetailView', {
         if(blockNumber) {
             // this.block.number=blockNumber
             explorerService.call_detailBlock(blockNumber,function(data){
+                console.log(data)
                 scope.block=data
                 scope.block.timestamp=new Date(data.timestamp)
             })
