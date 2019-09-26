@@ -20,6 +20,9 @@ public class EthereumTransaction {
     private String to;
     private BigInteger amount;
     private boolean accepted;
+    private String gasPrice;
+    private String gas;
+    private String input;
 
     public static EthereumTransaction getEthereumTransaction(final EthBlock.TransactionResult tx,
                                                               final BigInteger timestamp,
@@ -74,6 +77,9 @@ public class EthereumTransaction {
 
         tx.accepted = accepted;
         tx.timestamp = timestamp;
+        tx.gas=transaction.getGas();
+        tx.gasPrice=transaction.getGasPrice();
+        tx.input=transaction.getInput();
         return tx;
     }
 
@@ -140,4 +146,30 @@ public class EthereumTransaction {
     public void setTo(String to) {
         this.to = to;
     }
+
+	public String getGasPrice() {
+		return gasPrice;
+	}
+
+	public void setGasPrice(String gasPrice) {
+		this.gasPrice = gasPrice;
+	}
+
+	public String getGas() {
+		return gas;
+	}
+
+	public void setGas(String gas) {
+		this.gas = gas;
+	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
+	}
+    
+    
 }

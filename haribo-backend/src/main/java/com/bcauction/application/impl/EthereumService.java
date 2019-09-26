@@ -166,7 +166,14 @@ public class EthereumService implements IEthereumService {
 	@Override
 	public EthereumTransaction 트랜잭션검색(String 트랜잭션Hash) {
 		// TODO
-		return null;
+		Transaction tmp=transactionRepository.조회(트랜잭션Hash);
+		
+		long time=Timestamp.valueOf(tmp.getTrancation_savedate()).getTime();
+		BigInteger timestamp=BigInteger.valueOf((time/1000)-60*60*9);
+		
+		EthereumTransaction res=null;
+		res=res.convertTransaction(tmp, timestamp, true);
+		return res;
 	}
 
 	/**

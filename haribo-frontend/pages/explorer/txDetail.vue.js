@@ -13,11 +13,11 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
                                 <tbody>
                                     <tr>
                                         <th width="200">트랜잭션 해시</th>
-                                        <td>{{ tx.hash }}</td>
+                                        <td>{{ tx.txHash }}</td>
                                     </tr>
                                     <tr>
                                         <th>블록 넘버</th>
-                                        <td>{{ tx.blockNumber }}</td>
+                                        <td>{{ tx.blockId }}</td>
                                     </tr>
                                     <tr>
                                         <th>날짜</th>
@@ -33,7 +33,7 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
                                     </tr>
                                     <tr>
                                         <th>전송한 이더</th>
-                                        <td>{{ tx.value }} Ether</td>
+                                        <td>{{ tx.amount }} Ether</td>
                                     </tr>
                                     <tr>
                                         <th>Gas</th>
@@ -60,26 +60,20 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
     data(){
         return {
             isExist: true, 
-            tx: {
-                hash: "-",
-                timestamp: "-"
-            }
+            tx: { }
         }
     },
     mounted: function(){
-        var hash=this.$route.params.hash
 
+        var hash=this.$route.params.hash
+        var scope=this
         if(hash) {
-            web3.eth.getTransaction(hash).then(res=>{
-                this.tx=res;
-                web3.eth.getBlock(this.tx.blockNumber).then(res2=>{
-                     var date=new Date(res2.timestamp)
-                     this.tx.timestamp=date
-                     console.log(this.tx)
-                })
+            explorerService.call_detailTx(hash,function(data){
+                scope.tx=data
+                scope.tx.timestamp=new Date(data.timestamp)
             })
          } else {
-             this.isValid = false;
+             this.isValid = false;  
          }
     }
 })
