@@ -16,7 +16,7 @@ var auctionView = Vue.component('AuctionView', {
                                 <img src="./assets/images/artworks/artwork1.jpg">
                                 <h4>{{ item['auction_goodsid']['art_name'] }}</h4>
                                 <p>{{ calculateDate(item['auction_end']) }}</p>
-                                <router-link :to="{ name: 'auction.detail', params: { id: item['id'] }}" class="btn btn-block btn-secondary">자세히보기</router-link>
+                                <router-link :to="{ name: 'auction.detail', params: { id: item['auction_id'] }}" class="btn btn-block btn-secondary">자세히보기</router-link>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ var auctionView = Vue.component('AuctionView', {
                     var id = result[start]['auction_goodsid'];
                     workService.findById(id, function(work){
                         // 작품정보
-                        console.log("findById(id) work", work)
+                        // console.log("findById(id) work", work)
                         result[start]['auction_goodsid'] = work;
                         fetchData(start+1, end);
                     });

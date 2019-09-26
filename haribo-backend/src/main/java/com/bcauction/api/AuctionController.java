@@ -40,7 +40,6 @@ public class AuctionController
 
 	@RequestMapping(value = "/auctions", method = RequestMethod.POST)
 	public Auction 생성(@RequestBody Auction auction) {
-		logger.info("api/auctions POST ",auction);
 		Auction 경매 = auctionService.생성(auction);
 		
 		if( 경매 == null )
@@ -66,7 +65,6 @@ public class AuctionController
 			logger.error("NOT FOUND AUCTION: ", id);
 			throw new NotFoundException(id + " 해당 경매를 찾을 수 없습니다.");
 		}
-
 		AuctionInfo 경매정보 = this.auctionContractService.경매정보조회(auction.getAuction_contract());
 		if(경매정보 == null){
 			throw new NotFoundException(id + " 해당 경매 컨트랙트를 찾을 수 없습니다.");
