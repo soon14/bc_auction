@@ -72,6 +72,10 @@ public class AuctionController
 		경매정보.setAucInfo_start(auction.getAuction_start());
 		경매정보.setAucInfo_end(auction.getAuction_end());
 
+		// AuctionInfo 경매정보 setter 메서드로 초기화
+		경매정보.setAucInfo_artId(auction.getAuction_goodsid());
+		경매정보.setAucInfo_contract(auction.getAuction_contract());
+		
 		return 경매정보;
 	}
 

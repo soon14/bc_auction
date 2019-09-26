@@ -52,7 +52,7 @@ var worksByUserView = Vue.component('WorksByUserView', {
                 scope.works.push({
                     id: result[i]['art_id'],
                     title: result[i]['art_name'],
-                    description: result[i]['art_detail'] != "" ? "-" : result[i]['art_detail']
+                    description: result[i]['art_detail'] == "" ? "-" : result[i]['art_detail']
                 });
             }
         });
