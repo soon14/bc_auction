@@ -18,6 +18,7 @@ import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.protocol.http.HttpService;
@@ -28,6 +29,7 @@ import org.web3j.tx.gas.DefaultGasProvider;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * AuctionContractService 작성, 배포한 AuctionFactory.sol Auction.sol 스마트 컨트랙트를 이용한다.
@@ -75,25 +77,36 @@ public class AuctionContractService implements IAuctionContractService {
 	@Override
 	public AuctionInfo 경매정보조회(final String 컨트랙트주소) {
 		// TODO
+		AuctionInfo auctionInfo = new AuctionInfo();
 		web3j = Web3j.build(new HttpService("http://13.124.65.11:8545"));
 		try {
 			log.info("Connected to Ethereum client version: " + web3j.web3ClientVersion().send().getWeb3ClientVersion());
 			credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
 			log.info("Credentials loaded");
-		
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		log.info("parameter to address " + 컨트랙트주소);
 		
+		// smart contract factory load
 		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
-		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
-		String contractAddress = auctionContract.getContractAddress();
-		log.info("Smart contract loaded to address " + contractAddress);
 		log.info("Auction contract factory loaded to address " + auctionFactoryContract.getContractAddress());
+		// smart contract load
+		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
+		log.info("Smart contract loaded to address " + auctionContract.getContractAddress());
+
+		BigInteger auctionMinValue = null;
+		TransactionReceipt receipt = null;
+		try {
+			auctionMinValue = auctionContract.minValue().send();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		log.info("getTransactionReceipt "+auctionContract.getTransactionReceipt());
 		
-		AuctionInfo auctionInfo = new AuctionInfo();
+		
+		auctionInfo.setAucInfo_min(auctionMinValue);
+		log.info("minValue "+auctionMinValue);
 		//auctionInfo.setAucInfo_close(aucInfo_close); // 종료
 		//auctionInfo.setAucInfo_highest(aucInfo_highest); // 최고 입찰액
 		//auctionInfo.setAucInfo_highestBider(aucInfo_highestBider); // 최고입찰자id

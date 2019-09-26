@@ -95,6 +95,6 @@ public class EthBlockListeningService{
 		ethInfoRepository.put(ethUrl, str);
 		
 		
-		log.info("New Block Subscribed Here : "+ethereumLatestBlock.getBlock().getNumber());
+//		log.info("New Block Subscribed Here : "+ethereumLatestBlock.getBlock().getNumber());
 	}
 }
