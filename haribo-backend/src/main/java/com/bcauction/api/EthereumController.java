@@ -59,14 +59,13 @@ public class EthereumController {
         return 목록;
     }
 
-    @GetMapping("/blocks/{id}")
+    @GetMapping("/block/{id}")
     public Block 블록검색(@PathVariable String id)
     {
         Block 블록 = this.explorerService.블록검색(id);
-
         if (블록 == null)
             throw new NotFoundException(id + " 블록 정보를 찾을 수 없습니다.");
-
+        
         return 블록;
     }
 
