@@ -35,6 +35,7 @@ import org.web3j.utils.Numeric;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -126,16 +127,10 @@ public class EthereumService implements IEthereumService {
 		List<EthereumTransaction>res=new ArrayList<EthereumTransaction>();
 		for(Transaction q : tmp) {
 			EthereumTransaction mid=null;
-			EthBlock recievedEthBlock;
-			try {
-				//여기부터 다시 작업
-				recievedEthBlock = web3j.ethGetBlockByNumber(DefaultBlockParameter.valueOf(BigInteger.valueOf(Long.parseLong(q.getBlockNumber()))), true).sendAsync().get();
-				mid=mid.convertTransaction(q,recievedEthBlock.getBlock().getTimestamp(),true);
-				res.add(mid);
-			} catch (NumberFormatException | InterruptedException | ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			long time=Timestamp.valueOf(q.getTrancation_savedate()).getTime();
+			BigInteger timestamp=BigInteger.valueOf((time/1000)-60*60*9);
+			mid=mid.convertTransaction(q,timestamp,true);
+			res.add(mid);
 		}
 		return res;
 	}
