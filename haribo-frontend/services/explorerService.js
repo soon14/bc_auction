@@ -37,5 +37,10 @@ var explorerService = {
         $.get(API_BASE_URL + "/api/eth/block/" + id, function(data){
             callback(data)
         });
+    },
+    call_txList : function(callback){
+        $.get(API_BASE_URL + "/api/eth/trans",function(data){
+            callback(data)
+        })
     }
 }
