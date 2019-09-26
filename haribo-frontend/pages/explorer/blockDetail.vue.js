@@ -8,12 +8,12 @@ var explorerBlockDetailView = Vue.component('ExplorerBlockDetailView', {
             <div class="row">
                 <div class="col-md-12">
                 <div class="card shadow-sm">
-                    <div class="card-header">블록 <strong># {{ block.number }}</strong></div>
+                    <div class="card-header">블록 <strong># {{ block.blockNo }}</strong></div>
                     <table class="table">
                         <tbody>
                             <tr>
                                 <th width="300">블록 height</th>
-                                <td>{{ block.number }}</td>
+                                <td>{{ block.blockNo }}</td>
                             </tr>
                             <tr>
                                 <th>블록 해시</th>
@@ -60,23 +60,21 @@ var explorerBlockDetailView = Vue.component('ExplorerBlockDetailView', {
             isValid: true,
             block: {
                 number: 0
-            }
+            },
         }
     },
     mounted: function(){
         // TODO 
         var blockNumber=this.$route.params.blockNumber
-
+        var scope=this
         if(blockNumber) {
-            this.block.number=blockNumber
-            
-            web3.eth.getBlock(blockNumber).then(res=>{
-                 this.block=res
-                 var date=new Date(res.timestamp)
-                 this.block.timestamp=date
+            // this.block.number=blockNumber
+            explorerService.call_detailBlock(blockNumber,function(data){
+                scope.block=data
+                scope.block.timestamp=new Date(data.timestamp)
             })
          } else {
-             this.isValid = false;
+             this.isValid = false;  
          }
     }
 })

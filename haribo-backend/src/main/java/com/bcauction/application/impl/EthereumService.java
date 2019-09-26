@@ -22,6 +22,7 @@ import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.DefaultBlockParameterNumber;
 import org.web3j.protocol.core.methods.response.*;
+import org.web3j.protocol.core.methods.response.EthBlock.TransactionResult;
 import org.web3j.protocol.exceptions.TransactionException;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Transfer;
@@ -34,6 +35,7 @@ import java.math.BigInteger;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.CompletableFuture;
@@ -53,9 +55,12 @@ public class EthereumService implements IEthereumService {
 	private String PASSWORD;
 	@Value("${eth.admin.wallet.filename}")
 	private String ADMIN_WALLET_FILE;
-
+	@Value("${spring.web3j.client-address}")
+	private String ethUrl;
+	
 	private ITransactionRepository transactionRepository;
-
+	private BigInteger latestBlockHeight = BigInteger.valueOf(0);
+	
 	@Autowired
 	private Web3j web3j;
 
@@ -64,15 +69,13 @@ public class EthereumService implements IEthereumService {
 		this.transactionRepository = transactionRepository;
 	}
 
-	private EthBlock.Block 최근블록(final boolean fullFetched) {
+	private EthBlock.Block latestBlock(final boolean fullFetched) {
 		try {
 			//
-			web3j = Web3j.build(new HttpService("https://13.124.65.11:8545"));
-
+			web3j = Web3j.build(new HttpService(ethUrl));
 			EthBlock latestBlockResponse;
-			latestBlockResponse = web3j.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, fullFetched).sendAsync()
+			latestBlockResponse = web3j.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, false).sendAsync()
 					.get();
-
 			return latestBlockResponse.getBlock();
 		} catch (ExecutionException | InterruptedException e) {
 			throw new ApplicationException(e.getMessage());
@@ -86,8 +89,26 @@ public class EthereumService implements IEthereumService {
 	 */
 	@Override
 	public List<Block> 최근블록조회() {
-		// TODO
-		return null;
+		
+		List<Block> res=new ArrayList<Block>();
+		//latestBlockHeight,latestBlockHeight-10 변수선언 
+		latestBlockHeight=latestBlock(false).getNumber();
+		BigInteger end=latestBlockHeight.subtract(BigInteger.valueOf(10));
+		
+		for (BigInteger bi = latestBlockHeight; bi.compareTo(end)>0; bi=bi.subtract(BigInteger.ONE)){
+			try {
+				//최신블록넘버부터 역순으로 idx(bi)탐색
+				EthBlock recievedEthBlock = web3j.ethGetBlockByNumber(DefaultBlockParameter.valueOf(bi), true).sendAsync().get();
+				//Ethblcok.block을 wrapper클래스 Block으로 커스터마이징 한 후 List에 넣기
+				Block tmp=new Block();
+				tmp=tmp.fromOriginalBlock(recievedEthBlock.getBlock());
+				res.add(tmp);
+			} catch (InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -110,6 +131,16 @@ public class EthereumService implements IEthereumService {
 	@Override
 	public Block 블록검색(String 블록No) {
 		// TODO
+		BigInteger q=BigInteger.valueOf(Long.parseLong(블록No));
+		try {
+			EthBlock tmp=web3j.ethGetBlockByNumber(DefaultBlockParameter.valueOf(q), true).sendAsync().get();
+			Block res=new Block();
+			res=res.fromOriginalBlock(tmp.getBlock());
+			return res;
+		} catch (InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
