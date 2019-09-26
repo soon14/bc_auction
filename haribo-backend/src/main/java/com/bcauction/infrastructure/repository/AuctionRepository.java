@@ -100,7 +100,7 @@ public class AuctionRepository implements IAuctionRepository
 	{
 		StringBuilder sbSql =  new StringBuilder("UPDATE auction ");
 		sbSql.append("SET auction_status=? AND auction_end=? ");
-		sbSql.append("where id=? AND auction_makerid=? AND auction_goodsid=?");
+		sbSql.append("where auction_id=? AND auction_makerid=? AND auction_goodsid=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 			                                new Object[] {
