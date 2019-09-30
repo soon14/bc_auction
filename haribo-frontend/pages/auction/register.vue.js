@@ -117,28 +117,32 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
             
             var scope = this;
             this.isCreatingContract = true;
-
+            
+            var start = $('#startDate').val();
+            var end = $('#untilDate').val();
+            
             // 1. 내 지갑 주소를 가져옵니다.
             walletService.findAddressById(this.sharedStates.user.id, function(walletAddress){
                 
                 // 2. 경매 컨트랙트를 블록체인에 생성합니다.
                 // components/auctionFactory.js의 createAuction 함수를 호출합니다.
                 // TODO createAuction 함수의 내용을 완성합니다. 
+                
                 createAuction({
                     workId: scope.before.selectedWork,
                     minValue: web3.utils.toWei(scope.before.input.minPrice, 'ether'),
-                    startTime: new Date(scope.before.input.startDate).getTime(),
-                    endTime: new Date(scope.before.input.untilDate).getTime()
+                    startTime: new Date(start).getTime(),
+                    endTime: new Date(end).getTime()
                 }, walletAddress, scope.before.input.privateKey, function(log){
                     console.log("경매 생성 시 log", log);
                     var contractAddress = log.newAuction;
                     console.log("경매 생성 시 log.newAuction", contractAddress);
-
+                    
                     var data = {
                         "auction_makerid": scope.sharedStates.user.id,
                         "auction_goodsid": scope.before.selectedWork,
-                        "auction_start": new Date(scope.before.input.startDate),
-                        "auction_end": new Date(scope.before.input.untilDate),
+                        "auction_start": new Date(start),
+                        "auction_end": new Date(end),
                         "auction_min": Number(scope.before.input.minPrice),
                         "auction_contract": contractAddress,
                     }
