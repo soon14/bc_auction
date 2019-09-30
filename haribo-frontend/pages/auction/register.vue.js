@@ -64,17 +64,22 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
                                     </tr>
                                     <tr>
                                         <th>시작일시</th>
-                                        <td>{{ before.input.startDate }}</td>
+                                        <td>{{ after.result['auction_start'] }}</td>
                                     </tr>
                                     <tr>
                                         <th>종료일시</th>
-                                        <td>{{ before.input.untilDate }}</td>
+                                        <td>{{ after.result['auction_end'] }}</td>
                                     </tr>
                                     <tr>
                                         <th>컨트랙트 주소</th>
                                         <td>{{ after.result['auction_contract'] }}</td>
                                     </tr>
                                 </table>
+                                <div class="row mt-5">
+                                    <div class="col-md-6">
+                                        <router-link :to="{ name: 'auction' }" class="btn btn-sm btn-outline-secondary">경매 리스트로 돌아가기</router-link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
