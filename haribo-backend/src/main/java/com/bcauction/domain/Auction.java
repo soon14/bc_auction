@@ -69,7 +69,4 @@ public class Auction {
 	public void setAuction_contract(String auction_contract) {
 		this.auction_contract = auction_contract;
 	}
-	
-	
-	
 }
