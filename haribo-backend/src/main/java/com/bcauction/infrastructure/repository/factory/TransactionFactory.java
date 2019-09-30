@@ -29,7 +29,7 @@ public class TransactionFactory {
         transaction.setR(rs.getString("r"));
         transaction.setS(rs.getString("s"));
         transaction.setV(rs.getInt("v"));
-        transaction.setTrancation_savedate(rs.getTimestamp("trancation_savedate").toLocalDateTime());
+        transaction.setTrancation_savedate(rs.getTimestamp("transaction_savedate").toLocalDateTime());
 
         return transaction;
     }

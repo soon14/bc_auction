@@ -14,11 +14,11 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
                                 <div class="row block-info" v-for="item in blocks">
                                     <div class="col-md-2">BK</div>
                                     <div class="col-md-4">
-                                        <router-link :to="{name:'explorer.block.detail', params: {blockNumber:item.number}}" class="block-number">{{ item.number }}</router-link>
+                                        <router-link :to="{name:'explorer.block.detail', params: {blockNumber:item.blockNo}}" class="block-number">{{item.blockNo}}</router-link>
                                         <p class="block-timestamp">{{ item.timestamp }}</p>
                                     </div>
                                     <div class="col-md-6 text-right">
-                                        <p class="block-num-transactions">{{ item.txCount }} Txes</p>
+                                        <p class="block-num-transactions">{{ item.trans.length }} Txes</p>
                                     </div>
                                 </div>
                             </div>
@@ -37,16 +37,13 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
     },
     methods: {
         fetchBlocks: function(){
-            /**
-             * TODO 최근 10개의 블록 정보를 업데이트 합니다.
-             */
-            fetchLatestBlock().then(r=>{
-                console.log(r);
-                console.log('jira intergration test');
-                console.log('jira intergration test');
-                console.log('jira intergration test');
-                console.log('jira intergration test');
-                
+            var scope = this;
+             //data의 멤버변수는 백엔드의 block wrapper 클래스형태로 넘어옴
+            explorerService.call_Blocklist(function(data){
+                scope.blocks=data
+                for(var tmp in data){
+                    data[tmp].timestamp=explorerService.timeSince(data[tmp].timestamp)
+                }
             })
         }
     },
@@ -58,5 +55,8 @@ var explorerBlockView = Vue.component('ExplorerBlockView', {
                 this.fetchBlocks();
             }, REFRESH_TIMES_OF_BLOCKS);
         })
+    },
+    watch : {
+        
     }
 })

@@ -64,7 +64,8 @@ public class AuctionService implements IAuctionService
 		if(auction.getAuction_min()  == null) return null;
 		
 
-		auction.setAuction_makedate(LocalDateTime.now());
+//		auction.setAuction_makedate(LocalDateTime.now());
+		auction.setAuction_makedate(LocalDateTime.now().plusHours(9));
 		long id = this.auctionRepository.생성(auction);
 
 		return this.auctionRepository.조회(id);

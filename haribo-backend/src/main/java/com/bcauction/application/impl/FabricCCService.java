@@ -383,7 +383,41 @@ public class FabricCCService implements IFabricCCService
 			loadChannel();
 		
 		List<FabricAsset> assetList = new ArrayList<>();
-		return assetList;
+		String []args=new String[1];
+		args[0]=Long.toString(작품id);
+		
+		QueryByChaincodeRequest qbr=hfClient.newQueryProposalRequest();
+		ChaincodeID faChaincodeID=ChaincodeID.newBuilder().setName("asset").build();
+		
+		qbr.setChaincodeID(faChaincodeID);
+		qbr.setFcn("getAssetHistory");
+		qbr.setArgs(args);
+		
+		JsonObject json=null;
+		
+		Collection<ProposalResponse> responseQuery;
+		try {
+			responseQuery = channel.queryByChaincode(qbr);
+			for (ProposalResponse res: responseQuery) {
+				String response=new String(res.getChaincodeActionResponsePayload());
+				System.out.println("historty");
+				logger.info(response);
+				JsonReader reader=Json.createReader(new StringReader(response));
+				
+				JsonArray tmp=reader.readArray();
+				for(JsonValue q:tmp) {
+					System.out.println(q.toString());
+					assetList.add(getAssetRecord((JsonObject) q));
+				}
+				assetList.remove(0);
+			}
+			return assetList;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**

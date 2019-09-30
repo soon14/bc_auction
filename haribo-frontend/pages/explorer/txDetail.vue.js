@@ -13,11 +13,11 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
                                 <tbody>
                                     <tr>
                                         <th width="200">트랜잭션 해시</th>
-                                        <td>{{ tx.hash }}</td>
+                                        <td>{{ tx.txHash }}</td>
                                     </tr>
                                     <tr>
                                         <th>블록 넘버</th>
-                                        <td>{{ tx.block }}</td>
+                                        <td>{{ tx.blockId }}</td>
                                     </tr>
                                     <tr>
                                         <th>날짜</th>
@@ -33,7 +33,7 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
                                     </tr>
                                     <tr>
                                         <th>전송한 이더</th>
-                                        <td>{{ tx.value }} Ether</td>
+                                        <td>{{ tx.amount }} Ether</td>
                                     </tr>
                                     <tr>
                                         <th>Gas</th>
@@ -59,25 +59,21 @@ var explorerTxDetailView = Vue.component('ExplorerTxDetailView', {
     `,
     data(){
         return {
-            isValid: true, 
-            tx: {
-                hash: "-",
-                timestamp: "-"
-            }
+            isExist: true, 
+            tx: { }
         }
     },
     mounted: function(){
-        /**
-         *  TODO 트랜잭션 해시로 트랜잭션 상세 정보를 조회합니다.
-         */
-        var hash; // 조회할 트랜잭션 해시를 초기화합니다. 
 
+        var hash=this.$route.params.hash
+        var scope=this
         if(hash) {
-            /**
-             * 트랜잭션 해시값으로 트랜잭션 정보를 가져옵니다. 
-             */
-        } else {
-            this.isValid = false;
-        }
+            explorerService.call_detailTx(hash,function(data){
+                scope.tx=data
+                scope.tx.timestamp=new Date(data.timestamp)
+            })
+         } else {
+             this.isValid = false;  
+         }
     }
 })

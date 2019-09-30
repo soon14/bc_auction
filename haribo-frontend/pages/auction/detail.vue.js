@@ -11,31 +11,31 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                 <table class="table table-bordered">
                                     <tr>
                                         <th width="20%">생성자</th>
-                                        <td><router-link :to="{ name: 'work.by_user', params: { id: creator['id'] } }">{{ creator['이름'] }}({{creator['이메일']}})</router-link></td>
+                                        <td><router-link :to="{ name: 'work.by_user', params: { id: creator['mem_id'] } }">{{ creator['mem_name'] }}({{creator['mem_mail']}})</router-link></td>
                                     </tr>
                                     <tr>
                                         <th>작품명</th>
-                                        <td>{{ work['이름'] }}</td>
+                                        <td>{{ work['art_name'] }}</td>
                                     </tr>
                                     <tr>
                                         <th>작품 설명</th>
-                                        <td>{{ work['설명'] }}</td>
+                                        <td>{{ work['art_detail'] }}</td>
                                     </tr>
                                     <tr>
                                         <th>경매 시작일</th>
-                                        <td>{{ auction['경매시작시간'] }}</td>
-                                    </tr>
+                                        <td>{{ auction['aucInfo_start'] }}</td>
+                                    </tr>   
                                     <tr>
                                         <th>경매 종료일</th>
-                                        <td>{{ auction['경매종료시간'] }}</td>
+                                        <td>{{ auction['aucInfo_end'] }}</td>
                                     </tr>
                                     <tr>
                                         <th>최저가</th>
-                                        <td><strong>{{ auction['최소금액'] }} ETH</strong></td>
+                                        <td><strong>{{ auction['aucInfo_min'] }} ETH</strong></td>
                                     </tr>
                                     <tr>
                                         <th>컨트랙트 주소</th>
-                                        <td><a href="#">{{ auction['경매컨트랙트주소'] }}</a></td>
+                                        <td><a href="#">{{ auction['aucInfo_contract'] }}</a></td>
                                     </tr>
                                     <tr>
                                         <th>상태</th>
@@ -120,18 +120,21 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
 
         // 경매 정보 조회
         auctionService.findById(auctionId, function(auction){
-            var amount = Number(auction['최소금액']).toLocaleString().split(",").join("")
-            auction['최소금액'] = web3.utils.fromWei(amount, 'ether');
+            console.log("경매 정보 조회 AuctionInfo ", auction)
+            var amount = Number(auction['aucInfo_min']).toLocaleString().split(",").join("")
+            auction['aucInfo_min'] = web3.utils.fromWei(amount, 'ether');
 
-            var workId = auction['작품id'];
+            var workId = auction['aucInfo_artId'];
 
             // 작품 정보 조회
             workService.findById(workId, function(work){
+                console.log("작품 정보 조회 DigitalWork", work)
                 scope.work = work;
-                var creatorId = work['회원id'];
+                var creatorId = work['art_mem'];
 
                 // 생성자 정보 조회
                 userService.findById(creatorId, function(user){
+                    console.log("생성자 정보 조회 Member", user)
                     scope.creator = user;
                 });
             });

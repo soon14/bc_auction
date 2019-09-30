@@ -21,25 +21,58 @@ function createAuctionContract(web3, contractAddress){
  * AuctionFactory의 createAuction 함수를 호출하여 경매를 생성합니다.
  * 경매 생성 시, (작품id, 최소입찰가, 경매시작시간, 경매종료시간)을 반드시 지정해야합니다. 
  *  */ 
-function createAuction(options, walletAddress, privateKey, onConfirm){
+function createAuction(options, walletAddress, privateKey, onConfirm){  
     var web3 = createWeb3();
     var contract = createFactoryContract(web3);
-    var createAuctionCall; // 함수 호출 Object 초기화
+    var createAuctionCall = contract.methods.createAuction(options.workId, options.minValue, options.startTime, options.endTime); // 함수 호출 Object 초기화
     var encodedABI = createAuctionCall.encodeABI();
 
-    /**
-     * 트랜잭션 생성
-     *  var tx = {
+    var contractAddress = createAuctionCall.call().then(res=> {
+        contractAddress = res;
+        console.log("contract address ", contractAddress)
+    })
+    var tx = {
+        // nonce : txCount,
         from: walletAddress,
         to: AUCTION_CONTRACT_ADDRESS,
         gas: 2000000,
+        // gasPrice: "20000000000",
         data: encodedABI
     }
-     */  
+    
 
-     /**
-      * 트랜잭션 전자 서명 후 트랜잭션 전송/처리
-      */
+    // 트랜잭션 보내기 전 두 번째 contract
+    createAuctionCall.call().then(res=> {
+        contractAddress = res;
+        console.log("트랜잭션 보내기 전 두 번째 contract address ", contractAddress)
+    })
+    
+    // 트랜잭션 보내는 함수
+    const transaction = web3.eth.accounts.signTransaction(tx, privateKey).then(res =>{
+        console.log('res', res);
+        
+        web3.eth.sendSignedTransaction(res.rawTransaction)
+        .on('receipt', receipt=>{
+            console.log("send tranaction result ",receipt);
+            
+            // 트랜잭션 후 만들어진 컨트랙트 주소로 컨트랙트 객체 생성
+            var newAuctionContract = createAuctionContract(web3, contractAddress);
+            console.log("생성된 컨트랙트 객체", newAuctionContract);
+
+            // 이건 진짜 모르겠따
+            var log = { newAuction:contractAddress};
+            onConfirm(log)
+
+            // 옥션 주소 변동 유무 확인
+            createAuctionCall.call().then(res=> {
+                contractAddress = res;
+                console.log("트랜잭션 보낸 후 contract address ", contractAddress)
+                
+            })
+
+        });        
+    });
+
 }
 
 /**
@@ -48,7 +81,38 @@ function createAuction(options, walletAddress, privateKey, onConfirm){
  * 경매 컨트랙트 주소: options.contractAddress
  *  */ 
 function auction_bid(options, onConfirm){
+    console.log('[auctionFactory.js : auction_bid] options', options);
+    var web3 = createWeb3();
+    var contract = createAuctionContract(web3, options.contractAddress);
     
+    var createBidCall = contract.methods.bid();
+    var encodedABI = createBidCall.encodeABI();
+
+    var tx = {
+        from: options.walletAddress,
+        to: options.contractAddress,
+        gas: 2000000,
+        value : options.amount,
+        data: encodedABI
+    }
+
+    // console.log('[auctionFactory.js : tx', tx);
+    
+    
+    // 트랜잭션 보내는 함수
+    const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
+        web3.eth.sendSignedTransaction(res.rawTransaction)
+        .then(receipt=>{
+            console.log('[auctionFactory.js : auction_bid] receipt', receipt);
+            onConfirm(receipt);
+            // var highestBidCall = contract.methods.highestBid().call().then(ress=>{
+            //     highestBidCall = ress;
+            //     console.log('[auctionFactory.js : auction_bid] highestBidCall', highestBidCall);
+            // });
+
+        });        
+    });
+
 }
 
 /**

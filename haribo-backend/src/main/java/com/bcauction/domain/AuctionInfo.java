@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 public class AuctionInfo {
-	private String aucInfo_contract; 		// 경매 컨트랙트 주
+	private String aucInfo_contract; 		// 경매 컨트랙트 주소
 	private BigInteger aucInfo_highest; 	// 최고 입찰액
 	private long aucInfo_artId; 			// 작품id
 	private long aucInfo_highestBider; 		// 최고입찰자id

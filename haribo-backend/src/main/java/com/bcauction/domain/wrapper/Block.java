@@ -3,6 +3,7 @@ package com.bcauction.domain.wrapper;
 import org.web3j.protocol.core.methods.response.EthBlock;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.TimeZone;
 public class Block {
     private BigInteger blockNo;
     private List<EthereumTransaction> trans;
-    private LocalDateTime timestamp;
+    private BigInteger timestamp;
+    private String nonce;
     private String difficulty;
     private BigInteger size;
     private BigInteger gasUsed;
@@ -19,12 +21,14 @@ public class Block {
     private String hash;
     private String parentHash;
     private String miner;
-
+    //wrapper클래스 Block에 timestamp를 Localtime대신 BigInteger로 바꿈 -> 프론트에서 00전으로 표현하기 위해
+    //nonce 변수 추가
     public static Block fromOriginalBlock(final EthBlock.Block currentBlock) {
         Block block = new Block();
-
+        
         block.blockNo = currentBlock.getNumber();
-        block.timestamp = LocalDateTime.ofInstant(Instant.ofEpochSecond(currentBlock.getTimestamp().longValue()), TimeZone.getDefault().toZoneId());
+        block.timestamp = currentBlock.getTimestamp();
+        block.nonce=currentBlock.getNonceRaw();
         block.difficulty = String.valueOf(currentBlock.getDifficulty());
         block.size = currentBlock.getSize();
         block.gasLimit = currentBlock.getGasLimit();
@@ -53,15 +57,23 @@ public class Block {
         this.trans = trans;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
+    public BigInteger getTimestamp() {
+		return timestamp;
+	}
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
+	public void setTimestamp(BigInteger timestamp) {
+		this.timestamp = timestamp;
+	}
 
-    public String getDifficulty() {
+	public String getNonce() {
+		return nonce;
+	}
+
+	public void setNonce(String nonce) {
+		this.nonce = nonce;
+	}
+
+	public String getDifficulty() {
         return difficulty;
     }
 

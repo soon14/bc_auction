@@ -10,6 +10,14 @@ public class Bid {
 	private LocalDateTime bid_date;
 	private BigDecimal bid_price;
 	private String bid_issuccess = "N";
+	
+	
+
+	@Override
+	public String toString() {
+		return "Bid [bid_id=" + bid_id + ", bid_mem=" + bid_mem + ", bid_auction=" + bid_auction + ", bid_date="
+				+ bid_date + ", bid_price=" + bid_price + ", bid_issuccess=" + bid_issuccess + "]";
+	}
 
 	public long getBid_id() {
 		return bid_id;

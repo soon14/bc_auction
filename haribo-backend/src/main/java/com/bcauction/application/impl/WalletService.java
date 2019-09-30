@@ -18,6 +18,7 @@ import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Convert;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
@@ -60,6 +61,7 @@ public class WalletService implements IWalletService
 			throw new NotFoundException(지갑주소 + " 해당 주소 지갑을 찾을 수 없습니다.");
 
 		web3j=Web3j.build(new HttpService("http://13.124.65.11:8545"));
+//		web3j=Web3j.build(new HttpService("http://127.0.0.1:7545"));
 		
 	    EthGetBalance ethGetBalance = null;
 	    
