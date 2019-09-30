@@ -40,36 +40,36 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                     <tr>
                                         <th>상태</th>
                                         <td>
-                                            <span class="badge badge-success" v-if="auction['종료'] == false">경매 진행중</span>
-                                            <span class="badge badge-danger" v-if="auction['종료'] == true">경매 종료</span>
+                                            <span class="badge badge-success" v-if="auction['aucInfo_close'] == false">경매 진행중</span>
+                                            <span class="badge badge-danger" v-if="auction['aucInfo_close'] == true">경매 종료</span>
                                         </td>
                                     </tr>
                                 </table>
-                                <table class="table table-bordered mt-3" v-if="bidder.id">
+                                <table class="table table-bordered mt-3" v-if="bidder.mem_id">
                                     <tr>
                                         <th width="20%">현재 최고 입찰자</th>
-                                        <td>{{ bidder['이름'] }}({{ bidder['이메일'] }})</td>
+                                        <td>{{ bidder['mem_name'] }}({{ bidder['mem_mail'] }})</td>
                                     </tr>
                                     <tr>
                                         <th>현재 최고 입찰액</th>
-                                        <td>{{ auction['최고입찰액'] }} ETH</td>
+                                        <td>{{ auction['aucInfo_highest'] }} ETH</td>
                                     </tr>
                                 </table>
-                                <div class="alert alert-warning mt-3" role="alert" v-if="!bidder.id">
+                                <div class="alert alert-warning mt-3" role="alert" v-if="!bidder.mem_id">
                                     입찰 내역이 없습니다.
                                 </div>
-                                <div class="alert alert-danger mt-3" role="alert" v-if="auction['종료'] == true">
+                                <div class="alert alert-danger mt-3" role="alert" v-if="auction['aucInfo_close'] == true">
                                     경매가 종료되었습니다.
                                 </div>
                                 <div class="row mt-5">
                                     <div class="col-md-6">
                                         <router-link :to="{ name: 'auction' }" class="btn btn-sm btn-outline-secondary">경매 리스트로 돌아가기</router-link>
                                     </div>
-                                    <div class="col-md-6 text-right" v-if="sharedStates.user.id == work['회원id'] && auction['종료'] != true">
+                                    <div class="col-md-6 text-right" v-if="sharedStates.user.id == work['art_mem'] && auction['aucInfo_close'] != true">
                                         <button type="button" class="btn btn-sm btn-primary" v-on:click="closeAuction" v-bind:disabled="isCanceling || isClosing">{{ isClosing ? "낙찰중" : "낙찰하기" }}</button>
                                         <button type="button" class="btn btn-sm btn-danger" v-on:click="cancelAuction" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "취소하는 중" : "경매취소하기" }}</button>
                                     </div>
-                                    <div class="col-md-6 text-right" v-if="sharedStates.user.id != work['회원id'] && auction['종료'] != true">
+                                    <div class="col-md-6 text-right" v-if="sharedStates.user.id != work['art_mem'] && auction['aucInfo_close'] != true">
                                         <router-link :to="{ name: 'auction.bid', params: { id: this.$route.params.id } }" class="btn btn-sm btn-primary">입찰하기</router-link>
                                     </div>
                                 </div>
@@ -140,12 +140,13 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             });
 
             // 입찰자 조회
-            if(auction['최고입찰액'] > 0) {
-                var amount = Number(auction['최고입찰액']).toLocaleString().split(",").join("")
-                auction['최고입찰액'] = web3.utils.fromWei(amount, 'ether');
-                var bidderId = auction['최고입찰자id'];
+            if(auction['aucInfo_highest'] > 0) {
+                var amount = Number(auction['aucInfo_highest']).toLocaleString().split(",").join("")
+                auction['aucInfo_highest'] = web3.utils.fromWei(amount, 'ether');
+                var bidderId = auction['aucInfo_highestBider'];
 
                 userService.findById(bidderId, function(user){
+                    console.log("입찰자 조회", user)
                     scope.bidder = user;
                 });
             }

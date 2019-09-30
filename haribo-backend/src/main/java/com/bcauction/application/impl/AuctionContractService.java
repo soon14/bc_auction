@@ -28,6 +28,7 @@ import org.web3j.tx.gas.DefaultGasProvider;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -56,7 +57,7 @@ public class AuctionContractService implements IAuctionContractService {
 	private Credentials credentials;
 
 	@Autowired
-	private Web3j web3j;
+	private Web3j web3j = Web3j.build(new HttpService("http://13.124.65.11:8545"));
 
 	private IWalletRepository walletRepository;
 
@@ -69,27 +70,27 @@ public class AuctionContractService implements IAuctionContractService {
 	 * 이더리움 컨트랙트 주소를 이용하여 경매 정보를 조회한다.
 	 * 
 	 * @param 컨트랙트주소
-	 * @return AuctionInfo 
-	 * 1. web3j API를 이용하여 해당 컨트랙트주소의 스마트 컨트랙트를 로드(load)한다. 
-	 * 2. info의 highestBidder의 정보를 가지고 최고입찰자 회원의 id를 찾아 
-	 * 3. AuctionInfo의 인스턴스를  생성하여 반환한다.
+	 * @return AuctionInfo 1. web3j API를 이용하여 해당 컨트랙트주소의 스마트 컨트랙트를 로드(load)한다. 2.
+	 *         info의 highestBidder의 정보를 가지고 최고입찰자 회원의 id를 찾아 3. AuctionInfo의 인스턴스를
+	 *         생성하여 반환한다.
 	 */
 	@Override
 	public AuctionInfo 경매정보조회(final String 컨트랙트주소) {
 		// TODO
 		AuctionInfo auctionInfo = new AuctionInfo();
-		web3j = Web3j.build(new HttpService("http://13.124.65.11:8545"));
 		try {
-			log.info("Connected to Ethereum client version: " + web3j.web3ClientVersion().send().getWeb3ClientVersion());
+			log.info(
+					"Connected to Ethereum client version: " + web3j.web3ClientVersion().send().getWeb3ClientVersion());
 			credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
 			log.info("Credentials loaded");
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		log.info("parameter to address " + 컨트랙트주소);
-		
+
 		// smart contract factory load
-		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
+		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials,
+				contractGasProvider);
 		log.info("Auction contract factory loaded to address " + auctionFactoryContract.getContractAddress());
 		// smart contract load
 		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
@@ -100,9 +101,9 @@ public class AuctionContractService implements IAuctionContractService {
 		String contractAddr = null;
 		BigInteger auctionHighestBid = null;
 		String auctionHighestBidder = null;
-		
+
 		TransactionReceipt receipt = null;
-		
+
 		try {
 			auctionMinValue = auctionContract.minValue().send();
 			auctionDigitalWorkId = auctionContract.digitalWorkId().send();
@@ -112,21 +113,25 @@ public class AuctionContractService implements IAuctionContractService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("getTransactionReceipt "+auctionContract.getTransactionReceipt());
-		
+		log.info("getTransactionReceipt " + auctionContract.getTransactionReceipt());
+
 		auctionInfo.setAucInfo_min(auctionMinValue);
 		auctionInfo.setAucInfo_contract(contractAddr);
 		auctionInfo.setAucInfo_artId(auctionDigitalWorkId.longValue());
 		auctionInfo.setAucInfo_highest(auctionHighestBid);
-		log.info("minValue "+auctionMinValue);
-		log.info("Digital Work Id "+auctionDigitalWorkId);
-		log.info("Contract Address "+contractAddr);
-		log.info("Highest Bid "+auctionHighestBid);
-		log.info("Highest Bidder "+auctionHighestBidder);
-		
-		//auctionInfo.setAucInfo_close(aucInfo_close); // 종료
-		//auctionInfo.setAucInfo_highestBider(aucInfo_highestBider); // 최고입찰자id
-		
+
+		Wallet hightest = walletRepository.조회(auctionHighestBidder);
+		long highestBidder = hightest.getWallet_mem();
+		auctionInfo.setAucInfo_highestBider(highestBidder);
+		log.info("minValue " + auctionMinValue);
+		log.info("Digital Work Id " + auctionDigitalWorkId);
+		log.info("Contract Address " + contractAddr);
+		log.info("Highest Bid " + auctionHighestBid);
+		log.info("Highest Bidder " + highestBidder + " " + auctionHighestBidder);
+
+		// auctionInfo.setAucInfo_close(aucInfo_close); // 종료
+		// auctionInfo.setAucInfo_highestBider(aucInfo_highestBider); // 최고입찰자id
+
 		return auctionInfo;
 	}
 
@@ -139,7 +144,19 @@ public class AuctionContractService implements IAuctionContractService {
 	@Override
 	public BigInteger 현재최고가(final String 컨트랙트주소) {
 		// TODO
-		return BigInteger.ZERO;
+
+		// credentials init
+		credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
+
+		// smart contract load
+		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
+		BigInteger highestBid = null;
+		try {
+			highestBid = auctionContract.highestBid().send();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return highestBid;
 	}
 
 	/**
@@ -151,7 +168,19 @@ public class AuctionContractService implements IAuctionContractService {
 	@Override
 	public String 현재최고입찰자주소(final String 컨트랙트주소) {
 		// TODO
-		return null;
+
+		// credentials init
+		credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
+
+		// smart contract load
+		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
+		String highestBidder = null;
+		try {
+			highestBidder = auctionContract.highestBidder().send();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return highestBidder;
 	}
 
 	/**
@@ -162,6 +191,18 @@ public class AuctionContractService implements IAuctionContractService {
 	@Override
 	public List<String> 경매컨트랙트주소리스트() {
 		// TODO
-		return null;
+		List<String> auctionContractList = new ArrayList<String>();
+		// credentials init
+		
+		credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
+		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
+		
+		try {
+			auctionContractList.addAll(auctionFactoryContract.allAuctions().send());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		log.info("Auction Contract List ", auctionContractList);
+		return auctionContractList;
 	}
 }

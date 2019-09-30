@@ -71,6 +71,8 @@ public class AuctionController
 		}
 		경매정보.setAucInfo_start(auction.getAuction_start());
 		경매정보.setAucInfo_end(auction.getAuction_end());
+		
+		경매정보.setAucInfo_close(!auction.getAuction_status().equals("V"));
 
 		return 경매정보;
 	}
