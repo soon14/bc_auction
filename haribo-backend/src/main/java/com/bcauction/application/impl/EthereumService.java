@@ -186,8 +186,36 @@ public class EthereumService implements IEthereumService {
 	@Override
 	public Address 주소검색(String 주소) {
 		// TODO
-
-		return null;
+		Address res=new Address();
+		EthGetBalance ethGetBalance;
+		
+		try {
+			//Address객체 id, balance setting
+			res.setId(주소);
+			
+			ethGetBalance = web3j.ethGetBalance(주소, DefaultBlockParameterName.LATEST).sendAsync().get();
+			BigInteger wei = ethGetBalance.getBalance();
+			res.setBalance(wei);
+			
+			//txCount setting
+			List<Transaction> tmp=transactionRepository.조회By주소(주소);
+			res.setTxCount(BigInteger.valueOf(tmp.size()));
+			
+			//trans setting
+			List<EthereumTransaction> tx=new ArrayList<EthereumTransaction>();
+			for(Transaction q : tmp) {
+				EthereumTransaction mid=null;
+				long time=Timestamp.valueOf(q.getTrancation_savedate()).getTime();
+				BigInteger timestamp=BigInteger.valueOf((time/1000)-60*60*9);
+				mid=mid.convertTransaction(q,timestamp,true);
+				tx.add(mid);
+			}
+			res.setTrans(tx);
+		} catch (InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	/**

@@ -2,81 +2,71 @@ var explorerTxSearchView = Vue.component('ExplorerTxSearchView',{
     template : `
     <div>
         <v-nav></v-nav>
-        <v-breadcrumb title="Transaction Explorer" description="블록체인에서 생성된 거래내역을 보여줍니다."></v-breadcrumb>
+        <v-breadcrumb title="Search Address" description="블록체인 계정의 검색기능을 제공합니다."></v-breadcrumb>
         <div class="container">
             <explorer-nav/>
-            <input v-model="search_data" @keyup.enter="search(search_data)">
-            
-            <div class="row" v-if="isExist==false">
-                <div class="col-md-8 mx-auto">
-                    <div class="alert alert-warning">No Found Search Transation</div>
-                </div>
-            </div>
-            
-            <div class="row" v-else class="col-md-12">
-                <div class="card shadow-sm">
-                    <div class="card-header"><strong>{{ tx.hash }}</strong></div>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <th width="200">트랜잭션 해시</th>
-                                <td>{{ tx.hash }}</td>
+            <div class="w3-container">
+                <label class="w3-text-blue"><b>Input Address</b></label>
+                <input class="w3-input w3-border" v-model="search_data" @keyup.enter="search(search_data)"></br>
+                <div v-if="isExist==true" >
+                    <label class="w3-text-blue"><b>Total Balance : {{tx.balance}}</b></label></br>
+                    <label class="w3-text-blue"><b>Total TxCount : {{tx.txCount}}</b></label></br>
+
+                    <table class="w3-table-all">
+                        <thead>
+                            <tr class="w3-blue">
+                                <th width="25%">Txn Hash</th>
+                                <th width="10%">Block</th>
+                                <th width="30%">Time</th>
+                                <th width="30%">From</th>
+                                <th width="30%">To</th>
+                                <th width="10%">Value(Ether)</th>
                             </tr>
-                            <tr>
-                                <th>블록 넘버</th>
-                                <td>{{ tx.blockNumber }}</td>
-                            </tr>
-                            <tr>
-                                <th>날짜</th>
-                                <td>{{ tx.timestamp }}</td>
-                            </tr>
-                            <tr>
-                                <th>송신자 주소</th>
-                                <td><router-link :to="{ name: 'address', params: { address: tx.from }}">{{ tx.from }}</router-link></td>
-                            </tr>
-                            <tr>
-                                <th>수신자 주소</th>
-                                <td><router-link :to="{ name: 'address', params: { address: tx.to }}">{{ tx.to }}</router-link></td>
-                            </tr>
-                            <tr>
-                                <th>전송한 이더</th>
-                                <td>{{ tx.value }} Ether</td>
-                            </tr>
-                            <tr>
-                                <th>Gas</th>
-                                <td>{{ tx.gas }}</td>
-                            </tr>
-                            <tr>
-                                <th>Gas Price</th>
-                                <td>{{ tx.gasPrice }}</td>
-                            </tr>
-                            <tr>
-                                <th>Input Data</th>
-                                <td>
-                                    <textarea class="form-control" readonly>{{ tx.input }}</textarea>
-                                </td>
-                            </tr>
-                        </tbody>
+                        </thead>
+                        <tr v-for="item in tx.trans">
+                            <td style="color : blue"><router-link :to="{name: 'explorer.tx.detail', params: { hash: item.txHash }}" class="tx-number">{{ item.txHash | truncate(20) }}</router-link></td>
+                            <td>{{ item.blockId | truncate(15) }}</td>
+                            <td>{{ item.timestamp | truncate(15) }}</td>
+
+                            <td v-if="search_data.toLowerCase()!=item.from" style="color : red">{{ item.from | truncate(15) }}</td>
+                            <td v-else>{{ item.from | truncate(15) }}</td>
+                            <td v-if="search_data.toLowerCase()!=item.to" style="color : red">{{ item.to  | truncate(15) }}</td>
+                            <td v-else>{{ item.to | truncate(15) }}</td>
+
+                            <td>{{ item.amount | truncate(10) }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>
-        </div>
         </div>
     </div>
     `,
     data(){
         return {
-            search_data: "",
-            isExist: true, 
+            search_data: null,
+            isExist : false,
             tx: {
-                hash: "-",
-                timestamp: "-"
+                txCount : null,
+                balance : null,
+                trans : []
             }
         }
     },
     methods: {
-        searach : function(data){
-            alert(data)
+        search : function(data){
+            var scope=this
+            explorerService.call_tx_byAddress(data,function(res){
+                scope.tx.txCount=res.txCount
+                scope.tx.balance=res.balance/Math.pow(10,18)
+                scope.tx.trans=[]
+                for(var tmp in res.trans){
+                    console.log(res.trans[tmp].amount)
+                    res.trans[tmp].timestamp=explorerService.timeSince(res.trans[tmp].timestamp)
+                    // res.trans[tmp].amount=res.trans[tmp].amount/Math.pow(10,18)
+                    scope.tx.trans.unshift(res.trans[tmp])
+                }
+                scope.isExist=true;
+            })
         }
     }
 })

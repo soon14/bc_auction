@@ -50,4 +50,10 @@ var explorerService = {
             callback(data)
         });
     },
+    // 지갑 주소로 검색하여 주소와 관련된 트랜잭션 리스트 가져오기
+    call_tx_byAddress : function(address, callback){
+        $.get(API_BASE_URL + "/api/eth/address/"+address, function(data){
+            callback(data)
+        })
+    }
 }
