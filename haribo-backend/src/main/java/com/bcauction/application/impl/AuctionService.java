@@ -2,9 +2,11 @@ package com.bcauction.application.impl;
 
 import com.bcauction.application.IAuctionContractService;
 import com.bcauction.application.IAuctionService;
+import com.bcauction.application.IDigitalWorkService;
 import com.bcauction.application.IFabricService;
 import com.bcauction.domain.Auction;
 import com.bcauction.domain.Bid;
+import com.bcauction.domain.DigitalWork;
 import com.bcauction.domain.Ownership;
 import com.bcauction.domain.exception.ApplicationException;
 import com.bcauction.domain.exception.NotFoundException;
@@ -28,15 +30,19 @@ public class AuctionService implements IAuctionService
 	private IFabricService fabricService;
 	private IAuctionRepository auctionRepository;
 	private IBidRepository bidRepository;
+	private IDigitalWorkService digitalWorkService;
+	
 
 	@Autowired
 	public AuctionService(IAuctionContractService auctionContractService,
 						  IFabricService fabricService,
-							IAuctionRepository auctionRepository, IBidRepository bidRepository) {
+							IAuctionRepository auctionRepository, IBidRepository bidRepository,
+							IDigitalWorkService digitalWorkService) {
 		this.auctionContractService = auctionContractService;
 		this.fabricService = fabricService;
 		this.auctionRepository = auctionRepository;
 		this.bidRepository = bidRepository;
+		this.digitalWorkService = digitalWorkService;
 	}
 
 	@Override
@@ -64,7 +70,6 @@ public class AuctionService implements IAuctionService
 		if(auction.getAuction_min()  == null) return null;
 		
 
-//		auction.setAuction_makedate(LocalDateTime.now());
 		auction.setAuction_makedate(LocalDateTime.now().plusHours(9));
 		long id = this.auctionRepository.생성(auction);
 
@@ -103,7 +108,26 @@ public class AuctionService implements IAuctionService
 	public Auction 경매종료(final long 경매id, final long 회원id)
 	{
 		// TODO
-		return null;
+		//1. 해당 경매의 상태가 E(ended)로 바뀌고,
+		Auction targetAuction = this.auctionRepository.조회(경매id);
+		targetAuction.setAuction_status("E");
+		this.auctionRepository.수정(targetAuction);
+		
+		//2. 입찰 정보 중 최고 입찰 정보를 '낙찰'로 업데이트해야 한다.
+		// this.bidRepository.수정(경매id, 낙찰자id, 입찰최고가) 메서드 호출만하면 내부에서 알아서 issuccess 값을 변경해 줌.
+		BigInteger highest = this.auctionContractService.현재최고가(targetAuction.getAuction_contract());
+		this.bidRepository.수정(경매id, 회원id, highest);
+		
+		//3. 데이터베이스의 소유권정보를 업데이트 한다.
+		DigitalWork targetWork = this.digitalWorkService.조회(targetAuction.getAuction_makerid());
+		targetWork.setArt_mem(회원id);
+		this.digitalWorkService.작품정보수정(targetWork);
+		
+		//4. 패브릭 상에도 소유권 이전 정보가 추가되어야 한다.
+		
+		
+		//5. 업데이트 된 경매 정보를 반환한다.
+		return targetAuction;
 	}
 
 	/**
@@ -120,6 +144,15 @@ public class AuctionService implements IAuctionService
 	public Auction 경매취소(final long 경매id, final long 회원id)
 	{
 		// TODO
+		// 1. 해당 경매의 상태와(C,canceled) 종료일시를 업데이트 한다.
+		
+		
+		// 2. 입찰 정보 중 최고 입찰 정보를 '낙찰'로 업데이트해야 한다.
+		
+		
+		// 3. 업데이트 된 경매 정보를 반환한다.
+		
+		
 		return null;
 	}
 }

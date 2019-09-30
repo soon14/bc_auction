@@ -137,8 +137,29 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             var privateKey = window.prompt("경매를 취소하시려면 지갑 비밀키를 입력해주세요.","");
             
             // register.vue.js, bid.vue.js를 참조하여 완성해 봅니다.
+            walletService.findAddressById(this.sharedStates.user.id, function(walletAddress){
+                var options = {
+                    contractAddress: scope.auction['aucInfo_contract'],
+                    walletAddress: walletAddress,
+                    privateKey: privateKey,
+                    auctionId : scope.$route.params.id,
+                };
 
+                
+                auction_cancel(options, function(receipt){
 
+                    /**
+                     *  AuctionService.java : 경매취소(long art_id, long mem_id)
+                     */
+                    auctionService.cancel(scope.$route.params.id, receipt.bidder, 
+                        function(auction){
+
+                        }, 
+                        function(error){
+
+                        });
+                });
+            });
         }
     },
     mounted: async function(){

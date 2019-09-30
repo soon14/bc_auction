@@ -1,5 +1,18 @@
 package com.bcauction.api;
 
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.bcauction.application.IAuctionContractService;
 import com.bcauction.application.IAuctionService;
 import com.bcauction.domain.Auction;
@@ -8,15 +21,6 @@ import com.bcauction.domain.Bid;
 import com.bcauction.domain.exception.ApplicationException;
 import com.bcauction.domain.exception.EmptyListException;
 import com.bcauction.domain.exception.NotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-import javax.validation.Valid;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -65,6 +69,8 @@ public class AuctionController
 			logger.error("NOT FOUND AUCTION: ", id);
 			throw new NotFoundException(id + " 해당 경매를 찾을 수 없습니다.");
 		}
+		System.out.println(auction);
+
 		AuctionInfo 경매정보 = this.auctionContractService.경매정보조회(auction.getAuction_contract());
 		if(경매정보 == null){
 			throw new NotFoundException(id + " 해당 경매 컨트랙트를 찾을 수 없습니다.");
@@ -73,7 +79,7 @@ public class AuctionController
 		경매정보.setAucInfo_end(auction.getAuction_end());
 		
 		경매정보.setAucInfo_close(!auction.getAuction_status().equals("V"));
-
+		
 		return 경매정보;
 	}
 
