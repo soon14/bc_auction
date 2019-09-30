@@ -88,7 +88,8 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             sharedStates: store.state,
             bidder: {},
             isCanceling: false,
-            isClosing: false
+            isClosing: false,
+            wallet:{},
         }
     },
     methods: {
@@ -101,6 +102,31 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             var privateKey = window.prompt("경매를 종료하시려면 지갑 비밀키를 입력해주세요.","");
             
             // register.vue.js, bid.vue.js를 참조하여 완성해 봅니다. 
+            walletService.findAddressById(this.sharedStates.user.id, function(walletAddress){
+                var options = {
+                    contractAddress: scope.auction['aucInfo_contract'],
+                    walletAddress: walletAddress,
+                    privateKey: privateKey,
+                    auctionId : scope.$route.params.id,
+                };
+
+                
+                auction_close(options, function(receipt){
+
+                    /**
+                     *  AuctionService.java : 경매종료(final long 경매id, final long 회원id)
+                     */
+                    auctionService.close(scope.$route.params.id, receipt.bidder, 
+                        function(auction){
+
+                        }, 
+                        function(error){
+
+                        });
+                });
+            });
+
+            
         },
         cancelAuction: function(){
             /**
@@ -110,7 +136,9 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             var scope = this;
             var privateKey = window.prompt("경매를 취소하시려면 지갑 비밀키를 입력해주세요.","");
             
-            // register.vue.js, bid.vue.js를 참조하여 완성해 봅니다. 
+            // register.vue.js, bid.vue.js를 참조하여 완성해 봅니다.
+
+
         }
     },
     mounted: async function(){
@@ -128,7 +156,7 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
 
             // 작품 정보 조회
             workService.findById(workId, function(work){
-                console.log("작품 정보 조회 DigitalWork", work)
+                console.log("작품 정보 조회 DigitalWork", work);
                 scope.work = work;
                 var creatorId = work['art_mem'];
 
