@@ -18,7 +18,7 @@ var auctionBidView = Vue.component('AuctionBidView', {
                             </div>
                             <div class="form-group">
                                 <label id="privateKey"><b>내 지갑 잔액</b></label><br>
-                                {{ wallet['잔액'] }} ETH
+                                {{ wallet['wallet_money'] }} ETH
                             </div>
                             <div class="form-group">
                                 <label id="privateKey"><b>지갑 개인키</b></label>
@@ -33,7 +33,7 @@ var auctionBidView = Vue.component('AuctionBidView', {
                                     </div>
                                 </div><br>
                                 <div class="alert alert-warning" role="alert">
-                                    최소 입찰 금액은 {{ auction['최소금액'] }} ETH 입니다.
+                                    최소 입찰 금액은 {{ auction['aucInfo_min'] }} ETH 입니다.
                                 </div>
                             </div>
                             <div class="row">
@@ -72,21 +72,25 @@ var auctionBidView = Vue.component('AuctionBidView', {
              * 컨트랙트를 호출하여 입찰하고
              * 입찰 정보 등록 API를 호출합니다. 
              */
+            
             var scope = this;
+            // console.log('[bid.vue.js : mounted ] ::this.wallet', this.wallet);
 
             var options = {
                 amount: this.input.price,
-                contractAddress: this.auction['경매컨트랙트주소'],
-                walletAddress: this.wallet['주소'],
-                privateKey: this.input.privateKey
+                contractAddress: this.auction['aucInfo_contract'],
+                walletAddress: this.wallet['wallet_addr'],
+                privateKey: this.input.privateKey,
+                auctionId : this.$route.params.id,
             };
-            console.log(options);
-            this.bidding = true;
+            // this.bidding = true;
 
             // 컨트랙트 bid 함수를 호출합니다.
             // components/auctionFactory.js의 auction_bid 함수를 호출합니다.
             // TODO auction_bid 함수의 내용을 완성합니다.             
             auction_bid(options, function(receipt){
+                console.log('[bid.vue.js : auction_bid ] callback : ', receipt);
+                
                 var bidder = scope.sharedStates.user.id;
                 var auctionId = scope.$route.params.id;
                 
@@ -100,14 +104,24 @@ var auctionBidView = Vue.component('AuctionBidView', {
         }
     },
     mounted: function(){
+        // console.log('this.$route.params.id', this.$route.params.id);
+
         var scope = this;
         var auctionId = this.$route.params.id;
-
+        console.log('auctionId', auctionId);
+        
         auctionService.findById(auctionId, function(auction){
-            auction['최소금액'] = Number(auction['최소금액']) / (10**18);
-            scope.auction = auction;
-            var workId = auction['작품id'];
+            // console.log('auction', auction);
+            
+            
+            // auction['aucInfo_min'] = Number(auction['aucInfo_min']) / (10**18);
 
+            scope.auction = auction;
+            var workId = auction['aucInfo_artId'];
+            // console.log('[bid.vue.js : mounted ] ::workId', workId);
+            // console.log('[bid.vue.js : mounted ] ::scope.auction', scope.auction);
+            
+            
             workService.findById(workId, function(work){
                 scope.work = work;
             });
@@ -115,7 +129,8 @@ var auctionBidView = Vue.component('AuctionBidView', {
 
         // 내 지갑 정보 조회
         walletService.findById(scope.sharedStates.user.id, function(wallet){
-            wallet['잔액'] = Number(wallet['잔액']) / (10 ** 18);
+            console.log('[bid.vue.js : mounted ] :: wallet', wallet);
+            // wallet['wallet_money'] = Number(wallet['wallet_money']) * (10 ** 18);
             scope.wallet = wallet;
         });
     }

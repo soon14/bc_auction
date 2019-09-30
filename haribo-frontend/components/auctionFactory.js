@@ -12,7 +12,6 @@ function createFactoryContract(web3){
 
 // Auction Object 컨트랙트 생성
 function createAuctionContract(web3, contractAddress){
-    console.log("컨트랙트 객체 생성 함수 호출 중 컨트랙트 주소 ", contractAddress)
     var auctionContract = new web3.eth.Contract(AUCTION_CONTRACT_ABI, contractAddress);
     return auctionContract;
 }
@@ -82,7 +81,38 @@ function createAuction(options, walletAddress, privateKey, onConfirm){
  * 경매 컨트랙트 주소: options.contractAddress
  *  */ 
 function auction_bid(options, onConfirm){
+    console.log('[auctionFactory.js : auction_bid] options', options);
+    var web3 = createWeb3();
+    var contract = createAuctionContract(web3, options.contractAddress);
     
+    var createBidCall = contract.methods.bid();
+    var encodedABI = createBidCall.encodeABI();
+
+    var tx = {
+        from: options.walletAddress,
+        to: options.contractAddress,
+        gas: 2000000,
+        value : options.amount,
+        data: encodedABI
+    }
+
+    // console.log('[auctionFactory.js : tx', tx);
+    
+    
+    // 트랜잭션 보내는 함수
+    const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
+        web3.eth.sendSignedTransaction(res.rawTransaction)
+        .then(receipt=>{
+            console.log('[auctionFactory.js : auction_bid] receipt', receipt);
+            onConfirm(receipt);
+            // var highestBidCall = contract.methods.highestBid().call().then(ress=>{
+            //     highestBidCall = ress;
+            //     console.log('[auctionFactory.js : auction_bid] highestBidCall', highestBidCall);
+            // });
+
+        });        
+    });
+
 }
 
 /**
