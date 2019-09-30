@@ -96,19 +96,35 @@ public class AuctionContractService implements IAuctionContractService {
 		log.info("Smart contract loaded to address " + auctionContract.getContractAddress());
 
 		BigInteger auctionMinValue = null;
+		BigInteger auctionDigitalWorkId = null;
+		String contractAddr = null;
+		BigInteger auctionHighestBid = null;
+		String auctionHighestBidder = null;
+		
 		TransactionReceipt receipt = null;
+		
 		try {
 			auctionMinValue = auctionContract.minValue().send();
+			auctionDigitalWorkId = auctionContract.digitalWorkId().send();
+			contractAddr = auctionContract.getContractAddress();
+			auctionHighestBid = auctionContract.highestBid().send();
+			auctionHighestBidder = auctionContract.highestBidder().send();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		log.info("getTransactionReceipt "+auctionContract.getTransactionReceipt());
 		
-		
 		auctionInfo.setAucInfo_min(auctionMinValue);
+		auctionInfo.setAucInfo_contract(contractAddr);
+		auctionInfo.setAucInfo_artId(auctionDigitalWorkId.longValue());
+		auctionInfo.setAucInfo_highest(auctionHighestBid);
 		log.info("minValue "+auctionMinValue);
+		log.info("Digital Work Id "+auctionDigitalWorkId);
+		log.info("Contract Address "+contractAddr);
+		log.info("Highest Bid "+auctionHighestBid);
+		log.info("Highest Bidder "+auctionHighestBidder);
+		
 		//auctionInfo.setAucInfo_close(aucInfo_close); // 종료
-		//auctionInfo.setAucInfo_highest(aucInfo_highest); // 최고 입찰액
 		//auctionInfo.setAucInfo_highestBider(aucInfo_highestBider); // 최고입찰자id
 		
 		return auctionInfo;

@@ -126,7 +126,7 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
                 // TODO createAuction 함수의 내용을 완성합니다. 
                 createAuction({
                     workId: scope.before.selectedWork,
-                    minValue: scope.before.input.minPrice,
+                    minValue: web3.utils.toWei(scope.before.input.minPrice, 'ether'),
                     startTime: new Date(scope.before.input.startDate).getTime(),
                     endTime: new Date(scope.before.input.untilDate).getTime()
                 }, walletAddress, scope.before.input.privateKey, function(log){
