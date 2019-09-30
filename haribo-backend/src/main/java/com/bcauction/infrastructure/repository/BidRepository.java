@@ -89,7 +89,7 @@ public class BidRepository implements IBidRepository
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
 			paramMap.put("bid_mem", bid.getBid_mem());
-			paramMap.put("bid_auction",  bid.getBid_id());
+			paramMap.put("bid_auction",  bid.getBid_auction());
 			paramMap.put("bid_date", bid.getBid_date());
 			paramMap.put("bid_price", bid.getBid_price());
 			paramMap.put("bid_issuccess", bid.getBid_issuccess());
