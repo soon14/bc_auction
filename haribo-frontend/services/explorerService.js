@@ -55,5 +55,15 @@ var explorerService = {
         $.get(API_BASE_URL + "/api/eth/address/"+address, function(data){
             callback(data)
         })
-    }
+    },
+    // 전체 경매 목록 불러오기
+    call_auction_list : function(callback){
+        $.get({
+            url : API_BASE_URL + "/api/eth/auctions/",
+            success : callback,
+            error : function(error) {
+                console.log("error", error)
+            }
+        });
+    },
 }

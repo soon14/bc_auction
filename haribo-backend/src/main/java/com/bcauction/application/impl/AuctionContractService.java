@@ -28,8 +28,11 @@ import org.web3j.tx.gas.DefaultGasProvider;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.Callable;
 
 /**
@@ -78,29 +81,25 @@ public class AuctionContractService implements IAuctionContractService {
 	public AuctionInfo 경매정보조회(final String 컨트랙트주소) {
 		// TODO
 		AuctionInfo auctionInfo = new AuctionInfo();
-		try {
-			log.info(
-					"Connected to Ethereum client version: " + web3j.web3ClientVersion().send().getWeb3ClientVersion());
-			credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
-			log.info("Credentials loaded");
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		log.info("parameter to address " + 컨트랙트주소);
+		credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
+
+//		log.info("parameter to address " + 컨트랙트주소);
 
 		// smart contract factory load
 		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials,
 				contractGasProvider);
-		log.info("Auction contract factory loaded to address " + auctionFactoryContract.getContractAddress());
+//		log.info("Auction contract factory loaded to address " + auctionFactoryContract.getContractAddress());
 		// smart contract load
 		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
-		log.info("Smart contract loaded to address " + auctionContract.getContractAddress());
+//		log.info("Smart contract loaded to address " + auctionContract.getContractAddress());
 
 		BigInteger auctionMinValue = null;
 		BigInteger auctionDigitalWorkId = null;
 		String contractAddr = null;
 		BigInteger auctionHighestBid = null;
 		String auctionHighestBidder = null;
+		BigInteger auctionStart = null;
+		BigInteger auctionEnd = null;
 
 		TransactionReceipt receipt = null;
 
@@ -110,27 +109,31 @@ public class AuctionContractService implements IAuctionContractService {
 			contractAddr = auctionContract.getContractAddress();
 			auctionHighestBid = auctionContract.highestBid().send();
 			auctionHighestBidder = auctionContract.highestBidder().send();
+			auctionStart = auctionContract.auctionStartTime().send();
+			auctionEnd = auctionContract.auctionEndTime().send();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("getTransactionReceipt " + auctionContract.getTransactionReceipt());
+//		log.info("getTransactionReceipt " + auctionContract.getTransactionReceipt());
 
 		auctionInfo.setAucInfo_min(auctionMinValue);
 		auctionInfo.setAucInfo_contract(contractAddr);
 		auctionInfo.setAucInfo_artId(auctionDigitalWorkId.longValue());
 		auctionInfo.setAucInfo_highest(auctionHighestBid);
-
+		Long auctionStartDate = auctionStart.longValue();
+		auctionInfo.setAucInfo_start(LocalDateTime.ofInstant(Instant.ofEpochMilli(auctionStartDate), TimeZone.getDefault().toZoneId()));
+		Long auctionEndDate = auctionEnd.longValue();
+		auctionInfo.setAucInfo_end(LocalDateTime.ofInstant(Instant.ofEpochMilli(auctionEndDate), TimeZone.getDefault().toZoneId()));
 		Wallet hightest = walletRepository.조회(auctionHighestBidder);
-		long highestBidder = hightest.getWallet_mem();
-		auctionInfo.setAucInfo_highestBider(highestBidder);
-		log.info("minValue " + auctionMinValue);
-		log.info("Digital Work Id " + auctionDigitalWorkId);
-		log.info("Contract Address " + contractAddr);
-		log.info("Highest Bid " + auctionHighestBid);
-		log.info("Highest Bidder " + highestBidder + " " + auctionHighestBidder);
-
-		// auctionInfo.setAucInfo_close(aucInfo_close); // 종료
-		// auctionInfo.setAucInfo_highestBider(aucInfo_highestBider); // 최고입찰자id
+		if (hightest != null) {
+			long highestBidder = hightest.getWallet_mem();
+			auctionInfo.setAucInfo_highestBider(highestBidder);
+//			log.info("Highest Bidder " + highestBidder + " " + auctionHighestBidder);
+		}
+//		log.info("minValue " + auctionMinValue);
+//		log.info("Digital Work Id " + auctionDigitalWorkId);
+//		log.info("Contract Address " + contractAddr);
+//		log.info("Highest Bid " + auctionHighestBid);
 
 		return auctionInfo;
 	}
@@ -198,11 +201,10 @@ public class AuctionContractService implements IAuctionContractService {
 		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
 		
 		try {
-			auctionContractList.addAll(auctionFactoryContract.allAuctions().send());
+			auctionContractList = auctionFactoryContract.allAuctions().send();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("Auction Contract List ", auctionContractList);
 		return auctionContractList;
 	}
 }
