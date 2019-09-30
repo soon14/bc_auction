@@ -145,14 +145,15 @@ public class AuctionService implements IAuctionService
 	{
 		// TODO
 		// 1. 해당 경매의 상태와(C,canceled) 종료일시를 업데이트 한다.
-		
+		Auction targetAuction = this.auctionRepository.조회(경매id);
+		targetAuction.setAuction_status("C");
+		targetAuction.setAuction_end(LocalDateTime.now());
+		this.auctionRepository.수정(targetAuction);
 		
 		// 2. 입찰 정보 중 최고 입찰 정보를 '낙찰'로 업데이트해야 한다.
 		
 		
 		// 3. 업데이트 된 경매 정보를 반환한다.
-		
-		
-		return null;
+		return targetAuction;
 	}
 }

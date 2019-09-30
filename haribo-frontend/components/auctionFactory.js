@@ -173,7 +173,10 @@ function auction_cancel(options, onConfirm){
     const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
         web3.eth.sendSignedTransaction(res.rawTransaction)
         .then(receipt=>{
+            contract.methods.highestBidder().call().then(bidder=>{
+                receipt.bidder = bidder;
                 onConfirm(receipt);
+            });
         });
     });
 }

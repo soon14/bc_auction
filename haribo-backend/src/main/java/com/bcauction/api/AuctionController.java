@@ -79,7 +79,7 @@ public class AuctionController
 		경매정보.setAucInfo_end(auction.getAuction_end());
 		
 		경매정보.setAucInfo_close(!auction.getAuction_status().equals("V"));
-		
+		System.out.println(경매정보);
 		return 경매정보;
 	}
 
