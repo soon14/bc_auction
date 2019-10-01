@@ -116,13 +116,16 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                     /**
                      *  AuctionService.java : 경매종료(final long 경매id, final long 회원id)
                      */
-                    auctionService.close(scope.$route.params.id, receipt.bidder, 
-                        function(auction){
-
-                        }, 
-                        function(error){
-
-                        });
+                    walletService.findWalletByaddr(receipt.bidder, function(wallet){
+                        auctionService.close(scope.$route.params.id, wallet['wallet_mem'], 
+                            function(auction){
+                                console.log("[detail.vue.js : closeAuction ] return auction" , auction);
+                            }, 
+                            function(error){
+    
+                            });
+                    });
+                    
                 });
             });
 
@@ -145,9 +148,10 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                     privateKey: privateKey,
                     auctionId : scope.$route.params.id,
                 };
-
+                console.log("[detail.vue.js cancelAuction : this.sharedStates.user.id]", scope.sharedStates.user.id);
+                
                 auction_cancel(options, function(receipt){
-                    auctionService.cancel(scope.$route.params.id, receipt.bidder, 
+                    auctionService.cancel(scope.$route.params.id, scope.sharedStates.user.id, 
                         function(auction){
                             console.log(auction);
                         }, 

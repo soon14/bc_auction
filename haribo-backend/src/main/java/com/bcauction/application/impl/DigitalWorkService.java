@@ -86,6 +86,8 @@ public class DigitalWorkService implements IDigitalWorkService
 	@Override
 	public DigitalWork 작품정보수정(final DigitalWork 작품) {
 		DigitalWork workStored = this.digitalWorkRepository.조회(작품.getArt_id());
+		System.out.println("workStored : " + workStored);
+		System.out.println("작품 : " + 작품);
 		
 		if (workStored == null)
 			throw new ApplicationException("해당 작품을 찾을 수 없습니다.");
@@ -103,11 +105,20 @@ public class DigitalWorkService implements IDigitalWorkService
 			작품.setArt_status(workStored.getArt_status());
 		if(작품.getArt_mem() == 0)
 			작품.setArt_mem(workStored.getArt_mem());
-
+		
+		System.out.println("before 수정(작품)");
 		int affected = this.digitalWorkRepository.수정(작품);
 		if(affected == 0)
 			throw new ApplicationException("작품정보수정 처리가 반영되지 않았습니다.");
+		System.out.println("after 수정(작품)");
 
+		return 작품;
+	}
+
+	@Override
+	public DigitalWork 작품소유권수정(DigitalWork 작품) {
+		// TODO Auto-generated method stub
+		this.digitalWorkRepository.수정(작품);
 		return 작품;
 	}
 

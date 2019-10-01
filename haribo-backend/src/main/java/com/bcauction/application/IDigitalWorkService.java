@@ -16,6 +16,9 @@ public interface IDigitalWorkService
 
 	@Transactional
 	DigitalWork 작품정보수정(DigitalWork 작품);
+	
+	@Transactional
+	DigitalWork 작품소유권수정(DigitalWork 작품);
 
 	@Transactional
 	DigitalWork 작품삭제(long id);
