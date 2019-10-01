@@ -58,6 +58,7 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
@@ -113,6 +114,7 @@ public class DigitalWorkRepository implements IDigitalWorkRepository
 										art.getArt_id()
 			                                });
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}

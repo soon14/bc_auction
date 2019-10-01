@@ -69,7 +69,6 @@ public class AuctionController
 			logger.error("NOT FOUND AUCTION: ", id);
 			throw new NotFoundException(id + " 해당 경매를 찾을 수 없습니다.");
 		}
-		System.out.println(auction);
 
 		AuctionInfo 경매정보 = this.auctionContractService.경매정보조회(auction.getAuction_contract());
 		if(경매정보 == null){
@@ -79,7 +78,6 @@ public class AuctionController
 		경매정보.setAucInfo_end(auction.getAuction_end());
 		
 		경매정보.setAucInfo_close(!auction.getAuction_status().equals("V"));
-		System.out.println(경매정보);
 		return 경매정보;
 	}
 
