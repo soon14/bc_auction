@@ -125,6 +125,7 @@ public class AuctionContractService implements IAuctionContractService {
 		Long auctionEndDate = auctionEnd.longValue();
 		auctionInfo.setAucInfo_end(LocalDateTime.ofInstant(Instant.ofEpochMilli(auctionEndDate), TimeZone.getDefault().toZoneId()));
 		Wallet hightest = walletRepository.조회(auctionHighestBidder);
+		
 		if (hightest != null) {
 			long highestBidder = hightest.getWallet_mem();
 			auctionInfo.setAucInfo_highestBider(highestBidder);
