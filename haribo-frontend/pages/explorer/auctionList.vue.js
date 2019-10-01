@@ -21,8 +21,8 @@ var explorerAuctionView = Vue.component('ExplorerView', {
                             <tr v-for="(item, index) in items">
                                 <td><router-link :to="{ name: 'explorer.auction.detail', params: { contractAddress: item.aucInfo_contract } }">{{ item.aucInfo_artId | truncate(15) }}</router-link></td>
                                 <td>
-                                    <span class="badge badge-primary" v-if="items[index] && !items[index].aucInfo_end">Processing</span>
-                                    <span class="badge badge-danger" v-if="items[index] && items[index].aucInfo_end">Ended</span>
+                                    <span class="badge badge-primary" v-if="items[index] && !items[index].aucInfo_close">Processing</span>
+                                    <span class="badge badge-danger" v-if="items[index] && items[index].aucInfo_close">Ended</span>
                                 </td>
                                 <td>{{ items[index] && items[index].aucInfo_highest }} ETH</td>
                                 <td>

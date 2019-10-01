@@ -83,15 +83,11 @@ public class AuctionContractService implements IAuctionContractService {
 		AuctionInfo auctionInfo = new AuctionInfo();
 		credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
 
-//		log.info("parameter to address " + 컨트랙트주소);
+		log.info("parameter to address " + 컨트랙트주소);
 
-		// smart contract factory load
-		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials,
-				contractGasProvider);
-//		log.info("Auction contract factory loaded to address " + auctionFactoryContract.getContractAddress());
 		// smart contract load
 		auctionContract = AuctionContract.load(컨트랙트주소, web3j, credentials, contractGasProvider);
-//		log.info("Smart contract loaded to address " + auctionContract.getContractAddress());
+		log.info("Smart contract loaded to address " + auctionContract.getContractAddress());
 
 		BigInteger auctionMinValue = null;
 		BigInteger auctionDigitalWorkId = null;
@@ -100,6 +96,7 @@ public class AuctionContractService implements IAuctionContractService {
 		String auctionHighestBidder = null;
 		BigInteger auctionStart = null;
 		BigInteger auctionEnd = null;
+		Boolean auctionStatus = null;
 
 		TransactionReceipt receipt = null;
 
@@ -111,10 +108,10 @@ public class AuctionContractService implements IAuctionContractService {
 			auctionHighestBidder = auctionContract.highestBidder().send();
 			auctionStart = auctionContract.auctionStartTime().send();
 			auctionEnd = auctionContract.auctionEndTime().send();
+			auctionStatus = auctionContract.ended().send();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		log.info("getTransactionReceipt " + auctionContract.getTransactionReceipt());
 
 		auctionInfo.setAucInfo_min(auctionMinValue);
 		auctionInfo.setAucInfo_contract(contractAddr);
@@ -125,6 +122,7 @@ public class AuctionContractService implements IAuctionContractService {
 		Long auctionEndDate = auctionEnd.longValue();
 		auctionInfo.setAucInfo_end(LocalDateTime.ofInstant(Instant.ofEpochMilli(auctionEndDate), TimeZone.getDefault().toZoneId()));
 		Wallet hightest = walletRepository.조회(auctionHighestBidder);
+		auctionInfo.setAucInfo_close(auctionStatus);
 		
 		if (hightest != null) {
 			long highestBidder = hightest.getWallet_mem();
@@ -199,7 +197,7 @@ public class AuctionContractService implements IAuctionContractService {
 		// credentials init
 		
 		credentials = CommonUtil.getCredential(WALLET_RESOURCE, PASSWORD);
-		auctionFactoryContract = auctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
+		auctionFactoryContract = AuctionFactoryContract.load(AUCTION_FACTORY_CONTRACT, web3j, credentials, contractGasProvider);
 		
 		try {
 			auctionContractList = auctionFactoryContract.allAuctions().send();
