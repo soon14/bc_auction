@@ -12,6 +12,16 @@ public class AuctionInfo {
 	private LocalDateTime aucInfo_end; 		// 경매종료시간
 	private BigInteger aucInfo_min; 		// 최소금액
 	private boolean aucInfo_close; 			// 종료
+	
+	
+
+	@Override
+	public String toString() {
+		return "AuctionInfo [aucInfo_contract=" + aucInfo_contract + ", aucInfo_highest=" + aucInfo_highest
+				+ ", aucInfo_artId=" + aucInfo_artId + ", aucInfo_highestBider=" + aucInfo_highestBider
+				+ ", aucInfo_start=" + aucInfo_start + ", aucInfo_end=" + aucInfo_end + ", aucInfo_min=" + aucInfo_min
+				+ ", aucInfo_close=" + aucInfo_close + "]";
+	}
 
 	public String getAucInfo_contract() {
 		return aucInfo_contract;

@@ -135,10 +135,27 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
              */
             var scope = this;
             var privateKey = window.prompt("경매를 취소하시려면 지갑 비밀키를 입력해주세요.","");
+            console.log('privateKey', privateKey);
             
             // register.vue.js, bid.vue.js를 참조하여 완성해 봅니다.
+            walletService.findAddressById(this.sharedStates.user.id, function(walletAddress){
+                var options = {
+                    contractAddress: scope.auction['aucInfo_contract'],
+                    walletAddress: walletAddress,
+                    privateKey: privateKey,
+                    auctionId : scope.$route.params.id,
+                };
 
+                auction_cancel(options, function(receipt){
+                    auctionService.cancel(scope.$route.params.id, receipt.bidder, 
+                        function(auction){
+                            console.log(auction);
+                        }, 
+                        function(error){
 
+                        });
+                });
+            });
         }
     },
     mounted: async function(){
@@ -151,6 +168,7 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             console.log("경매 정보 조회 AuctionInfo ", auction)
             var amount = Number(auction['aucInfo_min']).toLocaleString().split(",").join("")
             auction['aucInfo_min'] = web3.utils.fromWei(amount, 'ether');
+            
 
             var workId = auction['aucInfo_artId'];
 

@@ -110,8 +110,6 @@ contract Auction {
         }
         highestBidder = msg.sender;
         highestBid = msg.value;
-            
- 
   }
   //**
   // * @dev 환불을 위한 함수입니다. 
@@ -156,8 +154,6 @@ contract Auction {
     
     ended = true;
     pendingReturns[highestBidder] += highestBid;
-    
-    
   }
   /**
    * @dev 이와 같이 추가 함수를 구현해보아도 좋습니다.  

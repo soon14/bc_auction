@@ -135,12 +135,7 @@ function auction_close(options, onConfirm){
         gas: 2000000,
         data: encodedABI
     }
-
-    console.log("[auctionFactory.js : auction_close] options", options );
-    console.log("[auctionFactory.js : auction_close] tx", tx );
-
     
-
     // 트랜잭션 보내는 함수
     const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
         web3.eth.sendSignedTransaction(res.rawTransaction)
@@ -160,5 +155,28 @@ function auction_close(options, onConfirm){
  * 경매 컨트랙트 주소: options.contractAddress
  *  */ 
 function auction_cancel(options, onConfirm){
+    var web3 = createWeb3();
+    var contract = createAuctionContract(web3, options.contractAddress);
+    console.log("[auctionFactory.js : auction_close] contract", contract );
     
+    var createBidCall = contract.methods.cancelAuction();
+    var encodedABI = createBidCall.encodeABI();
+
+    var tx = {
+        from: options.walletAddress,
+        to: options.contractAddress,
+        gas: 2000000,
+        data: encodedABI
+    }
+    
+    // 트랜잭션 보내는 함수
+    const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
+        web3.eth.sendSignedTransaction(res.rawTransaction)
+        .then(receipt=>{
+            contract.methods.highestBidder().call().then(bidder=>{
+                receipt.bidder = bidder;
+                onConfirm(receipt);
+            });
+        });
+    });
 }
