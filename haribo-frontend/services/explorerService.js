@@ -66,4 +66,14 @@ var explorerService = {
             }
         });
     },
+    // 경매 컨트랙트로부터 경매 정보를 가져오기
+    call_auction_byContract : function(contract, callback) {
+        $.get({
+            url : API_BASE_URL + "/api/eth/auctions/"+contract,
+            success : callback,
+            error : function(error) {
+                console.log("error", error)
+            }
+        }); 
+    }
 }
