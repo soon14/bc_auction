@@ -126,13 +126,15 @@ public class BidRepository implements IBidRepository
 
 	@Override
 	public int 수정(final long 경매id, final long 낙찰자id, final BigInteger 입찰최고가) {
+		System.out.println(경매id + " " + 낙찰자id + " " + 입찰최고가);
 		StringBuilder sbSql =  new StringBuilder("UPDATE bid ");
 		sbSql.append("SET bid_issuccess=? ");
-		sbSql.append("WHERE bid_auction=? AND bid_mem=? AND bid_date=?");
+		sbSql.append("WHERE bid_auction=? AND bid_mem=? AND bid_price=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 								new Object[] { "Y", 경매id, 낙찰자id, 입찰최고가 });
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
@@ -146,6 +148,8 @@ public class BidRepository implements IBidRepository
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
+	
+	
 
 
 }
