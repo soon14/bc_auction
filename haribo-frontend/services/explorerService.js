@@ -52,8 +52,12 @@ var explorerService = {
     },
     // 지갑 주소로 검색하여 주소와 관련된 트랜잭션 리스트 가져오기
     call_tx_byAddress : function(address, callback){
-        $.get(API_BASE_URL + "/api/eth/address/"+address, function(data){
-            callback(data)
+        $.get({
+            url :API_BASE_URL + "/api/eth/address/"+address, 
+            success : callback,
+            error : function(error){
+                alert("데이터를 조회할 수 없습니다.")
+            }
         })
     },
     // 전체 경매 목록 불러오기
@@ -77,3 +81,4 @@ var explorerService = {
         }); 
     }
 }
+
