@@ -7,11 +7,14 @@ import com.bcauction.application.IFabricService;
 import com.bcauction.domain.Auction;
 import com.bcauction.domain.Bid;
 import com.bcauction.domain.DigitalWork;
+import com.bcauction.domain.FabricAsset;
 import com.bcauction.domain.Ownership;
 import com.bcauction.domain.exception.ApplicationException;
 import com.bcauction.domain.exception.NotFoundException;
 import com.bcauction.domain.repository.IAuctionRepository;
 import com.bcauction.domain.repository.IBidRepository;
+import com.bcauction.infrastructure.repository.factory.OwnershipFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,31 +108,32 @@ public class AuctionService implements IAuctionService
 	 * 5. 업데이트 된 경매 정보를 반환한다.
 	 * */
 	@Override
-	public Auction 경매종료(final long 경매id, final long 회원id)
-	{
+	public Auction 경매종료(final long 경매id, final long 회원id) {
 		// TODO
 		//1. 해당 경매의 상태가 E(ended)로 바뀌고,
 		Auction targetAuction = this.auctionRepository.조회(경매id);
 		targetAuction.setAuction_status("E");
-		System.out.println("경매종료 테스트 "+targetAuction);
+		logger.info("종료된 경매 " + targetAuction);
 		this.auctionRepository.수정(targetAuction);
 		
 		//2. 입찰 정보 중 최고 입 찰 정보를 '낙찰'로 업데이트해야 한다.
 		// this.bidRepository.수정(경매id, 낙찰자id, 입찰최고가) 메서드 호출만하면 내부에서 알아서 issuccess 값을 변경해 줌.
 		BigInteger highest = this.auctionContractService.현재최고가(targetAuction.getAuction_contract());
 		int result = this.bidRepository.수정(경매id, 회원id, highest);
-		System.out.println(result);
+		logger.info("bidRepository.수정 " + result);
 		
 		//3. 데이터베이스의 소유권정보를 업데이트 한다.
-		DigitalWork targetWork = this.digitalWorkService.조회(targetAuction.getAuction_goodsid());
-		targetWork.setArt_id(targetAuction.getAuction_goodsid());
-		targetWork.setArt_mem(회원id);
-		System.out.println("before 작품정보수정");
-		this.digitalWorkService.작품소유권수정(targetWork);
-		System.out.println("after 작품정보수정");
-		
 		//4. 패브릭 상에도 소유권 이전 정보가 추가되어야 한다.
-		
+		// fabricService.소유권이전 메서드에서 이전 소유권 소멸과 새로운 소유권 수정이 같이 이루어짐
+		DigitalWork targetWork = this.digitalWorkService.조회(targetAuction.getAuction_goodsid());
+		long targetWork_art_id = targetWork.getArt_id();
+		// 작품이 최근 소유권을 조회해서 소유권자 검색
+		List<FabricAsset> targetWorkHistory = this.fabricService.작품이력조회(targetWork_art_id);
+		int last = targetWorkHistory.size() - 1;
+		String previousId = targetWorkHistory.get(last).getOwner();
+		long previousOwner = Long.parseLong(previousId);
+		// 최근 소유권자에서 최고 입찰자에게로 소유권 이전 (from : 최근 소유권자, to : 최고입찰자, 작품 : work(art))
+		Ownership newOwner = this.fabricService.소유권이전(previousOwner, 회원id, targetWork_art_id);
 		
 		//5. 업데이트 된 경매 정보를 반환한다.
 		return targetAuction;
@@ -153,7 +157,6 @@ public class AuctionService implements IAuctionService
 		targetAuction.setAuction_status("C");
 		targetAuction.setAuction_end(LocalDateTime.now());
 		this.auctionRepository.수정(targetAuction);
-		
 		
 		// 3. 업데이트 된 경매 정보를 반환한다.
 		return targetAuction;
