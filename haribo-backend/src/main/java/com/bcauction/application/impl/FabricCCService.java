@@ -399,17 +399,19 @@ public class FabricCCService implements IFabricCCService
 		try {
 			responseQuery = channel.queryByChaincode(qbr);
 			for (ProposalResponse res: responseQuery) {
-				String response=new String(res.getChaincodeActionResponsePayload());
+				String response = new String(res.getChaincodeActionResponsePayload());
 				System.out.println("historty");
-				logger.info(response);
+				logger.info("getChaincodeActionResponsePayload() " + response);
 				JsonReader reader=Json.createReader(new StringReader(response));
 				
-				JsonArray tmp=reader.readArray();
-				for(JsonValue q:tmp) {
-					System.out.println(q.toString());
+				JsonArray tmp = reader.readArray();
+				for(JsonValue q : tmp) {
+					System.out.println("objcect from chaincode " + q.toString());
 					assetList.add(getAssetRecord((JsonObject) q));
 				}
-				assetList.remove(0);
+				if (!assetList.isEmpty()) {
+					assetList.remove(0);
+				}
 			}
 			return assetList;
 			

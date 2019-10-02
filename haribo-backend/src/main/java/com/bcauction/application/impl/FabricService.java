@@ -150,8 +150,12 @@ public class FabricService implements IFabricService
 	 */
 	@Override
 	public List<FabricAsset> 작품이력조회(final long id){
-		List<FabricAsset> history = this.fabricCCService.queryHistory(id);
 		// TODO
+		List<FabricAsset> history = this.fabricCCService.queryHistory(id);
+		if (history.size() != 0) {
+			int last = history.size() - 1;
+			logger.info("최근(현) 소유자 " + Long.parseLong(history.get(last).getOwner()));
+		}
 		return history;
 	}
 
@@ -165,8 +169,8 @@ public class FabricService implements IFabricService
 	public List<Ownership> 소유자별조회(final long id)
 	{
 		// TODO
-
-		return null;
+		List<Ownership> ownershipList = null;
+		return ownershipList;
 	}
 
 
