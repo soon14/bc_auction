@@ -92,7 +92,7 @@ public class WalletService implements IWalletService
 		Wallet wallet = this.walletRepository.조회(id);
 		if(wallet == null)
 			throw new NotFoundException(id + " 해당 회원의 주소 지갑을 찾을 수 없습니다.");
-
+		System.out.println(wallet);
 		return 조회_ETH잔액동기화(wallet.getWallet_addr());
 	}
 

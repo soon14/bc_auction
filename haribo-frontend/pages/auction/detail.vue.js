@@ -69,8 +69,12 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                         <button type="button" class="btn btn-sm btn-primary" v-on:click="closeAuction" v-bind:disabled="isCanceling || isClosing">{{ isClosing ? "낙찰중" : "낙찰하기" }}</button>
                                         <button type="button" class="btn btn-sm btn-danger" v-on:click="cancelAuction" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "취소하는 중" : "경매취소하기" }}</button>
                                     </div>
+                                    
                                     <div class="col-md-6 text-right" v-if="sharedStates.user.id != work['art_mem'] && auction['aucInfo_close'] != true">
                                         <router-link :to="{ name: 'auction.bid', params: { id: this.$route.params.id } }" class="btn btn-sm btn-primary">입찰하기</router-link>
+                                        <button type="button" class="btn btn-sm btn-danger" v-on:click="withdraw" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "취소하는 중" : "입찰금액 반환" }}</button>
+                                    </div>
+                                    <div>
                                     </div>
                                 </div>
                             </div>
@@ -93,6 +97,23 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
         }
     },
     methods: {
+        withdraw: function(){
+            var scope = this;
+            var privateKey = window.prompt("지갑 비밀키를 입력해주세요.","");
+
+            walletService.findAddressById(this.sharedStates.user.id, function(walletAddress){
+                var options = {
+                    contractAddress: scope.auction['aucInfo_contract'],
+                    walletAddress: walletAddress,
+                    auctionId : scope.$route.params.id,
+                    privateKey: privateKey,
+                };
+
+                auction_withdraw(options, function(res){
+                    console.log("[detail.vue.js : withdraw] ", res);
+                });
+            }); 
+        },
         closeAuction: function(){
             /**
              * 컨트랙트를 호출하여 경매를 종료하고
@@ -110,12 +131,8 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                     auctionId : scope.$route.params.id,
                 };
 
-                
                 auction_close(options, function(receipt){
 
-                    /**
-                     *  AuctionService.java : 경매종료(final long 경매id, final long 회원id)
-                     */
                     walletService.findWalletByaddr(receipt.bidder, function(wallet){
                         auctionService.close(scope.$route.params.id, wallet['wallet_mem'], 
                             function(auction){

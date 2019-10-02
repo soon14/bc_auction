@@ -79,6 +79,7 @@ contract Auction {
   bool public ended;
   event HighestBidIncereased(address bidder, uint amount);
   event AuctionEnded(address winner, uint amount);
+  event WithdrawResult(bool result);
   //**
   // * @dev AuctionFactory의 createAuction함수에서 호출하는 생성자입니다.
   // * 경매에서 고려해야하는 제한사항을 고려하여 상태변수를 초기화합니다. 
@@ -122,15 +123,18 @@ contract Auction {
 
             if (!msg.sender.send(amount)) {
                 pendingReturns[msg.sender] = amount;
+                emit WithdrawResult(false);
                 return false;
             }
         }
+        emit WithdrawResult(true);
         return true;
   }
+
   /**
    * @dev 경매 종료를 위한 함수입니다.
    * 경매 생성자만이 경매를 종료시킬 수 있습니다.
-   * 현재까지의 입찰 중 최고가를 선택하여 경매를 종료합니다. 
+   * 현재까지의 입찰 중 최고가를 선택하여 경매를 종료합니다.
    */
   function endAuction() public {
     require(now >= auctionEndTime, "Auction not yet ended");
@@ -141,8 +145,7 @@ contract Auction {
     
     owner.transfer(highestBid);
   }
-  
-  
+
   /**
    * @dev 경매 취소를 위한 함수입니다. 
    * 경매 생성자만이 경매를 취소할 수 있습니다.
