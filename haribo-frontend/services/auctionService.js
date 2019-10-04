@@ -51,9 +51,6 @@ var auctionService = {
     },
     // 경매 취소
     cancel: function(auctionId, bidderId, callback, whenError){
-        console.log('[auctionService.js : cancel] auctionId', auctionId);
-        console.log('[auctionService.js : cancel] bidderId', bidderId);
-        
         $.ajax({
             type: "DELETE",
             url: API_BASE_URL + "/api/auctions/" + auctionId + "/by/" + bidderId,

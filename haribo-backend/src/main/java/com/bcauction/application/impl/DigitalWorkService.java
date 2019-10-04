@@ -59,7 +59,6 @@ public class DigitalWorkService implements IDigitalWorkService
 		long l = this.digitalWorkRepository.추가(작품);
 		if (l != 0 ) {
 			this.fabricService.소유권등록(작품.getArt_mem(), l);
-//			this.fabricService.소유권이전(1, 4, 198);
 		}
 		return 작품;
 	}

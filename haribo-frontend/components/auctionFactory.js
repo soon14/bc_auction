@@ -92,7 +92,7 @@ function auction_bid(options, onConfirm){
         from: options.walletAddress,
         to: options.contractAddress,
         gas: 2000000,
-        value : options.amount,
+        value : web3.utils.toWei(options.amount, 'ether'),
         data: encodedABI
     }
 

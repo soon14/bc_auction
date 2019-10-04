@@ -46,7 +46,8 @@ const routes = [{
     name: "mypage.artwork",
     path: '/mypage/artworks',
     component: myArtworkView
-},{
+},
+{
     name: "mypage.update",
     path: "/mypage/update",
     component: myUpdateView
