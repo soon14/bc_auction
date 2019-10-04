@@ -107,7 +107,7 @@ public class FabricService implements IFabricService
 		result = this.ownershipRepository.생성(새소유권);
 		if(result == 0)
 			return null;
-
+		System.out.println("wonership result : " + result);
 		return this.ownershipRepository.조회(to, 작품id);
 	}
 
