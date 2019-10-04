@@ -58,7 +58,9 @@ public class WalletController {
 
 	@RequestMapping(value = "/wallets/of/{mid}", method = RequestMethod.GET)
 	public Wallet 조회By소유자(@PathVariable long mid) {
+		System.out.println("/wallets/of/{mid}");
 		Wallet 지갑 = this.walletService.조회(mid);
+		System.out.println(지갑);
 		if (지갑 == null)
 			throw new EmptyListException("[소유자id] " + mid + " 해당 지갑을 찾을 수 없습니다.");
 

@@ -70,8 +70,12 @@ function createAuction(options, walletAddress, privateKey, onConfirm){
                 
             })
 
+            contract.events.AuctionCreated()
+                .on('data', event2=>{ console.log('event2', event2)});
         });        
     });
+
+    
 
 }
 
@@ -133,18 +137,43 @@ function auction_close(options, onConfirm){
         from: options.walletAddress,
         to: options.contractAddress,
         gas: 2000000,
-        data: encodedABI
+        data: encodedABI,
     }
-    
+    contract.methods.auctionEndTime().call().then(auctionEndTime=>{
+        console.log('before_auctionEndTime', auctionEndTime);
+    });
+    contract.methods.owner().call().then(res=>{
+        console.log('owner', res);
+        
+    })
     // 트랜잭션 보내는 함수
     const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
         web3.eth.sendSignedTransaction(res.rawTransaction)
         .then(receipt=>{
-            console.log('[auctionFactory.js : auction_bid] receipt', receipt);
+            console.log('[auctionFactory.js : auction_close] tx receipt', receipt);
             contract.methods.highestBidder().call().then(bidder=>{
                 receipt.bidder = bidder;
-                onConfirm(receipt);
+                console.log('hbidder',bidder );
+                
+                // onConfirm(receipt);
             });
+
+            contract.methods.highestBid().call().then(bidder=>{
+                console.log('hbid', bidder);
+            });
+
+            contract.methods.ended().call().then(ended=>{
+                console.log('ended', ended);
+            });
+
+            contract.methods.auctionEndTime().call().then(auctionEndTime=>{
+                console.log('after_auctionEndTime', auctionEndTime);
+            });
+
+            contract.methods.nowValue().call().then(nowValue=>{
+                console.log('nowValue', nowValue);
+            });
+            
         });        
     });
 }
@@ -169,6 +198,40 @@ function auction_cancel(options, onConfirm){
         data: encodedABI
     }
     
+    // 트랜잭션 보내는 함수
+    const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
+        web3.eth.sendSignedTransaction(res.rawTransaction)
+        .then(receipt=>{
+                onConfirm(receipt);
+        });
+    });
+}
+
+function auction_withdraw(options, onConfirm){
+    var web3 = createWeb3();
+    var contract = createAuctionContract(web3, options.contractAddress);
+    var createWithdrawCall = contract.methods.withdraw();
+    var encodedABI = createWithdrawCall.encodeABI();
+
+    // console.log('contract', contract);
+    
+    var tx = {
+        from: options.walletAddress,
+        to: options.contractAddress,
+        gas: 2000000,
+        data: encodedABI
+    }
+
+    // createWithdrawCall.call().then(res=>{
+    //     console.log("[auctionFactory.js : auction_withdraw ]", res);
+        
+    // })
+    var checkWithdrawCall = contract.methods.getPendingReturnsBy(options.walletAddress);
+    checkWithdrawCall.call().then(res =>{
+        console.log('checkWithdraw', res);
+    })
+
+
     // 트랜잭션 보내는 함수
     const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
         web3.eth.sendSignedTransaction(res.rawTransaction)

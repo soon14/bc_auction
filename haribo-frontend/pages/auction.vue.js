@@ -31,21 +31,32 @@ var auctionView = Vue.component('AuctionView', {
     },
     methods: {
         calculateDate(date) {
-            var now = new Date();
+            // date.setHours(date.getHours() + 10);
+            var now = new Date().getTime();
             var endDate = new Date(date);
-            var diff = endDate.getTime() - now.getTime();
+
+            endDate=endDate.setHours(endDate.getHours()+9)
+
+            var diff = endDate-now;
+            // console.log('date', tmp);
+            
 
             // 만약 종료일자가 지났다면 "경매 마감"을 표시한다.
             if(diff < 0) {
                 return "경매 마감";
             } else {
                 // UNIX Timestamp를 자바스크립트 Date객체로 변환한다.
-                var d = new Date(diff);
-                var days = d.getDate();
-                var hours = d.getHours();
-                var minutes = d.getMinutes();
+                var difference = diff / 1000;
+                // var secs = difference % 60
+                difference = parseInt(difference / 60)
+                var minutes = difference % 60
+                difference = parseInt(difference / 60)
+                var hours = difference % 24
+                difference = parseInt(difference / 24)
+                var days = difference
 
                 return "남은시간: " + days + "일 " + hours + "시간 " + minutes + "분";
+                // return timeSince(-1*endDate);
             }
         }
     },
