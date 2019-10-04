@@ -1,5 +1,6 @@
 package com.bcauction.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -110,7 +111,14 @@ public class AuctionController
 	@RequestMapping(value = "/auctions/owner/{id}", method = RequestMethod.GET)
 	public List<Auction> 사용자경매목록조회(@PathVariable int id){
 		// TODO
-		return null;
+		List<Auction> ownerAuctionList = new ArrayList<Auction>();
+		List<Auction> list = this.auctionService.경매목록조회();
+		for (Auction ownerAuction : list) {
+			if(ownerAuction.getAuction_makerid() == id) {
+				ownerAuctionList.add(ownerAuction);
+			}
+		}
+		return ownerAuctionList;
 	}
 
 }

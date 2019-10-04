@@ -7,14 +7,13 @@ import com.bcauction.domain.FabricAsset;
 import com.bcauction.domain.Ownership;
 import com.bcauction.domain.repository.IDigitalWorkRepository;
 import com.bcauction.domain.repository.IOwnershipRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * FabricService
@@ -149,7 +148,7 @@ public class FabricService implements IFabricService
 	 * @return List<FabricAsset>
 	 */
 	@Override
-	public List<FabricAsset> 작품이력조회(final long id){
+	public List<FabricAsset> 작품이력조회(final long id) {
 		// TODO
 		List<FabricAsset> history = this.fabricCCService.queryHistory(id);
 		if (history.size() != 0) {
@@ -166,12 +165,10 @@ public class FabricService implements IFabricService
 	 * @return List<Ownership>
 	 */
 	@Override
-	public List<Ownership> 소유자별조회(final long id)
-	{
+	public List<Ownership> 소유자별조회(final long id) {
 		// TODO
-		List<Ownership> ownershipList = null;
+		List<Ownership>ownershipList = this.ownershipRepository.소유자별목록조회(id);
 		return ownershipList;
 	}
-
 
 }
