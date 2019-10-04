@@ -72,8 +72,8 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                     
                                     <div class="col-md-6 text-right" v-if="sharedStates.user.id != work['art_mem'] && auction['aucInfo_close'] != true">
                                         <router-link :to="{ name: 'auction.bid', params: { id: this.$route.params.id } }" class="btn btn-sm btn-primary">입찰하기</router-link>
+                                        </div>
                                         <button type="button" class="btn btn-sm btn-danger" v-on:click="withdraw" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "취소하는 중" : "입찰금액 반환" }}</button>
-                                    </div>
                                     <div>
                                     </div>
                                 </div>
