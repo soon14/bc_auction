@@ -223,6 +223,11 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                 this.countDownString=  + days + "일 " + hours + "시간 " + minutes + "분 " + Math.floor(secs) + "초";
                 this.countDownTimer()
                 }, 1000)
+            }else{
+                console.log('<<<<0');
+                
+                alert('경매가 종료되었습니다.');
+                router.push('/auction');
             }
         }
     },
