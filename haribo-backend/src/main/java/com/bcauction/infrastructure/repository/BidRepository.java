@@ -39,12 +39,26 @@ public class BidRepository implements IBidRepository
 		}
 	}
 
+	// 사용자 입찰 내역
+	@Override
+	public List<Bid> userBid(final long mem_id) {
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid WHERE bid_mem=?");
+		try {
+			return this.jdbcTemplate.query(sbSql.toString(),
+								new Object[] { mem_id }, (rs, rowNum) -> BidFactory.생성(rs) );
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		} catch (Exception e) {
+			throw new RepositoryException(e, e.getMessage());
+		}
+	}
+	
 	@Override
 	public Bid 조회(final long id) {
 		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid WHERE bid_id=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
-								new Object[] { id }, (rs, rowNum) -> BidFactory.생성(rs) );
+					new Object[] { id }, (rs, rowNum) -> BidFactory.생성(rs) );
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		} catch (Exception e) {
@@ -148,8 +162,4 @@ public class BidRepository implements IBidRepository
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
-	
-	
-
-
 }
