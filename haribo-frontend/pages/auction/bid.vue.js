@@ -60,7 +60,7 @@ var auctionBidView = Vue.component('AuctionBidView', {
                 price: 0
             },
             sharedStates: store.state,
-            wallet: {}
+            wallet: {},
         }
     },
     methods: {

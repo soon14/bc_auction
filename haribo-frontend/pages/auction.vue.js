@@ -31,14 +31,12 @@ var auctionView = Vue.component('AuctionView', {
     },
     methods: {
         calculateDate(date) {
-            // date.setHours(date.getHours() + 10);
             var now = new Date().getTime();
             var endDate = new Date(date);
 
             endDate=endDate.setHours(endDate.getHours()+9)
 
             var diff = endDate-now;
-            // console.log('date', tmp);
             
 
             // 만약 종료일자가 지났다면 "경매 마감"을 표시한다.

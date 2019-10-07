@@ -74,10 +74,19 @@ function createAuction(options, walletAddress, privateKey, onConfirm){
                 .on('data', event2=>{ console.log('event2', event2)});
         });        
     });
-
-    
-
 }
+
+function auctionEndTime(options, onConfirm){
+    var web3 = createWeb3();
+    var contract = createAuctionContract(web3, options.contractAddress);
+    
+    var createBidCall = contract.methods.bid();
+    var encodedABI = createBidCall.encodeABI();
+}
+
+
+
+
 
 /**
  * TODO [입찰] 
@@ -202,6 +211,9 @@ function auction_cancel(options, onConfirm){
     const transaction = web3.eth.accounts.signTransaction(tx, options.privateKey).then(res =>{
         web3.eth.sendSignedTransaction(res.rawTransaction)
         .then(receipt=>{
+            contract.methods.ended().call().then(ended=>{
+                console.log('ended', ended);
+            });
                 onConfirm(receipt);
         });
     });
