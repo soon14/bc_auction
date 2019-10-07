@@ -16,6 +16,18 @@ var auctionService = {
             callback(data);
           });
     },
+    // 입찰 내역
+    findBidByUser : function(userId, callback) {
+        $.get(API_BASE_URL + '/api/auctions/bidder/' + userId, function(data){
+            callback(data)
+        })
+    },
+    // 입찰 내역
+    findBidByID : function(auction_id, callback) {
+        $.get(API_BASE_URL + '/api/auctions/bid/' + auction_id, function(data){
+            callback(data)
+        })
+    },
     register: function(data, callback){
         $.ajax({
             type: "POST",

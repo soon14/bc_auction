@@ -12,6 +12,8 @@ public interface IAuctionService
 	List<Auction> 경매목록조회();
 	Auction 조회(long 경매id);
 	Auction 조회(String 컨트랙트주소);
+	
+	List<Bid> userAuctionBid(final long mem_id);
 
 	@Transactional
 	Auction 생성(Auction 경매);

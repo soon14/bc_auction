@@ -47,6 +47,10 @@ public class AuctionService implements IAuctionService
 		this.bidRepository = bidRepository;
 		this.digitalWorkService = digitalWorkService;
 	}
+	
+	public List<Bid> userAuctionBid(final long mem_id) {
+		return this.bidRepository.userBid(mem_id);
+	}
 
 	@Override
 	public List<Auction> 경매목록조회() {
