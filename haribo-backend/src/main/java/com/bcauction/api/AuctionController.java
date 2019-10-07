@@ -72,6 +72,18 @@ public class AuctionController
 
 		return 경매;
 	}
+	
+	@RequestMapping(value = "/auctions/isOnAuction/{workId}", method = RequestMethod.GET)
+	public int 경매중인작품(@PathVariable String workId) {
+		System.out.println(workId);
+		int result = auctionService.작품조회(workId);
+		
+//		if( 경매 == null )
+//			throw new ApplicationException("경매 정보를 입력할 수 없습니다!");
+		System.out.println(result);
+		return result;
+	}
+	
 
 	@RequestMapping(value = "/auctions", method = RequestMethod.GET)
 	public List<Auction> 목록조회() {
@@ -96,10 +108,6 @@ public class AuctionController
 		if(경매정보 == null){
 			throw new NotFoundException(id + " 해당 경매 컨트랙트를 찾을 수 없습니다.");
 		}
-//		경매정보.setAucInfo_start(auction.getAuction_start());
-//		경매정보.setAucInfo_end(auction.getAuction_end());
-		
-//		경매정보.setAucInfo_close(!auction.getAuction_status().equals("V"));
 		
 		logger.info("auctionContractService.경매정보조회  ↓");
 		System.out.println(경매정보);

@@ -70,14 +70,13 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                         <router-link :to="{ name: 'auction' }" class="btn btn-sm btn-outline-secondary">경매 리스트로 돌아가기</router-link>
                                     </div>
                                     <div class="col-md-6 text-right" v-if="sharedStates.user.id == work['art_mem'] && auction['aucInfo_close'] != true">
-                                        <button type="button" class="btn btn-sm btn-primary" v-on:click="closeAuction" v-bind:disabled="isCanceling || isClosing">{{ isClosing ? "낙찰중" : "낙찰하기" }}</button>
+                                        <button type="button" class="btn btn-sm btn-primary"  v-on:click="closeAuction" v-bind:disabled="isCanceling || isClosing">{{ isClosing ? "낙찰중" : "낙찰하기" }}</button>
                                         <button type="button" class="btn btn-sm btn-danger" v-on:click="cancelAuction" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "취소하는 중" : "경매취소하기" }}</button>
                                     </div>
-                                    
-                                    <div class="col-md-6 text-right" v-if="sharedStates.user.id != work['art_mem'] && auction['aucInfo_close'] != true">
-                                        <router-link :to="{ name: 'auction.bid', params: { id: this.$route.params.id } }" class="btn btn-sm btn-primary">입찰하기</router-link>
+                                        <div class="col-md-6 text-right" v-if="sharedStates.user.id != work['art_mem'] && auction['aucInfo_close'] != true">
+                                            <router-link v-if="bidAvailable() == true" :to="{ name: 'auction.bid', params: { id: this.$route.params.id } }" class="btn btn-sm btn-primary">입찰하기</router-link>
+                                            <button type="button" class="btn btn-sm btn-danger" v-on:click="withdraw" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "반환하는 중" : "입찰금액 반환" }}</button>
                                         </div>
-                                        <button type="button" class="btn btn-sm btn-danger" v-on:click="withdraw" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "취소하는 중" : "입찰금액 반환" }}</button>
                                     <div>
                                     </div>
                                 </div>
@@ -103,6 +102,15 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
         }
     },
     methods: {
+        bidAvailable(){
+            var auction_start = new Date(this.auction['aucInfo_start']).getTime();
+            var auction_end = new Date(this.auction['aucInfo_end']).getTime();
+            var now = new Date().getTime();
+            
+            if( auction_start > now ) return false; //경매 시작 전
+            if( auction_end < now ) return false;   // 경매 기간 지난 후
+            return true;
+        },
         withdraw: function(){
             var scope = this;
             var privateKey = window.prompt("지갑 비밀키를 입력해주세요.","");
@@ -215,6 +223,11 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                 this.countDownString=  + days + "일 " + hours + "시간 " + minutes + "분 " + Math.floor(secs) + "초";
                 this.countDownTimer()
                 }, 1000)
+            }else{
+                console.log('<<<<0');
+                
+                alert('경매가 종료되었습니다.');
+                router.push('/auction');
             }
         }
     },

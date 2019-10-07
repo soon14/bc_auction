@@ -66,6 +66,11 @@ public class AuctionService implements IAuctionService
 	public Auction 조회(final String 컨트랙트주소) {
 		return this.auctionRepository.조회(컨트랙트주소);
 	}
+	
+	@Override
+	public int 작품조회(final String 작품id) {
+		return this.auctionRepository.작품조회(작품id);
+	}
 
 	@Override
 	public Auction 생성(final Auction auction) {

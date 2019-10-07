@@ -109,6 +109,18 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
             }
         }
     },
+    watch :{
+        'before.selectedWork' : function(val){
+            var scope = this;
+            auctionService.findAuctionByWorkID(this.before.selectedWork, function(data){
+                result = data;
+                if( result != 0) {
+                    alert('현재 작품은 이미 경매 중입니다.');
+                    scope.before.selectedWork=null;
+                }
+            });
+        }
+    },
     methods: {
         goBack: function(){
             this.$router.go(-1);
@@ -119,7 +131,6 @@ var auctionRegisterView = Vue.component('AuctionRegisterView', {
              * 컨트랙트를 호출하여 경매를 생성하고
              * 경매 정보 등록 API를 호출합니다. 
              */
-            
             var scope = this;
             this.isCreatingContract = true;
             

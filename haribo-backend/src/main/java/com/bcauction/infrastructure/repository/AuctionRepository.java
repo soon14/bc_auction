@@ -1,21 +1,21 @@
 package com.bcauction.infrastructure.repository;
 
-import com.bcauction.domain.Auction;
-import com.bcauction.domain.exception.RepositoryException;
-import com.bcauction.domain.repository.IAuctionRepository;
-import com.bcauction.infrastructure.repository.factory.AuctionFactory;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
-
-import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.bcauction.domain.Auction;
+import com.bcauction.domain.exception.RepositoryException;
+import com.bcauction.domain.repository.IAuctionRepository;
+import com.bcauction.infrastructure.repository.factory.AuctionFactory;
 
 @Repository
 public class AuctionRepository implements IAuctionRepository
@@ -66,6 +66,20 @@ public class AuctionRepository implements IAuctionRepository
 		} catch (Exception e) {
 			throw new RepositoryException(e, e.getMessage());
 		}
+	}
+	@Override
+	public int 작품조회(String 작품id) {
+		// TODO Auto-generated method stub
+		StringBuilder sbSql =  new StringBuilder("SELECT count(*) FROM auction WHERE auction_goodsid=? and auction_status='V'");
+		try {
+			return this.jdbcTemplate.queryForObject(sbSql.toString(), new Object[] {작품id}, Integer.class);
+			
+		} catch (EmptyResultDataAccessException e) {
+			return 0;
+		} catch (Exception e) {
+			throw new RepositoryException(e, e.getMessage());
+		}
+		
 	}
 
 	@Override
@@ -125,4 +139,6 @@ public class AuctionRepository implements IAuctionRepository
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
+
+
 }

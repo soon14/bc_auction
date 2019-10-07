@@ -33,7 +33,7 @@ var auctionBidView = Vue.component('AuctionBidView', {
                                     </div>
                                 </div><br>
                                 <div class="alert alert-warning" role="alert">
-                                    최소 입찰 금액은 {{ auction['aucInfo_highest'] }} ETH 입니다.
+                                    최소 입찰 금액은 {{ minBidValue }} ETH 입니다.
                                 </div>
                             </div>
                             <div class="row">
@@ -61,6 +61,7 @@ var auctionBidView = Vue.component('AuctionBidView', {
             },
             sharedStates: store.state,
             wallet: {},
+            minBidValue:0,
         }
     },
     methods: {
@@ -112,8 +113,12 @@ var auctionBidView = Vue.component('AuctionBidView', {
         console.log('auctionId', auctionId);
         
         auctionService.findById(auctionId, function(auction){
-            auction['aucInfo_highest'] = web3.utils.fromWei(auction['aucInfo_highest'].toString(), 'ether');
-            console.log('[bid.vue.js : mounted ] ::auction[aucInfo_highest]', auction['aucInfo_highest']);
+            
+            console.log('[bid.vue.js : mounted ] ::auction["aucInfo_highest"] == 0', auction['aucInfo_highest'] == 0);
+            if(auction['aucInfo_highest'] == 0 ){
+                scope.minBidValue = web3.utils.fromWei(auction['aucInfo_min'].toString(), 'ether');
+            }else
+                scope.minBidValue = web3.utils.fromWei(auction['aucInfo_highest'].toString(), 'ether');
 
             scope.auction = auction;
             var workId = auction['aucInfo_artId'];
