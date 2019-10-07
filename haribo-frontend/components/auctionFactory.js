@@ -155,7 +155,7 @@ function auction_close(options, onConfirm){
                 receipt.bidder = bidder;
                 console.log('hbidder',bidder );
                 
-                // onConfirm(receipt);
+                onConfirm(receipt);
             });
 
             contract.methods.highestBid().call().then(bidder=>{

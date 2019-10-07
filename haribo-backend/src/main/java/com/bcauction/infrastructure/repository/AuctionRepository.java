@@ -73,9 +73,7 @@ public class AuctionRepository implements IAuctionRepository
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
 			paramMap.put("auction_makerid", auction.getAuction_makerid());
-//			paramMap.put("auction_makerid", auction.getAuction_makedate());
 			paramMap.put("auction_goodsid", auction.getAuction_goodsid());
-//			paramMap.put("auction_makedate", auction.getAuction_makerid());
 			paramMap.put("auction_makedate", auction.getAuction_makedate());
 			paramMap.put("auction_status", auction.getAuction_status());
 			paramMap.put("auction_start", auction.getAuction_start());
@@ -85,7 +83,6 @@ public class AuctionRepository implements IAuctionRepository
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
 					.withTableName("auction")
-//					.usingGeneratedKeyColumns("id");
 					.usingGeneratedKeyColumns("auction_id");
 
 			Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);

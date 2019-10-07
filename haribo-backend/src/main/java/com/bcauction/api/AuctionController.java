@@ -46,6 +46,7 @@ public class AuctionController
 	@RequestMapping(value = "/auctions", method = RequestMethod.POST)
 	public Auction 생성(@RequestBody Auction auction) {
 		Auction 경매 = auctionService.생성(auction);
+		System.out.println("경매" + 경매);
 		
 		if( 경매 == null )
 			throw new ApplicationException("경매 정보를 입력할 수 없습니다!");
@@ -93,6 +94,7 @@ public class AuctionController
 
 	@RequestMapping(value = "/auctions/{aid}/by/{mid}", method = RequestMethod.PUT)
 	public Auction 경매종료(@PathVariable long aid, @PathVariable long mid) { //mid = 최고가 입찰자 id
+		System.out.println("AuctionController 경매종료 ");
 		return this.auctionService.경매종료(aid, mid);
 	}
 
