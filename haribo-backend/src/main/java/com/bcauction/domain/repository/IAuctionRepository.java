@@ -19,4 +19,5 @@ public interface IAuctionRepository
 
 	@Transactional
 	int 삭제(long id);
+	int 작품조회(String 작품id);
 }

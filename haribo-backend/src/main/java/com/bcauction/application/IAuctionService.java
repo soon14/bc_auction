@@ -27,4 +27,5 @@ public interface IAuctionService
 
 	@Transactional
 	Auction 경매취소(long 경매id, long 회원id); // 환불 후 옥션 끝내기
+	int 작품조회(String 작품id);
 }

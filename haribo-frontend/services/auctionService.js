@@ -5,10 +5,16 @@ var auctionService = {
             callback(data);
         });
     },
+
     findAllByUser: function(userId, callback){
       $.get(API_BASE_URL + '/api/auctions/owner/' + userId, function(data){
         callback(data);
       });
+    },
+    findAuctionByWorkID(workId, callback){
+        $.get(API_BASE_URL + '/api/auctions/isOnAuction/' + workId, function(data){
+            callback(data);
+          });
     },
     register: function(data, callback){
         $.ajax({
