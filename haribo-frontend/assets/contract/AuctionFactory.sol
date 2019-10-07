@@ -50,7 +50,7 @@ contract AuctionFactory is Ownable {
      */
     function createAuction(uint workId, uint minValue, uint startTime, uint endTime) public returns (address){
       // todo 내용을 완성 합니다. 
-      address auction = new Auction(owner, workId, minValue, startTime, endTime);
+      address auction = new Auction(msg.sender, workId, minValue, startTime, endTime);
       auctions.push(auction);
       
       emit AuctionCreated(auction, owner, 0, auctions);
@@ -69,6 +69,7 @@ contract Auction {
   address public owner;
   uint public auctionStartTime;
   uint public auctionEndTime;
+  uint public nowValue;
   uint public minValue;
   uint public digitalWorkId;
   // 현재 최고 입찰 상태
@@ -77,9 +78,9 @@ contract Auction {
   mapping(address => uint) pendingReturns;
   address[] bidders;
   bool public ended;
+  
   event HighestBidIncereased(address bidder, uint amount);
   event AuctionEnded(address winner, uint amount);
-  event WithdrawResult(bool result);
   //**
   // * @dev AuctionFactory의 createAuction함수에서 호출하는 생성자입니다.
   // * 경매에서 고려해야하는 제한사항을 고려하여 상태변수를 초기화합니다. 
@@ -97,10 +98,10 @@ contract Auction {
   // */
   function bid() public onlyNotOwner payable {
     // todo 내용을 완성 합니다. 
-        require(
-           msg.value > highestBid,
-            "There already is a higher bid."
-        );
+        // require(
+        //    msg.value > highestBid,
+        //     "There already is a higher bid."
+        // );
         if (highestBid != 0) {
             // Sending back the money by simply using
             // highestBidder.send(highestBid) is a security risk
@@ -111,6 +112,8 @@ contract Auction {
         }
         highestBidder = msg.sender;
         highestBid = msg.value;
+            
+ 
   }
   //**
   // * @dev 환불을 위한 함수입니다. 
@@ -123,40 +126,41 @@ contract Auction {
 
             if (!msg.sender.send(amount)) {
                 pendingReturns[msg.sender] = amount;
-                emit WithdrawResult(false);
                 return false;
             }
         }
-        emit WithdrawResult(true);
         return true;
   }
-
   /**
    * @dev 경매 종료를 위한 함수입니다.
    * 경매 생성자만이 경매를 종료시킬 수 있습니다.
-   * 현재까지의 입찰 중 최고가를 선택하여 경매를 종료합니다.
+   * 현재까지의 입찰 중 최고가를 선택하여 경매를 종료합니다. 
    */
   function endAuction() public {
-    require(now >= auctionEndTime, "Auction not yet ended");
+    nowValue = now*1000;
+      
+    require(nowValue >= auctionEndTime, "Auction not yet ended");
     require(!ended, "auction has already been called");
-    
     ended = true;
     emit AuctionEnded(highestBidder, highestBid);
     
     owner.transfer(highestBid);
   }
-
+  
+  
   /**
    * @dev 경매 취소를 위한 함수입니다. 
    * 경매 생성자만이 경매를 취소할 수 있습니다.
    * 모든 입찰에 대해 환불을 수행하고 경매를 종료합니다.  
    */
   function cancelAuction() public {
-    require(now >= auctionEndTime, "Auction not yet ended");
+    // require(now >= auctionEndTime, "Auction not yet ended");
     require(!ended, "auction has already been called");
     
     ended = true;
     pendingReturns[highestBidder] += highestBid;
+    
+    
   }
   /**
    * @dev 이와 같이 추가 함수를 구현해보아도 좋습니다.  

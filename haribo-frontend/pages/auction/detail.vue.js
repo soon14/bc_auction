@@ -30,6 +30,10 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                         <td>{{ auction['aucInfo_end'] }}</td>
                                     </tr>
                                     <tr>
+                                        <th>남은 시간</th>
+                                        <td>{{ countDownString }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>최저가</th>
                                         <td><strong>{{ auction['aucInfo_min'] }} ETH</strong></td>
                                     </tr>
@@ -94,6 +98,8 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             isCanceling: false,
             isClosing: false,
             wallet:{},
+            countDown : 0,
+            countDownString:"",
         }
     },
     methods: {
@@ -177,6 +183,39 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                         });
                 });
             });
+        },
+        countDownInit(auction){
+            var now = new Date().getTime();
+            var endDate = new Date(auction['aucInfo_end']).getTime();
+
+            console.log('now"s get time : ', now);
+            console.log('now"s get endDate : ', endDate);
+            var diff= endDate - now ;
+            if(diff < 0) return;
+            
+            diff = diff/ 1000; // 초로 변환.
+            this.countDown = diff;
+            console.log('this.countDown', this.countDown);
+            this.countDownTimer();
+            
+        },
+        countDownTimer() {
+            if(this.countDown > 0) {
+                setTimeout(() => {
+                    this.countDown -= 1
+                    var difference = this.countDown;
+                var secs = difference % 60
+                difference = parseInt(difference / 60)
+                var minutes = difference % 60
+                difference = parseInt(difference / 60)
+                var hours = difference % 24
+                difference = parseInt(difference / 24)
+                var days = difference
+
+                this.countDownString=  + days + "일 " + hours + "시간 " + minutes + "분 " + Math.floor(secs) + "초";
+                this.countDownTimer()
+                }, 1000)
+            }
         }
     },
     mounted: async function(){
@@ -184,11 +223,13 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
         var scope = this;
         var web3 = createWeb3();
 
+        
         // 경매 정보 조회
         auctionService.findById(auctionId, function(auction){
             console.log("경매 정보 조회 AuctionInfo ", auction)
             var amount = Number(auction['aucInfo_min']).toLocaleString().split(",").join("")
             auction['aucInfo_min'] = web3.utils.fromWei(amount, 'ether');
+            scope.countDownInit(auction);
             
 
             var workId = auction['aucInfo_artId'];
