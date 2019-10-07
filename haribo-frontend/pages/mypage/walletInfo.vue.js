@@ -46,27 +46,25 @@ var walletInfoView = Vue.component('walletInfoView', {
     methods: {
         // ETH 충전하기
         charge: function () {
-            $("#cover").show("fast");
-            
-            var scope = this;
-            scope.isCharging = true;
-            walletService.chargeEther(this.wallet.wallet_addr, function (response) {
-                scope.isCharging = false;
-                
-                setTimeout(function () {
-                    $('#cover').hide("fast");
+            if(this.wallet.wallet_chargecount<10){
+                $("#cover").show("fast");
+                var scope = this;
+                scope.isCharging = true;
+                walletService.chargeEther(this.wallet.wallet_addr, function (response) {
+                    scope.isCharging = false;
                     alert("코인이 충전 되었습니다.");
-                }, 10000);
-                
-                scope.fetchWalletInfo();
-            })
+                    scope.wallet=response;
+                    $('#cover').hide("fast");
+                })
+            }else{
+                alert("충전횟수(최대 10번)를 초과합니다")
+            }
         },
         // 지갑 정보 가져오기
         fetchWalletInfo: function () {
             var scope = this;
-
             walletService.findById(this.sharedState.user.id, function (data) {
-                scope.wallet = data
+                scope.wallet=data
             });
         }
     },

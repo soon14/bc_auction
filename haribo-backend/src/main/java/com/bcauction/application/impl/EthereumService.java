@@ -263,14 +263,19 @@ public class EthereumService implements IEthereumService {
 				// eth_sendRawTransaction을 사용하여 트랜잭션을 보냅니다.
 				EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
 				transactionHash = ethSendTransaction.getTransactionHash();
-
-				System.out.println(주소+" 송금완료");
+				
+				while(true) {
+					EthGetTransactionReceipt tmp=web3j.ethGetTransactionReceipt(transactionHash).send();
+					if(tmp.getResult()!=null) {
+						break;
+					}
+					Thread.sleep(4000);
+				}
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			// hash 반환
 			return transactionHash;
 		}
 	}
