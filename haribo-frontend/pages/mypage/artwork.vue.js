@@ -48,6 +48,29 @@ var myArtworkView = Vue.component('MyArtworkView', {
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-12 mt-5">
+                        <h4>입찰 내역</h4>
+                        <div class="row">
+                            <div class="col-md-3 artwork" v-for="item in bidAuctions" v-if="bidAuctions.length > 0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="./assets/images/artworks/artwork1.jpg">
+                                        <h4>{{ item['auction_goodsid']['art_name'] }}</h4>
+
+                                        <span class="badge badge-success" v-if="item['auction_status']=='V'">경매 진행중</span>
+                                        <span class="badge badge-danger" v-else>경매 종료</span>
+
+                                        <router-link :to="{ name: 'auction.detail', params: { id: item['auction_id'] }}" class="btn btn-block btn-secondary mt-3">자세히보기</router-link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-8 mt-3" v-if="bidAuctions.length == 0">
+                                <div class="alert alert-warning">참여중인 입찰 목록이 없습니다.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -56,7 +79,8 @@ var myArtworkView = Vue.component('MyArtworkView', {
         return {
             sharedStates: store.state,
             artworks: [],
-            auctions: []
+            auctions: [],
+            bidAuctions: [],
         }
     },
     methods: {
@@ -101,11 +125,25 @@ var myArtworkView = Vue.component('MyArtworkView', {
             data.forEach(art => {
                 console.log("art id ", art.auction_goodsid)
                 workService.findById(art.auction_goodsid, function(result){
+                    console.log(art.auction_goodsid, result)
                     art.auction_goodsid = result
                 })
             });
             scope.auctions = data;
             console.log('auctionService.findAllByUser ', scope.auctions)
+        })
+        
+        auctionService.findBidByUser(userId, function(data){
+            data.forEach(bid => {
+                auctionService.findBidByID(bid.bid_auction, function(result){
+                    workService.findById(result.auction_goodsid, function(art) {
+                        result.auction_goodsid = art
+                    })
+                    scope.bidAuctions.push(result)
+                })
+            })
+            console.log("scope.bidAuctions", scope.bidAuctions)
+            
         })
     }
 })

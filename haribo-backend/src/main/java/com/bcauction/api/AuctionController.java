@@ -42,6 +42,25 @@ public class AuctionController
 		this.auctionService = auctionService;
 		this.auctionContractService = auctionContractService;
 	}
+	
+	@RequestMapping(value = "/auctions/bidder/{mem_id}", method = RequestMethod.GET)
+	public List<Bid> userBid(@PathVariable long mem_id) {
+		List<Bid> memBid = auctionService.userAuctionBid(mem_id);
+		if (memBid == null) {
+			throw new NotFoundException(mem_id + "의 입찰내역을 찾을 수 없습니다.");
+		}
+		return memBid;
+	}
+	
+	@RequestMapping(value = "/auctions/bid/{auction_id}", method = RequestMethod.GET)
+	public Auction userAuction(@PathVariable long auction_id) {
+		Auction auction = this.auctionService.조회(auction_id);
+		if (auction == null){
+			logger.error("NOT FOUND AUCTION: ", auction_id);
+			throw new NotFoundException(auction_id + " 해당 경매를 찾을 수 없습니다.");
+		}
+		return auction;
+	}
 
 	@RequestMapping(value = "/auctions", method = RequestMethod.POST)
 	public Auction 생성(@RequestBody Auction auction) {
