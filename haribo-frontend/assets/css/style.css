@@ -151,3 +151,7 @@ nav.bottom-pagination {
     display:none;
     z-index: 99;
 }
+
+#countdown{
+    color: red;
+}
