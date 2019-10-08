@@ -240,7 +240,7 @@ public class EthereumService implements IEthereumService {
 		String transactionHash = null;
 		try {
 			System.out.println("충전 함수 진입 중");
-			personalUnlockAccount = admin.personalUnlockAccount("0x56f66a3fd8c811c2699509cd7b59962f9c280041", "eth02")
+			personalUnlockAccount = admin.personalUnlockAccount("0xabe4d3eaa6e1b78106035c608562a222e5741b9d", "eth02")
 					.send();
 			if (personalUnlockAccount.accountUnlocked()) {
 				System.out.println("잠금해제");
@@ -249,7 +249,7 @@ public class EthereumService implements IEthereumService {
 				
 				// eth_getTransactionCount 메소드 를 통해 사용 가능한 다음 nonce를 얻을 수 있습니다 .
 				EthGetTransactionCount ethGetTransactionCount = web3j
-						.ethGetTransactionCount("0x56f66a3fd8c811c2699509cd7b59962f9c280041", DefaultBlockParameterName.LATEST).sendAsync().get();
+						.ethGetTransactionCount("0xabe4d3eaa6e1b78106035c608562a222e5741b9d", DefaultBlockParameterName.LATEST).sendAsync().get();
 				BigInteger nonce = ethGetTransactionCount.getTransactionCount();
 				
 				// nonce를 사용하여 트랜잭션 오브젝트를 작성할 수 있습니다.
