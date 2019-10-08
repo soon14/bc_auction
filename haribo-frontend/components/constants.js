@@ -2,12 +2,12 @@
 API_BASE_URL = "http://localhost:8080";
 
 // 배포한 옥션 컨트랙트 주소를 지정합니다. 
-var AUCTION_CONTRACT_ADDRESS = "0xa698A8d1B5560C7720ffB9857112412B7F7E06E4";
+var AUCTION_CONTRACT_ADDRESS = "0xA53c0d8362D4f7b3066afc725cF6047Ca8F4b986";
 // 이더리움 블록체인 네트워크의 URL을 설정합니다. 
 var BLOCKCHAIN_URL = "http://13.124.65.11:8545";
 // var BLOCKCHAIN_URL = "http://127.0.0.1:7545";
 // AuctionFactory.sol의 ABI를 설정합니다.
-AUCTION_FACTORY_CONTRACT_ABI = [
+AUCTION_FACTORY_CONTRACT_ABI =[
 	{
 		"constant": true,
 		"inputs": [],
@@ -16,6 +16,20 @@ AUCTION_FACTORY_CONTRACT_ABI = [
 			{
 				"name": "",
 				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "connectTest",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
