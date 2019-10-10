@@ -108,10 +108,6 @@ const routes = [{
     path: '/explorer/tx/:hash',
     component: explorerTxDetailView
 },{
-    name: "explorer.search",
-    path: '/explorer/search',
-    component: explorerTxSearchView
-},{
     name: "explorer.search2",
     path: '/explorer/search/:address',
     component: explorerTxSearchView

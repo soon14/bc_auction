@@ -252,3 +252,14 @@ function auction_withdraw(options, onConfirm){
         });
     });
 }
+
+function auctionRefundValue(options, onConfirm){
+    var web3 = createWeb3();
+    var contract = createAuctionContract(web3, options.contractAddress);
+    
+    var checkWithdrawCall = contract.methods.getPendingReturnsBy(options.walletAddress);
+    checkWithdrawCall.call().then(res =>{
+        console.log('checkWithdraw', res);
+        onConfirm(res);
+    })
+}
