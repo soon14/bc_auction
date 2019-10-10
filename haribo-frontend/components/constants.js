@@ -1,5 +1,5 @@
 // 웹서버 API URL을 지정합니다. 
-API_BASE_URL = "http://localhost:8080";
+API_BASE_URL = "http://13.124.65.11:8080";
 
 // 배포한 옥션 컨트랙트 주소를 지정합니다. 
 var AUCTION_CONTRACT_ADDRESS = "0xA53c0d8362D4f7b3066afc725cF6047Ca8F4b986";
