@@ -31,7 +31,7 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                     </tr>
                                     <tr>
                                         <th>남은 시간</th>
-                                        <td>{{ countDownString }}</td>
+                                        <td id="remainTime">{{ countDownString }}</td>
                                     </tr>
                                     <tr>
                                         <th>최저가</th>
@@ -73,9 +73,10 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                                         <button type="button" class="btn btn-sm btn-primary"  v-on:click="closeAuction" v-bind:disabled="isCanceling || isClosing">{{ isClosing ? "낙찰중" : "낙찰하기" }}</button>
                                         <button type="button" class="btn btn-sm btn-danger" v-on:click="cancelAuction" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "취소하는 중" : "경매취소하기" }}</button>
                                     </div>
-                                        <div class="col-md-6 text-right" v-if="sharedStates.user.id != work['art_mem'] && auction['aucInfo_close'] != true">
-                                            <router-link v-if="bidAvailable() == true" :to="{ name: 'auction.bid', params: { id: this.$route.params.id } }" class="btn btn-sm btn-primary">입찰하기</router-link>
-                                            <button type="button" class="btn btn-sm btn-danger" v-on:click="withdraw" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "반환하는 중" : "입찰금액 반환" }}</button>
+                                    <div class="col-md-6 text-right">
+                                    <router-link v-if="bidAvailable() == true && sharedStates.user.id != work['art_mem'] && auction['aucInfo_close'] != true" :to="{ name: 'auction.bid', params: { id: this.$route.params.id} }" class="btn btn-sm btn-primary">입찰하기</router-link>
+                                    <button type="button" v-if="canRefund" class="btn btn-sm btn-danger" v-on:click="withdraw" v-bind:disabled="isCanceling || isClosing">{{ isCanceling ? "반환하는 중" : "입찰금액 반환" }}</button>
+
                                         </div>
                                     <div>
                                     </div>
@@ -99,6 +100,8 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             wallet:{},
             countDown : 0,
             countDownString:"",
+            canRefund:false,
+            timer:null,
         }
     },
     methods: {
@@ -125,6 +128,7 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
 
                 auction_withdraw(options, function(res){
                     console.log("[detail.vue.js : withdraw] ", res);
+                    alert('출금이 완료되었습니다.')
                 });
             }); 
         },
@@ -150,7 +154,8 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                     walletService.findWalletByaddr(receipt.bidder, function(wallet){
                         auctionService.close(scope.$route.params.id, wallet['wallet_mem'], 
                             function(auction){
-                                console.log("[detail.vue.js : closeAuction ] return auction" , auction);
+                                scope.setCloseAuction(scope.auction);
+                                scope.countDownString = '경매 종료';
                             }, 
                             function(error){
     
@@ -184,10 +189,12 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                 auction_cancel(options, function(receipt){
                     auctionService.cancel(scope.$route.params.id, scope.sharedStates.user.id, 
                         function(auction){
-                            console.log(auction);
+                            alert('경매가 취소되었습니다.');
+                            scope.setCloseAuction(scope.auction);
+                            scope.countDownString = '경매 종료';
                         }, 
                         function(error){
-
+                            alert('죄송합니다. 에러가 발생했습니다. 관리자에게 문의해주세요.');
                         });
                 });
             });
@@ -202,14 +209,18 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             if(diff < 0) return;
             
             diff = diff/ 1000; // 초로 변환.
-            this.countDown = diff;
+            this.countDown = diff
             console.log('this.countDown', this.countDown);
             this.countDownTimer();
             
         },
+        setCloseAuction(auction){
+            auction['aucInfo_close'] = true;
+        },
         countDownTimer() {
+            var scope = this;
             if(this.countDown > 0) {
-                setTimeout(() => {
+                this.timer = setInterval(() => {
                     this.countDown -= 1
                     var difference = this.countDown;
                 var secs = difference % 60
@@ -219,15 +230,16 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
                 var hours = difference % 24
                 difference = parseInt(difference / 24)
                 var days = difference
-
+                console.log('[timer]', this.countDown);
                 this.countDownString=  + days + "일 " + hours + "시간 " + minutes + "분 " + Math.floor(secs) + "초";
-                this.countDownTimer()
-                }, 1000)
-            }else{
-                console.log('<<<<0');
                 
-                alert('경매가 종료되었습니다.');
-                router.push('/auction');
+                if(this.countDown <= 0){
+                    alert('경매가 종료되었습니다.');
+                    scope.setCloseAuction(this.auction);
+                    scope.countDownString = '경매 종료';
+                    clearInterval(this.timer);
+                }
+                }, 1000)
             }
         }
     },
@@ -273,6 +285,22 @@ var auctionDetailView = Vue.component('AuctionDetailView', {
             }
 
             scope.auction = auction;
+            walletService.findAddressById(scope.sharedStates.user.id, function(walletAddress){
+                var options = {
+                    contractAddress: auction['aucInfo_contract'],
+                    walletAddress: walletAddress,
+                    // privateKey: privateKey,
+                    auctionId : scope.$route.params.id,
+                };
+                auctionRefundValue(options, function(value){
+                    if( value == 0 ) scope.canRefund = false;
+                    else scope.canRefund= true;
+                })
+            });
+
         });
+    },
+    destroyed(){
+        clearInterval(this.timer);
     }
 });

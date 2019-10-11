@@ -106,6 +106,7 @@ var auctionBidView = Vue.component('AuctionBidView', {
         }
     },
     mounted: function(){
+        
         // console.log('this.$route.params.id', this.$route.params.id);
 
         var scope = this;
@@ -134,5 +135,8 @@ var auctionBidView = Vue.component('AuctionBidView', {
             // wallet['wallet_money'] = Number(wallet['wallet_money']) * (10 ** 18);
             scope.wallet = wallet;
         });
+    },
+    destroyed: function(){
+        this.timer
     }
 })
