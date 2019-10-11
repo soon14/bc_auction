@@ -1,4 +1,9 @@
 var walletService = {
+    findWalletByaddr: function(addr, callback){
+        $.get(API_BASE_URL + "/api/wallets/" + addr, function(data){
+            callback(data);
+        });
+    },
     findAddressById: function(id, callback){
         $.get(API_BASE_URL + "/api/wallets/of/" + id, function(data){
             callback(data['wallet_addr']);

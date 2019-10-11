@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 public class AuctionInfo {
-	private String aucInfo_contract; 		// 경매 컨트랙트 주
+	private String aucInfo_contract; 		// 경매 컨트랙트 주소
 	private BigInteger aucInfo_highest; 	// 최고 입찰액
 	private long aucInfo_artId; 			// 작품id
 	private long aucInfo_highestBider; 		// 최고입찰자id
@@ -12,6 +12,16 @@ public class AuctionInfo {
 	private LocalDateTime aucInfo_end; 		// 경매종료시간
 	private BigInteger aucInfo_min; 		// 최소금액
 	private boolean aucInfo_close; 			// 종료
+	
+	
+
+	@Override
+	public String toString() {
+		return "AuctionInfo [aucInfo_contract=" + aucInfo_contract + ", aucInfo_highest=" + aucInfo_highest
+				+ ", aucInfo_artId=" + aucInfo_artId + ", aucInfo_highestBider=" + aucInfo_highestBider
+				+ ", aucInfo_start=" + aucInfo_start + ", aucInfo_end=" + aucInfo_end + ", aucInfo_min=" + aucInfo_min
+				+ ", aucInfo_close=" + aucInfo_close + "]";
+	}
 
 	public String getAucInfo_contract() {
 		return aucInfo_contract;

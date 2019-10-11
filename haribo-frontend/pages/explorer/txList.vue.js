@@ -7,7 +7,7 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
                 <explorer-nav></explorer-nav>
                 <div class="row" v-if="transactions.length == 0">
                     <div class="col-md-8 mx-auto">
-                        <div class="alert alert-warning">No transaction recorded at. #{{ block && block.number }} blocks</div>
+                        <div class="alert alert-warning">No transaction recorded at blocks</div>
                     </div>
                 </div>
                 <div class="row">
@@ -18,8 +18,8 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
                                 <div class="row tx-info" v-for="item in transactions">
                                     <div class="col-md-2">Tx</div>
                                     <div class="col-md-4">
-                                        <router-link :to="{name: 'explorer.tx.detail', params: { hash: item.hash }}" class="tx-number">{{ item.hash | truncate(10) }}</router-link>
-                                        <p class="tx-timestamp">{{ item.timeSince }}</p>
+                                        <router-link :to="{name: 'explorer.tx.detail', params: { hash: item.txHash }}" class="tx-number">{{ item.txHash | truncate(10) }}</router-link>
+                                        <p class="tx-timestamp">{{ item.timestamp }}</p>
                                     </div>
                                     <div class="col-md-6">
                                         <p><label class="text-secondary">From</label> {{ item.from | truncate(10) }}</p>
@@ -35,15 +35,19 @@ var explorerTxListView = Vue.component('ExplorerTxListView', {
     `,
     data(){
         return {
-            transactions: [],
-            block: {}
+            transactions: []
         };
     },
     methods: {
         fetchTxes: function(){
-            /**
-             * TODO 최근 블록에 포함된 트랜잭션 리스트를 반환합니다. 
-             */
+            //TODO 최근 트랜잭션 10개 리스트를 반환합니다.
+            var scope=this
+            explorerService.call_txList(function(data){
+                scope.transactions=data
+                for(var tmp in data){
+                    data[tmp].timestamp=explorerService.timeSince(data[tmp].timestamp)
+                }
+            })             
         }      
     },
     mounted: function(){

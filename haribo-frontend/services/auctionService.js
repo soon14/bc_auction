@@ -5,10 +5,28 @@ var auctionService = {
             callback(data);
         });
     },
+
     findAllByUser: function(userId, callback){
       $.get(API_BASE_URL + '/api/auctions/owner/' + userId, function(data){
         callback(data);
       });
+    },
+    findAuctionByWorkID(workId, callback){
+        $.get(API_BASE_URL + '/api/auctions/isOnAuction/' + workId, function(data){
+            callback(data);
+          });
+    },
+    // 입찰 내역
+    findBidByUser : function(userId, callback) {
+        $.get(API_BASE_URL + '/api/auctions/bidder/' + userId, function(data){
+            callback(data)
+        })
+    },
+    // 입찰 내역
+    findBidByID : function(auction_id, callback) {
+        $.get(API_BASE_URL + '/api/auctions/bid/' + auction_id, function(data){
+            callback(data)
+        })
     },
     register: function(data, callback){
         $.ajax({
@@ -16,19 +34,30 @@ var auctionService = {
             url: API_BASE_URL + "/api/auctions",
             data: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' },
-            success: callback
+            success: callback,
+            error : function(error) {
+                console.log("error", error)
+                console.log("넘겨온 data인가? ", data)
+            }
         });
     },
     findById: function(id, callback){
-        $.get(API_BASE_URL + "/api/auctions/" + id, callback);
+        $.get({
+            url : API_BASE_URL + "/api/auctions/" + id,
+            success : callback,
+            error : function(error) {
+                console.log("error", error)
+                console.log("http get AuctionInfo ", callback)
+            }
+        });
     },
     // 경매 내역 저장
     saveBid: function(bidder, auctionId, bidPrice, callback){
         var data = {
-            "경매참여자id": bidder,
-            "경매id": auctionId,
-            "입찰금액": bidPrice,
-            "입찰일시": new Date()
+            "bid_mem": bidder,
+            "bid_auction": auctionId,
+            "bid_price": bidPrice,
+            "bid_date": new Date()
         }
         $.ajax({
             type: "PUT",

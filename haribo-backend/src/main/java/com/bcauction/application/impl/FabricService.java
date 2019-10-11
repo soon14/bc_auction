@@ -7,14 +7,13 @@ import com.bcauction.domain.FabricAsset;
 import com.bcauction.domain.Ownership;
 import com.bcauction.domain.repository.IDigitalWorkRepository;
 import com.bcauction.domain.repository.IOwnershipRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * FabricService
@@ -60,7 +59,7 @@ public class FabricService implements IFabricService
 		own.setOwn_mem(own_mem);
 		own.setOwn_art(own_art);
 		own.setOwn_start(asset.getCreatedAt());
-
+		System.out.println("FabricService Ownership 소유권 start "+asset.getCreatedAt());
 		long result = this.ownershipRepository.생성(own);
 		if(result == 0)
 			return null;
@@ -108,7 +107,7 @@ public class FabricService implements IFabricService
 		result = this.ownershipRepository.생성(새소유권);
 		if(result == 0)
 			return null;
-
+		System.out.println("wonership result : " + result);
 		return this.ownershipRepository.조회(to, 작품id);
 	}
 
@@ -131,6 +130,7 @@ public class FabricService implements IFabricService
 			return null;
 
 		소멸소유권.setOwn_end(asset.getExpiredAt());
+		System.out.println("FabricService Ownership 소유권 end "+asset.getExpiredAt());
 
 		long result = this.ownershipRepository.수정(소멸소유권);
 		if(result == 0)
@@ -148,12 +148,14 @@ public class FabricService implements IFabricService
 	 * @return List<FabricAsset>
 	 */
 	@Override
-	public List<FabricAsset> 작품이력조회(final long id){
-		List<FabricAsset> history = this.fabricCCService.queryHistory(id);
-
+	public List<FabricAsset> 작품이력조회(final long id) {
 		// TODO
-
-		return null;
+		List<FabricAsset> history = this.fabricCCService.queryHistory(id);
+		if (history.size() != 0) {
+			int last = history.size() - 1;
+			logger.info("최근(현) 소유자 " + Long.parseLong(history.get(last).getOwner()));
+		}
+		return history;
 	}
 
 	/**
@@ -163,12 +165,10 @@ public class FabricService implements IFabricService
 	 * @return List<Ownership>
 	 */
 	@Override
-	public List<Ownership> 소유자별조회(final long id)
-	{
+	public List<Ownership> 소유자별조회(final long id) {
 		// TODO
-
-		return null;
+		List<Ownership>ownershipList = this.ownershipRepository.소유자별목록조회(id);
+		return ownershipList;
 	}
-
 
 }

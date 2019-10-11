@@ -7,6 +7,8 @@ var workService = {
     findWorksByOwner: function(userId, callback){
         $.get(API_BASE_URL + '/api/works/owner/' + userId, function(data){
             callback(data);
+            console.log(data);
+            
         });
     },
     findById: function(workId, callback){
@@ -27,7 +29,7 @@ var workService = {
                     userService.findById(history.owner, function(user){
                         result.push({
                             createdAt: history.createdAt,
-                            owner: user['이름'] + " (" + user['이메일']+ ")"
+                            owner: user['mem_name'] + " (" + user['mem_mail']+ ")"
                         });
 
                         loadUser(from+1, until);
@@ -39,7 +41,6 @@ var workService = {
         });
     },
     create: function(body, success, whenError){
-        console.log("front_workservice",body)
         $.ajax({
             type: 'POST',
             url: API_BASE_URL + '/api/works',

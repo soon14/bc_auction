@@ -15,6 +15,14 @@ public class Auction {
 	private String auction_contract;
 	
 	
+	
+	@Override
+	public String toString() {
+		return "Auction [auction_id=" + auction_id + ", auction_makedate=" + auction_makedate + ", auction_makerid="
+				+ auction_makerid + ", auction_goodsid=" + auction_goodsid + ", auction_status=" + auction_status
+				+ ", auction_start=" + auction_start + ", auction_end=" + auction_end + ", auction_min=" + auction_min
+				+ ", auction_contract=" + auction_contract + "]";
+	}
 	public long getAuction_id() {
 		return auction_id;
 	}
@@ -69,7 +77,4 @@ public class Auction {
 	public void setAuction_contract(String auction_contract) {
 		this.auction_contract = auction_contract;
 	}
-	
-	
-	
 }

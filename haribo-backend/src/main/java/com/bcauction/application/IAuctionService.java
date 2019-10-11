@@ -12,6 +12,8 @@ public interface IAuctionService
 	List<Auction> 경매목록조회();
 	Auction 조회(long 경매id);
 	Auction 조회(String 컨트랙트주소);
+	
+	List<Bid> userAuctionBid(final long mem_id);
 
 	@Transactional
 	Auction 생성(Auction 경매);
@@ -27,4 +29,5 @@ public interface IAuctionService
 
 	@Transactional
 	Auction 경매취소(long 경매id, long 회원id); // 환불 후 옥션 끝내기
+	int 작품조회(String 작품id);
 }

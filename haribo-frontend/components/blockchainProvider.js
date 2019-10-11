@@ -52,6 +52,18 @@ function fetchBlocks(from, end, callback) {
     });
 }
 
+// number번쨰 블록에서 from to end까지의 트랜잭션 조회
+function fetchTransaction_FromBlock(number, from, end, callback){
+  web3.eth.getTransactionFromBlock(number,from).then(function(block){
+    callback(block);
+
+    var f = from+=1;
+    if(f<=end){
+      fetchTransaction_FromBlock(number,f,end,callback)
+    }
+  })
+}
+
 // timestamp 포맷을 사람이 읽을 수 있는 형태로 변환한다.
 function timeSince(date) {
     var seconds = Math.floor((new Date() - (date * 1000)) / 1000);

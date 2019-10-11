@@ -39,12 +39,26 @@ public class BidRepository implements IBidRepository
 		}
 	}
 
+	// 사용자 입찰 내역
+	@Override
+	public List<Bid> userBid(final long mem_id) {
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid WHERE bid_mem=?");
+		try {
+			return this.jdbcTemplate.query(sbSql.toString(),
+								new Object[] { mem_id }, (rs, rowNum) -> BidFactory.생성(rs) );
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		} catch (Exception e) {
+			throw new RepositoryException(e, e.getMessage());
+		}
+	}
+	
 	@Override
 	public Bid 조회(final long id) {
 		StringBuilder sbSql =  new StringBuilder("SELECT * FROM bid WHERE bid_id=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
-								new Object[] { id }, (rs, rowNum) -> BidFactory.생성(rs) );
+					new Object[] { id }, (rs, rowNum) -> BidFactory.생성(rs) );
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		} catch (Exception e) {
@@ -89,7 +103,7 @@ public class BidRepository implements IBidRepository
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
 			paramMap.put("bid_mem", bid.getBid_mem());
-			paramMap.put("bid_auction",  bid.getBid_id());
+			paramMap.put("bid_auction",  bid.getBid_auction());
 			paramMap.put("bid_date", bid.getBid_date());
 			paramMap.put("bid_price", bid.getBid_price());
 			paramMap.put("bid_issuccess", bid.getBid_issuccess());
@@ -126,13 +140,15 @@ public class BidRepository implements IBidRepository
 
 	@Override
 	public int 수정(final long 경매id, final long 낙찰자id, final BigInteger 입찰최고가) {
+		System.out.println(경매id + " " + 낙찰자id + " " + 입찰최고가);
 		StringBuilder sbSql =  new StringBuilder("UPDATE bid ");
 		sbSql.append("SET bid_issuccess=? ");
-		sbSql.append("WHERE bid_auction=? AND bid_mem=? AND bid_date=?");
+		sbSql.append("WHERE bid_auction=? AND bid_mem=? AND bid_price=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 								new Object[] { "Y", 경매id, 낙찰자id, 입찰최고가 });
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
@@ -146,6 +162,4 @@ public class BidRepository implements IBidRepository
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
-
-
 }

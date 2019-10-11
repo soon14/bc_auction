@@ -13,6 +13,7 @@ public interface IBidRepository
 	Bid 조회(long id);
 	Bid 조회(Bid 입찰);
 	Bid 조회(long 경매id, long 낙찰자id, BigInteger 최고가);
+	List<Bid> userBid(long mem_id);
 
 	@Transactional
 	long 생성(Bid 입찰);
@@ -24,4 +25,5 @@ public interface IBidRepository
 
 	@Transactional
 	int 삭제(long id);
+	
 }

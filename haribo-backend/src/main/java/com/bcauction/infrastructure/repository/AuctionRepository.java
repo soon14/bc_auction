@@ -1,19 +1,21 @@
 package com.bcauction.infrastructure.repository;
 
-import com.bcauction.domain.Auction;
-import com.bcauction.domain.exception.RepositoryException;
-import com.bcauction.domain.repository.IAuctionRepository;
-import com.bcauction.infrastructure.repository.factory.AuctionFactory;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.bcauction.domain.Auction;
+import com.bcauction.domain.exception.RepositoryException;
+import com.bcauction.domain.repository.IAuctionRepository;
+import com.bcauction.infrastructure.repository.factory.AuctionFactory;
 
 @Repository
 public class AuctionRepository implements IAuctionRepository
@@ -55,7 +57,7 @@ public class AuctionRepository implements IAuctionRepository
 	@Override
 	public Auction 조회(final String auction_contract)
 	{
-		StringBuilder sbSql =  new StringBuilder("SELECT * FROM auction  WHERE auction_contract=?");
+		StringBuilder sbSql =  new StringBuilder("SELECT * FROM auction WHERE auction_contract=?");
 		try {
 			return this.jdbcTemplate.queryForObject(sbSql.toString(),
 			                                        new Object[] { auction_contract }, (rs, rowNum) -> AuctionFactory.생성(rs) );
@@ -65,14 +67,28 @@ public class AuctionRepository implements IAuctionRepository
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
+	@Override
+	public int 작품조회(String 작품id) {
+		// TODO Auto-generated method stub
+		StringBuilder sbSql =  new StringBuilder("SELECT count(*) FROM auction WHERE auction_goodsid=? and auction_status='V'");
+		try {
+			return this.jdbcTemplate.queryForObject(sbSql.toString(), new Object[] {작품id}, Integer.class);
+			
+		} catch (EmptyResultDataAccessException e) {
+			return 0;
+		} catch (Exception e) {
+			throw new RepositoryException(e, e.getMessage());
+		}
+		
+	}
 
 	@Override
 	public long 생성(final Auction auction) {
 		try {
 			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("auction_makerid", auction.getAuction_makedate());
+			paramMap.put("auction_makerid", auction.getAuction_makerid());
 			paramMap.put("auction_goodsid", auction.getAuction_goodsid());
-			paramMap.put("auction_makedate", auction.getAuction_makerid());
+			paramMap.put("auction_makedate", auction.getAuction_makedate());
 			paramMap.put("auction_status", auction.getAuction_status());
 			paramMap.put("auction_start", auction.getAuction_start());
 			paramMap.put("auction_end", auction.getAuction_end());
@@ -80,8 +96,8 @@ public class AuctionRepository implements IAuctionRepository
 			paramMap.put("auction_contract", auction.getAuction_contract());
 
 			this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
-					.withTableName("action")
-					.usingGeneratedKeyColumns("id");
+					.withTableName("auction")
+					.usingGeneratedKeyColumns("auction_id");
 
 			Number newId = simpleJdbcInsert.executeAndReturnKey(paramMap);
 			return newId.longValue();
@@ -94,8 +110,8 @@ public class AuctionRepository implements IAuctionRepository
 	public int 수정(final Auction auction)
 	{
 		StringBuilder sbSql =  new StringBuilder("UPDATE auction ");
-		sbSql.append("SET auction_status=? AND auction_end=? ");
-		sbSql.append("where id=? AND auction_makerid=? AND auction_goodsid=?");
+		sbSql.append("SET auction_status=?, auction_end=? ");
+		sbSql.append("where auction_id=? AND auction_makerid=? AND auction_goodsid=?");
 		try {
 			return this.jdbcTemplate.update(sbSql.toString(),
 			                                new Object[] {
@@ -106,6 +122,7 @@ public class AuctionRepository implements IAuctionRepository
 					                           auction.getAuction_goodsid()
 			                                });
 		} catch (Exception e) {
+			System.out.println("err : " + e.getMessage());
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
@@ -122,4 +139,6 @@ public class AuctionRepository implements IAuctionRepository
 			throw new RepositoryException(e, e.getMessage());
 		}
 	}
+
+
 }

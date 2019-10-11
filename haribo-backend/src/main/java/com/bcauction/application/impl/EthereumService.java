@@ -2,10 +2,13 @@ package com.bcauction.application.impl;
 
 import com.bcauction.application.IEthereumService;
 import com.bcauction.domain.*;
+import com.bcauction.domain.Transaction;
 import com.bcauction.domain.exception.ApplicationException;
 import com.bcauction.domain.repository.ITransactionRepository;
 import com.bcauction.domain.wrapper.Block;
 import com.bcauction.domain.wrapper.EthereumTransaction;
+import com.bcauction.infrastructure.repository.TransactionRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,7 @@ import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.DefaultBlockParameterNumber;
 import org.web3j.protocol.core.methods.response.*;
+import org.web3j.protocol.core.methods.response.EthBlock.TransactionResult;
 import org.web3j.protocol.exceptions.TransactionException;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Transfer;
@@ -31,9 +35,11 @@ import org.web3j.utils.Numeric;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.CompletableFuture;
@@ -53,9 +59,12 @@ public class EthereumService implements IEthereumService {
 	private String PASSWORD;
 	@Value("${eth.admin.wallet.filename}")
 	private String ADMIN_WALLET_FILE;
-
+	@Value("${spring.web3j.client-address}")
+	private String ethUrl;
+	
 	private ITransactionRepository transactionRepository;
-
+	private BigInteger latestBlockHeight = BigInteger.valueOf(0);
+	
 	@Autowired
 	private Web3j web3j;
 
@@ -64,15 +73,13 @@ public class EthereumService implements IEthereumService {
 		this.transactionRepository = transactionRepository;
 	}
 
-	private EthBlock.Block 최근블록(final boolean fullFetched) {
+	private EthBlock.Block latestBlock(final boolean fullFetched) {
 		try {
 			//
-			web3j = Web3j.build(new HttpService("https://13.124.65.11:8545"));
-
+			web3j = Web3j.build(new HttpService(ethUrl));
 			EthBlock latestBlockResponse;
-			latestBlockResponse = web3j.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, fullFetched).sendAsync()
+			latestBlockResponse = web3j.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, false).sendAsync()
 					.get();
-
 			return latestBlockResponse.getBlock();
 		} catch (ExecutionException | InterruptedException e) {
 			throw new ApplicationException(e.getMessage());
@@ -86,8 +93,26 @@ public class EthereumService implements IEthereumService {
 	 */
 	@Override
 	public List<Block> 최근블록조회() {
-		// TODO
-		return null;
+		
+		List<Block> res=new ArrayList<Block>();
+		//latestBlockHeight,latestBlockHeight-10 변수선언 
+		latestBlockHeight=latestBlock(false).getNumber();
+		BigInteger end=latestBlockHeight.subtract(BigInteger.valueOf(10));
+		
+		for (BigInteger bi = latestBlockHeight; bi.compareTo(end)>0; bi=bi.subtract(BigInteger.ONE)){
+			try {
+				//최신블록넘버부터 역순으로 idx(bi)탐색
+				EthBlock recievedEthBlock = web3j.ethGetBlockByNumber(DefaultBlockParameter.valueOf(bi), true).sendAsync().get();
+				//Ethblcok.block을 wrapper클래스 Block으로 커스터마이징 한 후 List에 넣기
+				Block tmp=new Block();
+				tmp=tmp.fromOriginalBlock(recievedEthBlock.getBlock());
+				res.add(tmp);
+			} catch (InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -97,8 +122,17 @@ public class EthereumService implements IEthereumService {
 	 */
 	@Override
 	public List<EthereumTransaction> 최근트랜잭션조회() {
-		// TODO
-		return null;
+		// DB pk에러(trancation_id) 추후 insert, select 한번에 수정
+		List<Transaction>tmp=transactionRepository.목록조회();
+		List<EthereumTransaction>res=new ArrayList<EthereumTransaction>();
+		for(Transaction q : tmp) {
+			EthereumTransaction mid=null;
+			long time=Timestamp.valueOf(q.getTrancation_savedate()).getTime();
+			BigInteger timestamp=BigInteger.valueOf((time/1000)-60*60*9);
+			mid=mid.convertTransaction(q,timestamp,true);
+			res.add(mid);
+		}
+		return res;
 	}
 
 	/**
@@ -110,6 +144,16 @@ public class EthereumService implements IEthereumService {
 	@Override
 	public Block 블록검색(String 블록No) {
 		// TODO
+		BigInteger q=BigInteger.valueOf(Long.parseLong(블록No));
+		try {
+			EthBlock tmp=web3j.ethGetBlockByNumber(DefaultBlockParameter.valueOf(q), true).sendAsync().get();
+			Block res=new Block();
+			res=res.fromOriginalBlock(tmp.getBlock());
+			return res;
+		} catch (InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -122,7 +166,14 @@ public class EthereumService implements IEthereumService {
 	@Override
 	public EthereumTransaction 트랜잭션검색(String 트랜잭션Hash) {
 		// TODO
-		return null;
+		Transaction tmp=transactionRepository.조회(트랜잭션Hash);
+		
+		long time=Timestamp.valueOf(tmp.getTrancation_savedate()).getTime();
+		BigInteger timestamp=BigInteger.valueOf((time/1000)-60*60*9);
+		
+		EthereumTransaction res=null;
+		res=res.convertTransaction(tmp, timestamp, true);
+		return res;
 	}
 
 	/**
@@ -135,8 +186,36 @@ public class EthereumService implements IEthereumService {
 	@Override
 	public Address 주소검색(String 주소) {
 		// TODO
-
-		return null;
+		Address res=new Address();
+		EthGetBalance ethGetBalance;
+		
+		try {
+			//Address객체 id, balance setting
+			res.setId(주소);
+			
+			ethGetBalance = web3j.ethGetBalance(주소, DefaultBlockParameterName.LATEST).sendAsync().get();
+			BigInteger wei = ethGetBalance.getBalance();
+			res.setBalance(wei);
+			
+			//txCount setting
+			List<Transaction> tmp=transactionRepository.조회By주소(주소);
+			res.setTxCount(BigInteger.valueOf(tmp.size()));
+			
+			//trans setting
+			List<EthereumTransaction> tx=new ArrayList<EthereumTransaction>();
+			for(Transaction q : tmp) {
+				EthereumTransaction mid=null;
+				long time=Timestamp.valueOf(q.getTrancation_savedate()).getTime();
+				BigInteger timestamp=BigInteger.valueOf((time/1000)-60*60*9);
+				mid=mid.convertTransaction(q,timestamp,true);
+				tx.add(mid);
+			}
+			res.setTrans(tx);
+		} catch (InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	/**
@@ -161,7 +240,7 @@ public class EthereumService implements IEthereumService {
 		String transactionHash = null;
 		try {
 			System.out.println("충전 함수 진입 중");
-			personalUnlockAccount = admin.personalUnlockAccount("0x56f66a3fd8c811c2699509cd7b59962f9c280041", "eth02")
+			personalUnlockAccount = admin.personalUnlockAccount("0xabe4d3eaa6e1b78106035c608562a222e5741b9d", "eth02")
 					.send();
 			if (personalUnlockAccount.accountUnlocked()) {
 				System.out.println("잠금해제");
@@ -170,7 +249,7 @@ public class EthereumService implements IEthereumService {
 				
 				// eth_getTransactionCount 메소드 를 통해 사용 가능한 다음 nonce를 얻을 수 있습니다 .
 				EthGetTransactionCount ethGetTransactionCount = web3j
-						.ethGetTransactionCount("0x56f66a3fd8c811c2699509cd7b59962f9c280041", DefaultBlockParameterName.LATEST).sendAsync().get();
+						.ethGetTransactionCount("0xabe4d3eaa6e1b78106035c608562a222e5741b9d", DefaultBlockParameterName.LATEST).sendAsync().get();
 				BigInteger nonce = ethGetTransactionCount.getTransactionCount();
 				
 				// nonce를 사용하여 트랜잭션 오브젝트를 작성할 수 있습니다.
@@ -184,14 +263,19 @@ public class EthereumService implements IEthereumService {
 				// eth_sendRawTransaction을 사용하여 트랜잭션을 보냅니다.
 				EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
 				transactionHash = ethSendTransaction.getTransactionHash();
-
-				System.out.println(주소+" 송금완료");
+				
+				while(true) {
+					EthGetTransactionReceipt tmp=web3j.ethGetTransactionReceipt(transactionHash).send();
+					if(tmp.getResult()!=null) {
+						break;
+					}
+					Thread.sleep(4000);
+				}
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			// hash 반환
 			return transactionHash;
 		}
 	}

@@ -28,7 +28,7 @@ public class TransactionRepository implements ITransactionRepository {
 
     @Override
     public List<Transaction> 목록조회() {
-        StringBuilder sbSql =  new StringBuilder("SELECT * FROM transaction  ");
+    	StringBuilder sbSql =  new StringBuilder("SELECT * FROM transaction order by trancation_id desc limit 10 ");
         try {
             return this.jdbcTemplate.query(sbSql.toString(),
                     new Object[]{}, (rs, rowNum) -> TransactionFactory.생성(rs));
@@ -72,7 +72,7 @@ public class TransactionRepository implements ITransactionRepository {
             paramMap.put("nonce", transaction.getNonce());
             paramMap.put("block_hash", transaction.getBlockHash());
             paramMap.put("block_number", transaction.getBlockNumber());
-            paramMap.put("transaction_index", transaction.getTransactionIndex());
+            paramMap.put("transaction_Index", transaction.getTransactionIndex());
             paramMap.put("from_hash", transaction.getFrom());
             paramMap.put("to_hash", transaction.getTo());
             paramMap.put("value", transaction.getValue());
@@ -85,7 +85,7 @@ public class TransactionRepository implements ITransactionRepository {
             paramMap.put("r", transaction.getR());
             paramMap.put("s", transaction.getS());
             paramMap.put("v", transaction.getV());
-            paramMap.put("trancation_savedate", LocalDateTime.now());
+            paramMap.put("transaction_savedate", LocalDateTime.now().plusHours(9));
 
             this.simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
                     .withTableName("transaction")

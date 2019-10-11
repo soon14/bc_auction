@@ -49,8 +49,9 @@ public class FabricAsset
 	{
 		if("FALSE".equals(createdAt))
 			this.createdAt = null;
-		else
+		else {
 			this.createdAt = LocalDateTime.parse(createdAt, formatter);
+		}
 	}
 
 	public LocalDateTime getExpiredAt()
@@ -62,7 +63,8 @@ public class FabricAsset
 	{
 		if("FALSE".equals(expiredAt))
 			this.expiredAt = null;
-		else
+		else {
 			this.expiredAt = LocalDateTime.parse(expiredAt, formatter);
+		}
 	}
 }

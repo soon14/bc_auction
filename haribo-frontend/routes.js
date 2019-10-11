@@ -23,6 +23,10 @@ const routes = [{
     path: '/auction',
     component: auctionView
 },{
+    name: "logout",
+    path: "/logout",
+    component: loginView
+},{
     name: "login",
     path: '/login',
     component: loginView
@@ -42,7 +46,8 @@ const routes = [{
     name: "mypage.artwork",
     path: '/mypage/artworks',
     component: myArtworkView
-},{
+},
+{
     name: "mypage.update",
     path: "/mypage/update",
     component: myUpdateView

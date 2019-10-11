@@ -67,9 +67,9 @@ var myUpdateView = Vue.component('MyUpdateView', {
             }
 
             userService.update({
-                "이메일": this.user.email,
-                "이름": this.input.name, // 신규 이름
-                "비밀번호": this.user.password
+                "mem_mail": this.user.email,
+                "mem_name": this.input.name, // 신규 이름
+                "mem_pass": this.user.password
             }, function(data){
                 alert("이름이 변경되었습니다.");
                 this.$router.go(-1);
@@ -83,10 +83,10 @@ var myUpdateView = Vue.component('MyUpdateView', {
         var scope = this;
         
         userService.findById(this.sharedStates.user.id, function(data){
-            scope.user.id = data["id"];
-            scope.user.email = data["이메일"];
-            scope.user.name = data["이름"];
-            scope.user.password = data["비밀번호"];
+            scope.user.id = data["mem_id"];
+            scope.user.email = data["mem_mail"];
+            scope.user.name = data["mem_name"];
+            scope.user.password = data["mem_pass"];
         });
     }
 })
